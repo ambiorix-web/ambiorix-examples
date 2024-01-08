@@ -22,3 +22,10 @@ It shows how you can split your app into small, manageable & interconnected chun
 > In the real world, you should write sql-interpolated queries to the database.
 >
 > **NEVER** commit a database file or a `.Renviron` file!
+
+Once you run the app, you'll be able to send requests via these endpoints:
+- `GET`: `http://localhost:3000/api/members` : Gets all members
+- `GET`: `http://localhost:3000/api/members/:id` : Get a single member by id
+- `POST`: `http://localhost:3000/api/members` : Create a new member
+- `PUT`: `http://localhost:3000/api/members/:id` : Update member info
+- `DELETE`: `http://localhost:3000/api/members/:id` : Delete a member
