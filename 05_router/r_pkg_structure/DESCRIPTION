@@ -1,0 +1,17 @@
+Package: members
+Title: Create Members REST API
+Version: 0.0.0.9000
+Authors@R:
+    person("your-first-name", "your-last-name", , "example@gmail.com", role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "your-orc-id"))
+Description: Generate a RESTful API using ambiorix via the standard R package structure. This is just an example.
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports:
+    ambiorix (>= 2.1.0),
+    htmltools (>= 0.5.7),
+    cli (>= 3.6.2),
+    rlang (>= 1.1.2)
+Suggests:
+    ambiorix.generator (>= 1.0.2)
