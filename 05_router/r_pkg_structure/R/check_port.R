@@ -13,7 +13,8 @@ check_port <- \(call = rlang::caller_env()) {
       message = c(
         "x" = "Env var {.envvar PORT} not found.",
         "i" = "Please set it in your {.file .Renviron} and restart the R session."
-      )
+      ),
+      call = call
     )
   }
   invisible(TRUE)
