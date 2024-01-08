@@ -79,5 +79,5 @@ app$start(port = PORT, open = FALSE)
 > - `source()` files (**NOT recommended, 1⭐**). Haha. Iykyk.
 
 I provide 2 examples:
-- One [using box](/box), and,
-- Another [using standard R package structure](/r_pkg_structure)
+- One [using box](./box/), and,
+- Another [using standard R package structure](./r_pkg_structure/)
