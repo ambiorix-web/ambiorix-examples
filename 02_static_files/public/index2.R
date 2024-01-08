@@ -4,9 +4,7 @@ PORT <- 3000
 
 app <- Ambiorix$new()
 
-# make the "public/" folder static, and accessible as "static/":
 app$static(path = "public", "static")
-# any files/folders in "public/" can now be accessed via your browser
 
 app$get("/", \(req, res) {
   res$send(
