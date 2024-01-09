@@ -1,10 +1,6 @@
 box::use(
   ambiorix[Router],
-  . / controllers / get_all_members[get_all_members],
-  . / controllers / get_member_by_id[get_member_by_id],
-  . / controllers / create_new_member[create_new_member],
-  . / controllers / update_member_info[update_member_info],
-  . / controllers / delete_member[delete_member]
+  . / members / controllers[...]
 )
 
 #' @export

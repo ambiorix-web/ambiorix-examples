@@ -1,5 +1,5 @@
 box::use(
-  ./get_db_path[get_db_path],
+  . / get_db_path[get_db_path],
   DBI[dbConnect, dbDisconnect, dbReadTable],
   RSQLite[SQLite]
 )

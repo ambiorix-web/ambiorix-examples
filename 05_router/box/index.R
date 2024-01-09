@@ -2,12 +2,12 @@ box::use(
   ambiorix[Ambiorix],
   . / helpers / get_port[get_port],
   . / middleware / logger[logger],
-  . / routes / api / members / router[members_router = router]
+  . / routes / api / members
 )
 
 Ambiorix$
   new()$
   listen(port = get_port())$
   use(logger)$
-  use(members_router)$
+  use(members$router)$
   start(open = FALSE)

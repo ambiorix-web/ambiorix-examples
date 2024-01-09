@@ -2,18 +2,37 @@
 
 I highly recommend this way of building apps.
 
-As you go though the code, you will easily notice how modularized it is.
-It shows how you can split your app into small, manageable & interconnected chunks:
-- `data/`
-  - `members.sqlite`
-- `helpers/`
-- `middleware/`
-- `models/`
-- `routes/`
-  - `api`
-    - `members`
-      - `controllers`
-- `index.R`
+As you go through the code, you will easily notice how modularized it is.
+
+{box} enables you to split your app into small, manageable & interconnected modules:
+
+```bash
+.
+├── data
+│   ├── get_db_path.R
+│   └── members.sqlite
+├── helpers
+│   ├── check_port.R
+│   ├── get_port.R
+│   └── operators.R
+├── index.R
+├── middleware
+│   └── logger.R
+├── models
+│   └── members.R
+├── README.md
+└── routes
+    └── api
+        ├── members
+        │   ├── controllers.R
+        │   ├── create_new_member.R
+        │   ├── delete_member.R
+        │   ├── get_all_members.R
+        │   ├── get_db_path.R
+        │   ├── get_member_by_id.R
+        │   └── update_member_info.R
+        └── members.R
+```
 
 > [!CAUTION]
 > You'll notice that I've used an sqlite file. The table "members" is very small,
