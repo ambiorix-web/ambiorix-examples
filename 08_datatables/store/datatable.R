@@ -19,6 +19,7 @@ datatable <- \(
   col_names,
   table_id,
   table_class = NULL,
+  header_row_class = NULL,
   ...
 ) {
   tagList(
@@ -26,6 +27,7 @@ datatable <- \(
       id = table_id,
       class = paste("table", table_class),
       tags$thead(
+        class = header_row_class,
         tags$tr(
           lapply(col_names, \(col_name) {
             tags$th(scope = "col", col_name)

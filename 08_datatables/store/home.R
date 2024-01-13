@@ -42,10 +42,13 @@ home <- \() {
         datatable(
           col_names = names(flights) |> make_user_friendly_names(),
           table_id = "flights",
-          table_class = "table-hover table-striped table-borderless table-sm",
+          table_class = "table-hover table-bordered table-sm",
+          header_row_class = "table-active",
           processing = TRUE,
           serverSide = TRUE,
           searchDelay = 1500,
+          # disable sorting of cols:
+          ordering = FALSE,
           # send a GET request (the default for ajax) to "/data/flights"
           ajax = "/data/flights",
           columnDefs = list(
