@@ -14,7 +14,7 @@ home <- \() {
     tags$div(
       class = "container",
       create_card(
-        title = "Hi there!",
+        title = "Hello World!",
         title_icon = tags$i(class = "bi bi-house-door"),
         title_class = "text-primary",
         class = "shadow-sm",

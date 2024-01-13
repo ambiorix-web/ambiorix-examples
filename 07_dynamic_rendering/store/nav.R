@@ -26,43 +26,61 @@ nav <- \(
   active = "Home"
 ) {
   nav_items <- lapply(seq_along(href), \(i) {
-    class <- paste("nav-link", if (label[i] == active) "active")
+    class <- paste("nav-link", if (label[i] == active) "active border-bottom border-dark")
     aria_current <- if (label[i] == active) "page" else NULL
     tags$li(
       class = "nav-item",
       tags$a(
         class = class,
         `aria-current` = aria_current,
+        # `data-bs-dismiss` = "offcanvas",
         href = href[i],
         label[i]
       )
     )
   })
 
+  title <- "Axim"
+  title_class <- "navbar-brand card-title text-uppercase fw-bold"
   tags$nav(
-    class = "navbar navbar-expand-lg shadow-sm mb-3",
+    class = "navbar navbar-expand-lg sticky-top mb-3 bg-white shadow-sm",
     tags$div(
       class = "container",
-      tags$a(
-        class = "navbar-brand fw-bold",
-        href = "/",
-        "Axim"
-      ),
+      tags$a(class = title_class, href = "/", title),
       tags$button(
         class = "navbar-toggler",
         type = "button",
-        `data-bs-toggle` = "collapse",
-        `data-bs-target` = "#navbarNav",
-        `aria-controls` = "navbarNav",
-        `aria-expanded` = "false",
-        `aria-label` = "Toggle navigation"
+        `data-bs-toggle` = "offcanvas",
+        `data-bs-target` = "#offcanvasNavbar",
+        `aria-controls` = "offcanvasNavbar",
+        `aria-label` = "Toggle navigation",
+        tags$span(class = "navbar-toggler-icon")
       ),
       tags$div(
-        class = "collapse navbar-collapse d-flex justify-content-end",
-        id = "navbarNav",
-        tags$ul(
-          class = "navbar-nav",
-          nav_items
+        id = "offcanvasNavbar",
+        class = "offcanvas offcanvas-end",
+        tabindex = "-1",
+        `aria-labelledby` = "offcanvasNavbarLabel",
+        tags$div(
+          class = "offcanvas-header",
+          tags$h5(
+            id = "offcanvasNavbarLabel",
+            class = paste("offcanvas-title", title_class),
+            title
+          ),
+          tags$button(
+            class = "btn-close",
+            type = "button",
+            `data-bs-dismiss` = "offcanvas",
+            `aria-label` = "Close"
+          )
+        ),
+        tags$div(
+          class = "offcanvas-body",
+          tags$ul(
+            class = "navbar-nav justify-content-end flex-grow-1 pe-3",
+            nav_items
+          )
         )
       )
     )
