@@ -1,5 +1,8 @@
 box::use(
-  ambiorix[parse_multipart]
+  ambiorix[parse_multipart],
+  .. / config / db[goals_conn],
+  .. / helpers / mongo_query[mongo_query],
+  .. / helpers / to_json[to_json]
 )
 
 #' Get goals
@@ -7,8 +10,10 @@ box::use(
 #' GET `/api/goals`. Private access.
 #' @export
 get_goals <- \(req, res) {
-  response <- list(message = "Get goals")
-  res$json(response)
+  goals <- goals_conn$find(
+    fields = mongo_query("_id" = TRUE, text = TRUE)
+  )
+  res$json(goals)
 }
 
 #' Set a goal
@@ -21,13 +26,12 @@ set_goal <- \(req, res) {
   if (is.null(text)) {
     msg <- list(message = "Please add a text field")
     return(
-      res$
-        set_status(400L)$
-        json(msg)
+      res$set_status(400L)$json(msg)
     )
   }
-  response <- list(message = "Set goal")
-  res$json(response)
+  goal <- data.frame(text = text)
+  goals_conn$insert(data = goal)
+  res$json(goal)
 }
 
 #' Update goal
@@ -36,8 +40,42 @@ set_goal <- \(req, res) {
 #' @export
 update_goal <- \(req, res) {
   id <- req$params$id
+  goal <- goals_conn$find(
+    query = mongo_query(
+      "_id" = list("$oid" = id)
+    ),
+    fields = mongo_query("_id" = TRUE, text = TRUE)
+  )
+  
+  if (nrow(goal) == 0) {
+    msg <- list(msg = "Goal not found")
+    return(
+      res$set_status(400L)$json(msg)
+    )
+  }
+  
+  body <- parse_multipart(req)
+  text <- body$text
+
+  goals_conn$update(
+    query = mongo_query(
+      "_id" = list("$oid" = id)
+    ),
+    update = mongo_query(
+      "$set" = list(text = text)
+    )
+  )
+
+  updated_goal <- goals_conn$find(
+    query = mongo_query(
+      "_id" = list("$oid" = id)
+    ),
+    fields = mongo_query("_id" = TRUE, text = TRUE)
+  )
+
   response <- list(
-    message = sprintf("Update goal %s", id)
+    msg = "Goal updated successfully",
+    goal = updated_goal
   )
   res$json(response)
 }
@@ -48,8 +86,30 @@ update_goal <- \(req, res) {
 #' @export
 delete_goal <- \(req, res) {
   id <- req$params$id
-  response <- list(
-    message = sprintf("Delete goal %s", id)
+  goal <- goals_conn$find(
+    query = mongo_query(
+      "_id" = list("$oid" = id)
+    ),
+    fields = mongo_query("_id" = TRUE, text = TRUE)
   )
+  
+  if (nrow(goal) == 0) {
+    msg <- list(msg = "Goal not found")
+    return(
+      res$set_status(400L)$json(msg)
+    )
+  }
+  
+  goals_conn$remove(
+    query = mongo_query(
+      "_id" = list("$oid" = id)
+    )
+  )
+
+  response <- list(
+    msg = "Goal deleted successfully",
+    goal = goal
+  )
+
   res$json(response)
 }
