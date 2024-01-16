@@ -1,6 +1,6 @@
 #' Goal schema
 #' 
 goal_schema <- data.frame(
-  user = character(), # oid
+  user_id = character(), # oid
   text = character()
 )
