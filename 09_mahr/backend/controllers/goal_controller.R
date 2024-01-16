@@ -10,7 +10,9 @@ box::use(
 #' GET `/api/goals`. Private access.
 #' @export
 get_goals <- \(req, res) {
+  # remember we set the user on the req object at `protect()`:
   goals <- goals_conn$find(
+    query = mongo_query(user_id = req$user$`_id`),
     fields = mongo_query("_id" = TRUE, text = TRUE)
   )
   res$json(goals)
@@ -29,7 +31,8 @@ set_goal <- \(req, res) {
       res$set_status(400L)$json(msg)
     )
   }
-  goal <- data.frame(text = text)
+  
+  goal <- data.frame(user_id = req$user$`_id`, text = text)
   goals_conn$insert(data = goal)
   res$json(goal)
 }
@@ -42,6 +45,7 @@ update_goal <- \(req, res) {
   id <- req$params$id
   goal <- goals_conn$find(
     query = mongo_query(
+      user_id = req$user$`_id`,
       "_id" = list("$oid" = id)
     ),
     fields = mongo_query("_id" = TRUE, text = TRUE)
@@ -59,6 +63,7 @@ update_goal <- \(req, res) {
 
   goals_conn$update(
     query = mongo_query(
+      user_id = req$user$`_id`,
       "_id" = list("$oid" = id)
     ),
     update = mongo_query(
@@ -68,6 +73,7 @@ update_goal <- \(req, res) {
 
   updated_goal <- goals_conn$find(
     query = mongo_query(
+      user_id = req$user$`_id`,
       "_id" = list("$oid" = id)
     ),
     fields = mongo_query("_id" = TRUE, text = TRUE)
@@ -88,6 +94,7 @@ delete_goal <- \(req, res) {
   id <- req$params$id
   goal <- goals_conn$find(
     query = mongo_query(
+      user_id = req$user$`_id`,
       "_id" = list("$oid" = id)
     ),
     fields = mongo_query("_id" = TRUE, text = TRUE)
@@ -102,6 +109,7 @@ delete_goal <- \(req, res) {
   
   goals_conn$remove(
     query = mongo_query(
+      user_id = req$user$`_id`,
       "_id" = list("$oid" = id)
     )
   )
