@@ -2,7 +2,8 @@ box::use(
   ambiorix[parse_multipart],
   .. / config / db[goals_conn],
   .. / helpers / mongo_query[mongo_query],
-  .. / helpers / to_json[to_json]
+  .. / helpers / to_json[to_json],
+  .. / helpers / insert[insert]
 )
 
 #' Get goals
@@ -31,10 +32,10 @@ set_goal <- \(req, res) {
       res$set_status(400L)$json(msg)
     )
   }
-  
+
   goal <- data.frame(user_id = req$user$`_id`, text = text)
-  goals_conn$insert(data = goal)
-  res$json(goal)
+  doc <- insert(conn = goals_conn, data = goal)
+  res$json(doc)
 }
 
 #' Update goal
@@ -50,14 +51,14 @@ update_goal <- \(req, res) {
     ),
     fields = mongo_query("_id" = TRUE, text = TRUE)
   )
-  
+
   if (nrow(goal) == 0) {
     msg <- list(msg = "Goal not found")
     return(
       res$set_status(400L)$json(msg)
     )
   }
-  
+
   body <- parse_multipart(req)
   text <- body$text
 
@@ -99,14 +100,14 @@ delete_goal <- \(req, res) {
     ),
     fields = mongo_query("_id" = TRUE, text = TRUE)
   )
-  
+
   if (nrow(goal) == 0) {
     msg <- list(msg = "Goal not found")
     return(
       res$set_status(400L)$json(msg)
     )
   }
-  
+
   goals_conn$remove(
     query = mongo_query(
       user_id = req$user$`_id`,
