@@ -37,8 +37,6 @@ large systems & applications:
 
 The main prerequisites are:
 - having a good understanding of **R fundamentals**, and,
-- basic knowledge of package creation
-
-It may also help to learn about HTTP status codes.
+- basic knowledge of HTTP status codes.
 
 You can pickup most of the concepts on the go.
