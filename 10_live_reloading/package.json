@@ -1,0 +1,15 @@
+{
+  "name": "10_live_reloading",
+  "version": "1.0.0",
+  "description": "When building applications (whether backend or frontend), it gets tiring to manually stop & restart the app when you make changes to the source code.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --signal SIGTERM server.R"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}

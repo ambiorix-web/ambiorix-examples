@@ -1,0 +1,6 @@
+{
+  "execMap": {
+    "R": "Rscript"
+  },
+  "ext": "R,html,css,js"
+}
