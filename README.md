@@ -40,3 +40,23 @@ The main prerequisites are:
 - basic knowledge of HTTP status codes.
 
 You can pickup most of the concepts on the go.
+
+## Package dependencies used in examples
+
+Each example has an `renv.lock` file containing the package dependencies needed
+to run it.
+
+To install the dependencies for a specific example (I'll use `05_router` for demonstration):
+
+1. Switch to its directory
+    ```bash
+    cd 05_router
+    ```
+1. Fire up R
+    ```bash
+    R
+    ```
+1. Restore the dependencies
+    ```r
+    renv::restore(library = .libPaths())
+    ```
