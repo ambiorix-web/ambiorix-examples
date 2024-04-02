@@ -11,7 +11,7 @@ app$post("/", \(req, res) {
   res$send("Got a POST request")
 })
 
-app$post("/user", \(req, res) {
+app$put("/user", \(req, res) {
   res$send("Got a PUT request at /user")
 })
 

@@ -38,7 +38,7 @@ app$post("/", \(req, res) {
 Respond to a PUT request to the `/user` route:
 
 ```r
-app$post("/user", \(req, res) {
+app$put("/user", \(req, res) {
   res$send("Got a PUT request at /user")
 })
 ```
@@ -58,6 +58,6 @@ app$delete("/user", \(req, res) {
       Here is how issuing the various requests above would look like:
       ![GET request to /](./get-home.png)
       ![POST request to /](./post-home.png)
-      ![POST request to /user](./post-user.png)
+      ![POST request to /user](./put-user.png)
       ![DELETE request to /user](./delete-user.png)
     - Open another R session and use [httr2](https://httr2.r-lib.org/index.html) to make requests to the endpoints.
