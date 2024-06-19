@@ -43,8 +43,7 @@ You can pickup most of the concepts on the go.
 
 ## Package dependencies used in examples
 
-Each example has an `renv.lock` file containing the package dependencies needed
-to run it.
+Each example has been bootstrapped using [`{renv}`](https://rstudio.github.io/renv/articles/renv.html) to ease reproducibility.
 
 To install the dependencies for a specific example eg. `05_router`:
 
@@ -52,11 +51,11 @@ To install the dependencies for a specific example eg. `05_router`:
     ```bash
     cd 05_router
     ```
-2. Fire up R
-    ```bash
-    R
-    ```
-3. Restore the dependencies
+1. Add this to the `.Renviron` file:
     ```r
-    renv::restore(library = .libPaths())
+    RENV_CONFIG_SANDBOX_ENABLED = FALSE
+    ```
+1. Fire up R and restore the dependencies:
+    ```r
+    renv::restore()
     ```
