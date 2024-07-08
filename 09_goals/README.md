@@ -7,7 +7,7 @@ You will be able to **C**reate, **R**ead, **U**pdate & **D**elete Goals.
 Here's what's covered:
 
 - Ambiorix + MongoDB
-- Working with middleware: 
+- Working with middleware:
   - Auth middleware: You will learn how you can use Jason Web Tokens ([JWT](https://jwt.io/)) to protect routes
   - Error handling middleware
 
@@ -15,3 +15,24 @@ Here's what's covered:
 
 - An installation of the community edition of [MongoDB](https://www.mongodb.com/docs/manual/installation/)
 - The [mongolite](https://github.com/jeroen/mongolite) R pkg
+
+## Run API
+
+1. `cd` into the `backend/` dir:
+
+    ```bash
+    cd backend
+    ```
+
+1. Fire up R and restore package dependencies:
+
+    ```r
+    renv::restore()
+    ```
+
+1. `server.R` is the entry point. Run this command in the terminal to start the
+   API:
+
+    ```bash
+    Rscript server.R
+    ```
