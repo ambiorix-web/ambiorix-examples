@@ -1,0 +1,8 @@
+---
+title: "07: dynamic rendering"
+author: "Kennedy Mwavu"
+date: "2024-07-10"
+categories: [07_dynamic_rendering]
+---
+
+dynamic rendering

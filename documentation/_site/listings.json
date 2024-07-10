@@ -1,0 +1,18 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/00_getting_started/index.html",
+      "/posts/01_hello_world/index.html",
+      "/posts/02_static_files/index.html",
+      "/posts/03_basic_routing/index.html",
+      "/posts/04_simple_json_api/index.html",
+      "/posts/05_router/index.html",
+      "/posts/06_multi_router/index.html",
+      "/posts/07_dynamic_rendering/index.html",
+      "/posts/08_datatables/index.html",
+      "/posts/09_goals/index.html",
+      "/posts/10_live_reloading/index.html"
+    ]
+  }
+]

@@ -1,0 +1,8 @@
+---
+title: "02: static files"
+author: "Kennedy Mwavu"
+date: "2024-07-10"
+categories: [02_static_files]
+---
+
+Static Files

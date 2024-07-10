@@ -1,0 +1,8 @@
+---
+title: "04: simple json api"
+author: "Kennedy Mwavu"
+date: "2024-07-10"
+categories: [04_simple_json_api]
+---
+
+simple json api

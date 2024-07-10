@@ -1,0 +1,163 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Documentation",
+    "section": "",
+    "text": "Welcome to the docs for the ✨ambiorix-examples✨\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n\n\n\n\n\n\n\n\n\n\n00: getting started\n\n\n\n\n\n\n00_getting_started\n\n\n\n\n\n\n\n\n\nJul 10, 2024\n\n\nKennedy Mwavu\n\n\n\n\n\n\n\n\n\n\n\n\n01: hello, world!\n\n\n\n\n\n\n01_hello_world\n\n\n\n\n\n\n\n\n\nJul 10, 2024\n\n\nKennedy Mwavu\n\n\n\n\n\n\n\n\n\n\n\n\n02: static files\n\n\n\n\n\n\n02_static_files\n\n\n\n\n\n\n\n\n\nJul 10, 2024\n\n\nKennedy Mwavu\n\n\n\n\n\n\n\n\n\n\n\n\n03: basic routing\n\n\n\n\n\n\n03_basic_routing\n\n\n\n\n\n\n\n\n\nJul 10, 2024\n\n\nKennedy Mwavu\n\n\n\n\n\n\n\n\n\n\n\n\n04: simple json api\n\n\n\n\n\n\n04_simple_json_api\n\n\n\n\n\n\n\n\n\nJul 10, 2024\n\n\nKennedy Mwavu\n\n\n\n\n\n\n\n\n\n\n\n\n05: router\n\n\n\n\n\n\n05_router\n\n\n\n\n\n\n\n\n\nJul 10, 2024\n\n\nKennedy Mwavu\n\n\n\n\n\n\n\n\n\n\n\n\n06: multi-router\n\n\n\n\n\n\n06_multi_router\n\n\n\n\n\n\n\n\n\nJul 10, 2024\n\n\nKennedy Mwavu\n\n\n\n\n\n\n\n\n\n\n\n\n07: dynamic rendering\n\n\n\n\n\n\n07_dynamic_rendering\n\n\n\n\n\n\n\n\n\nJul 10, 2024\n\n\nKennedy Mwavu\n\n\n\n\n\n\n\n\n\n\n\n\n08: datatables\n\n\n\n\n\n\n08_datatables\n\n\n\n\n\n\n\n\n\nJul 10, 2024\n\n\nKennedy Mwavu\n\n\n\n\n\n\n\n\n\n\n\n\n09: goals\n\n\n\n\n\n\n09_goals\n\n\n\n\n\n\n\n\n\nJul 10, 2024\n\n\nKennedy Mwavu\n\n\n\n\n\n\n\n\n\n\n\n\n10: live reloading\n\n\n\n\n\n\n10_live_reloading\n\n\n\n\n\n\n\n\n\nJul 10, 2024\n\n\nKennedy Mwavu\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/01_hello_world/index.html",
+    "href": "posts/01_hello_world/index.html",
+    "title": "01: hello, world!",
+    "section": "",
+    "text": "cd into the 01_hello_world/ dir:\ncd 01_hello_world/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+  },
+  {
+    "objectID": "posts/01_hello_world/index.html#run-app",
+    "href": "posts/01_hello_world/index.html#run-app",
+    "title": "01: hello, world!",
+    "section": "",
+    "text": "cd into the 01_hello_world/ dir:\ncd 01_hello_world/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+  },
+  {
+    "objectID": "posts/01_hello_world/index.html#explanation",
+    "href": "posts/01_hello_world/index.html#explanation",
+    "title": "01: hello, world!",
+    "section": "Explanation",
+    "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nIt has 2 endpoints:\n\n/: localhost:3000/\n/about: localhost:3000/about\n\nFor every other path, it will response with a 404 Not Found."
+  },
+  {
+    "objectID": "posts/10_live_reloading/index.html",
+    "href": "posts/10_live_reloading/index.html",
+    "title": "10: live reloading",
+    "section": "",
+    "text": "live reloading"
+  },
+  {
+    "objectID": "posts/06_multi_router/index.html",
+    "href": "posts/06_multi_router/index.html",
+    "title": "06: multi-router",
+    "section": "",
+    "text": "multi-router"
+  },
+  {
+    "objectID": "posts/04_simple_json_api/index.html",
+    "href": "posts/04_simple_json_api/index.html",
+    "title": "04: simple json api",
+    "section": "",
+    "text": "simple json api"
+  },
+  {
+    "objectID": "posts/03_basic_routing/index.html",
+    "href": "posts/03_basic_routing/index.html",
+    "title": "03: basic routing",
+    "section": "",
+    "text": "Basic Routing"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Ambiorix is an unopinionated and minimalist web framework for R.\nIt is inspired by express.js. In fact, the syntax is almost identical, only that it is R and not JavaScript.\nAmbiorix is a server-side or back-end framework. It is not comparable to client-side frameworks like React, Angular, Vue, etc. However, it can be used in combination with those frameworks to build full stack applications."
+  },
+  {
+    "objectID": "about.html#what-is-ambiorix",
+    "href": "about.html#what-is-ambiorix",
+    "title": "About",
+    "section": "",
+    "text": "Ambiorix is an unopinionated and minimalist web framework for R.\nIt is inspired by express.js. In fact, the syntax is almost identical, only that it is R and not JavaScript.\nAmbiorix is a server-side or back-end framework. It is not comparable to client-side frameworks like React, Angular, Vue, etc. However, it can be used in combination with those frameworks to build full stack applications."
+  },
+  {
+    "objectID": "about.html#unopinionated-and-minimalist-what-does-that-mean",
+    "href": "about.html#unopinionated-and-minimalist-what-does-that-mean",
+    "title": "About",
+    "section": "“Unopinionated and Minimalist”… What does that mean?",
+    "text": "“Unopinionated and Minimalist”… What does that mean?\nAmbiorix does not assume you’re going to build your API (or app) in any certain way or using a certain design pattern. You have absolute full control of how you handle requests to the server and how you respond."
+  },
+  {
+    "objectID": "about.html#so-why-should-i-use-ambiorix",
+    "href": "about.html#so-why-should-i-use-ambiorix",
+    "title": "About",
+    "section": "So, why should I use ambiorix?",
+    "text": "So, why should I use ambiorix?\n\nMakes building web applications with R VERY easy\nUsed for both server rendered apps as well as API/Microservices\nFull control of the request and response cycle\nGreat to use with your favorite client side framework (whether React, Angular, Vue etc.)"
+  },
+  {
+    "objectID": "about.html#what-exciting-features-can-i-look-forward-to",
+    "href": "about.html#what-exciting-features-can-i-look-forward-to",
+    "title": "About",
+    "section": "What exciting features can I look forward to?",
+    "text": "What exciting features can I look forward to?\nHere are the features that make ambiorix well-suited to building large systems & applications:\n\nOut of the box routing\nCreating a robust API is quick and easy\nTemplating (html, markdown, etc.)\nWebsockets in case you need bidirectional communication"
+  },
+  {
+    "objectID": "about.html#what-should-i-know-first",
+    "href": "about.html#what-should-i-know-first",
+    "title": "About",
+    "section": "What should I know first?",
+    "text": "What should I know first?\nThe main prerequisites are:\n\nhaving a good understanding of R fundamentals, and,\nbasic knowledge of HTTP status codes.\n\nYou can pickup most of the concepts on the go."
+  },
+  {
+    "objectID": "about.html#package-dependencies-used-in-examples",
+    "href": "about.html#package-dependencies-used-in-examples",
+    "title": "About",
+    "section": "Package dependencies used in examples",
+    "text": "Package dependencies used in examples\nEach example has been bootstrapped using {renv} to ease reproducibility.\nTo install the dependencies for a specific example eg. 05_router:\n\nSwitch to its directory\ncd 05_router\nAdd this to the .Renviron file:\nRENV_CONFIG_SANDBOX_ENABLED = FALSE\nFire up R and restore the dependencies:\nrenv::restore()"
+  },
+  {
+    "objectID": "posts/00_getting_started/index.html",
+    "href": "posts/00_getting_started/index.html",
+    "title": "00: getting started",
+    "section": "",
+    "text": "Clone the repo:\ngit clone git@github.com:kennedymwavu/ambiorix-examples.git\ncd into the root dir:\ncd ambiorix-examples\nAll the examples assume you’re in this directory."
+  },
+  {
+    "objectID": "posts/00_getting_started/index.html#installation",
+    "href": "posts/00_getting_started/index.html#installation",
+    "title": "00: getting started",
+    "section": "",
+    "text": "Clone the repo:\ngit clone git@github.com:kennedymwavu/ambiorix-examples.git\ncd into the root dir:\ncd ambiorix-examples\nAll the examples assume you’re in this directory."
+  },
+  {
+    "objectID": "posts/00_getting_started/index.html#say-hello",
+    "href": "posts/00_getting_started/index.html#say-hello",
+    "title": "00: getting started",
+    "section": "Say hello",
+    "text": "Say hello\nYou’re now ready for a ✨Hello, World!✨"
+  },
+  {
+    "objectID": "posts/08_datatables/index.html",
+    "href": "posts/08_datatables/index.html",
+    "title": "08: datatables",
+    "section": "",
+    "text": "datatables"
+  },
+  {
+    "objectID": "posts/02_static_files/index.html",
+    "href": "posts/02_static_files/index.html",
+    "title": "02: static files",
+    "section": "",
+    "text": "Static Files"
+  },
+  {
+    "objectID": "posts/05_router/index.html",
+    "href": "posts/05_router/index.html",
+    "title": "05: router",
+    "section": "",
+    "text": "router"
+  },
+  {
+    "objectID": "posts/09_goals/index.html",
+    "href": "posts/09_goals/index.html",
+    "title": "09: goals",
+    "section": "",
+    "text": "GOALS"
+  },
+  {
+    "objectID": "posts/07_dynamic_rendering/index.html",
+    "href": "posts/07_dynamic_rendering/index.html",
+    "title": "07: dynamic rendering",
+    "section": "",
+    "text": "dynamic rendering"
+  }
+]

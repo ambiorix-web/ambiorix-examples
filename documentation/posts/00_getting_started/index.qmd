@@ -1,0 +1,26 @@
+---
+title: "00: getting started"
+author: "Kennedy Mwavu"
+date: "2024-07-10"
+categories: [00_getting_started]
+---
+
+## Installation
+
+- Clone the repo:
+
+  ```bash
+  git clone git@github.com:kennedymwavu/ambiorix-examples.git
+  ```
+
+- `cd` into the root dir:
+
+  ```bash
+  cd ambiorix-examples
+  ```
+
+  All the examples assume you're in this directory.
+
+## Say hello
+
+You're now ready for a ✨[Hello, World!](../01_hello_world/index.qmd)✨
