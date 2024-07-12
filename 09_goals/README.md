@@ -8,7 +8,7 @@ Here's what's covered:
 
 - Ambiorix + MongoDB
 - Working with middleware:
-  - Auth middleware: You will learn how you can use Jason Web Tokens ([JWT](https://jwt.io/)) to protect routes
+  - Auth middleware: You will learn how you can use JSON Web Tokens ([JWT](https://jwt.io/)) to protect routes
   - Error handling middleware
 
 ## Prerequisites
