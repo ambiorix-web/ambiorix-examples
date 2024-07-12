@@ -1,5 +1,6 @@
 ---
 title: "01: hello, world!"
+subtitle: "Where else to start? :)"
 author: "Kennedy Mwavu"
 date: "2024-07-10"
 categories: [01_hello_world]

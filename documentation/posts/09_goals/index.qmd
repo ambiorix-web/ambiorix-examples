@@ -1,5 +1,6 @@
 ---
 title: "09: goals"
+subtitle: "A CRUD application backend"
 author: "Kennedy Mwavu"
 date: "2024-07-10"
 categories: [09_goals]

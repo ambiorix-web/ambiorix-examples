@@ -1,5 +1,6 @@
 ---
 title: "04: simple json api"
+subtitle: "Build a simple API"
 author: "Kennedy Mwavu"
 date: "2024-07-10"
 categories: [04_simple_json_api]

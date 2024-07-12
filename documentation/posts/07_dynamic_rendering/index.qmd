@@ -1,5 +1,6 @@
 ---
 title: "07: dynamic rendering"
+subtitle: "Dynamically render templates"
 author: "Kennedy Mwavu"
 date: "2024-07-10"
 categories: [07_dynamic_rendering]

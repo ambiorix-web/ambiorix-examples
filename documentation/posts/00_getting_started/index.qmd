@@ -1,5 +1,6 @@
 ---
 title: "00: getting started"
+subtitle: "Installation"
 author: "Kennedy Mwavu"
 date: "2024-07-10"
 categories: [00_getting_started]

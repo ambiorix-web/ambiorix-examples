@@ -2,6 +2,7 @@
 title: "Documentation"
 listing:
   contents: posts
+  fields: [title, subtitle, date, author]
   sort: "title asc"
   type: default
   categories: true
