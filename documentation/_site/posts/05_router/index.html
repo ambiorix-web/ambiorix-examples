@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -154,9 +188,110 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>router</p>
+<section id="run-app" class="level2">
+<h2 class="anchored" data-anchor-id="run-app">Run app</h2>
+<ol type="1">
+<li><p><code>cd</code> into the <code>05_router/</code> dir:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> 05_router/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p>There are 2 directories there: <code>box/</code> &amp; <code>r_pkg_structure/</code>.</p></li>
+<li><p><code>cd</code> into any of them, say, <code>r_pkg_structure/</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> r_pkg_structure/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+<li><p>Fire up R:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Restore package dependencies:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once done, exit R.</p></li>
+<li><p><code>server.R</code> is the entry point. To start the app, run this on the terminal:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> index.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</section>
+<section id="explanation" class="level2">
+<h2 class="anchored" data-anchor-id="explanation">Explanation</h2>
+<p>This app starts a server and listens on port 3000 for connections.</p>
+<p>It has two endpoints:</p>
+<ul>
+<li><code>/api/members</code></li>
+<li><code>/api/members/:id</code></li>
+</ul>
+<p><strong>Routing</strong> refers to how an application’s endpoints (URIs) respond to client requests.</p>
+<p>For an introduction to routing, see <a href="../../posts/03_basic_routing/index.html">03_basic_routing</a>.</p>
+<p>If you look at <a href="../../posts/04_simple_json_api/index.html">04_simple_json_api</a> you’ll notice that the routes we created all belong to <code>/api/members</code> and we kept repeating that base/root route.</p>
+<p>Wouldn’t it be nice to only have to use <code>/</code> and <code>/:id</code> and have ambiorix prepend the <code>/api/members</code> automatically?</p>
+<p>That would give you a better app structure making it manageable.</p>
+</section>
+<section id="enter-ambiorixrouter." class="level2">
+<h2 class="anchored" data-anchor-id="enter-ambiorixrouter.">Enter <code>ambiorix::Router()</code>.</h2>
+<p>Use the <code>ambiorix::Router</code> class to create modular, mountable router handlers.</p>
+<p>A <code>Router</code> instance is a complete middleware and routing system; for this reason, it is often referred to as a “mini-app”.</p>
+<p>Using the example <a href="../../posts/04_simple_json_api/index.html">04_simple_json_api</a>, this is how we would transform it:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># members.R</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>members_router <span class="ot">&lt;-</span> \() {</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  router <span class="ot">&lt;-</span> Router<span class="sc">$</span><span class="fu">new</span>(<span class="st">"/members"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># get all members:</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  router<span class="sc">$</span><span class="fu">get</span>(<span class="st">"/"</span>, \(req, res) {</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># get a single member:</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  router<span class="sc">$</span><span class="fu">get</span>(<span class="st">"/:id"</span>, \(req, res) {</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create a new member:</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  router<span class="sc">$</span><span class="fu">post</span>(<span class="st">"/"</span>, \(req, res)) {</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># update member:</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  router<span class="sc">$</span><span class="fu">put</span>(<span class="st">"/:id"</span>, \(req, res) {</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># delete member:</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>  router<span class="sc">$</span><span class="fu">delete</span>(<span class="st">"/:id"</span>, \(req, res) {</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  router</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>server.R</code> file would now be:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ambiorix)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># &lt;bring/import the members.R file&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>PORT <span class="ot">&lt;-</span> <span class="dv">3000</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>app <span class="ot">&lt;-</span> Ambiorix<span class="sc">$</span><span class="fu">new</span>()</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># mount the router:</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>app<span class="sc">$</span><span class="fu">use</span>(<span class="fu">members_router</span>())</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>app<span class="sc">$</span><span class="fu">start</span>(<span class="at">port =</span> PORT, <span class="at">open =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="keep-this-in-mind" class="level2">
+<h2 class="anchored" data-anchor-id="keep-this-in-mind">Keep this in mind:</h2>
+<p>Ambiorix is unopinionated. As such, it is up to you to decide how you want to bring/export the <code>members.R</code> file into <code>index.R</code>.</p>
+<p>Some options are:</p>
+<ul>
+<li>Use <a href="https://klmr.me/box/">box</a> (<strong>Highly recommended, ⭐⭐⭐⭐⭐</strong>) especially if you develop large apps/systems, for two reasons:
+<ol type="1">
+<li>Allows nested files, folders &amp; modules (a big win)</li>
+<li>Explicit name imports ie. you’re almost always sure from which package a function is from.</li>
+</ol></li>
+<li>Use R package structure (<strong>Recommended, ⭐⭐⭐⭐</strong>). Will not allow nested folders but will work really well for small to medium apps.</li>
+<li><code>source()</code> files (<strong>NOT recommended, 1⭐</strong>). Haha. Iykyk.</li>
+</ul>
+<p>Choose wisely.</p>
+</section>
+<section id="multiple-routers" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-routers">Multiple routers</h2>
+<p>Learn how you can mount ✨<a href="../../posts/06_multi_router/index.html">multiple routers</a>✨.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

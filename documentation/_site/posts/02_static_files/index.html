@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -154,9 +188,88 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Static Files</p>
+<section id="run-app" class="level2">
+<h2 class="anchored" data-anchor-id="run-app">Run app</h2>
+<ol type="1">
+<li><p><code>cd</code> into the <code>02_static_files/</code> dir:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> 02_static_files/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Fire up R:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Restore package dependencies:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once done, exit R.</p></li>
+<li><p><code>index.R</code> is the entry point. To start the app, run this on the terminal:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> index.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</section>
+<section id="explanation" class="level2">
+<h2 class="anchored" data-anchor-id="explanation">Explanation</h2>
+<p>This app starts a server and listens on port 3000 for connections.</p>
+<p>It has a single endpoint:</p>
+<ul>
+<li><code>/</code>: <a href="http://localhost:3000/">localhost:3000/</a></li>
+</ul>
+<p>Now that the app is running, navigate to these links in your browser:</p>
+<ul>
+<li><a href="http://localhost:3000/static/index.html">localhost:3000/static/index.html</a></li>
+<li><a href="http://localhost:3000/static/about.html">localhost:3000/static/about.html</a></li>
+<li><a href="http://localhost:3000/static/index2.R">localhost:3000/static/index2.R</a></li>
+</ul>
+<p>To serve static files such as images, CSS files, JavaScript files etc., use the <code>app$static()</code> method.</p>
+<p>For example, let’s say this is your directory structure:</p>
+<pre><code>|- index.R
+|- public/
+    |- index.html
+    |- about.html
+    |- image.jpg
+    |- css
+        |- styles.css
+    |- index2.R
+    |- main.js</code></pre>
+<section id="public" class="level3">
+<h3 class="anchored" data-anchor-id="public"><code>/public</code></h3>
+<p>To make the files accessible at the path <code>/public</code>, you’d do this:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>app<span class="sc">$</span><span class="fu">static</span>(<span class="at">path =</span> <span class="st">"public"</span>, <span class="at">uri =</span> <span class="st">"public"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>path</code> specifies the static directory.</li>
+<li><code>uri</code> defines the path ambiorix should serve the static files from.</li>
+</ul>
+<p>So now you’ll be able to do this in your app:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>app<span class="sc">$</span><span class="fu">get</span>(<span class="st">"/"</span>, \(req, res) {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  res<span class="sc">$</span><span class="fu">send</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"&lt;h1&gt;Hello everyone!&lt;/h1&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;img src='public/image.jpg'/&gt;"</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>By making the <code>public/</code> folder static, any resource placed there can be accessed via the browser eg. http://localhost:3000/public/image.jpg</p>
+</section>
+<section id="your-own-path" class="level3">
+<h3 class="anchored" data-anchor-id="your-own-path"><code>/your-own-path</code></h3>
+<p>You can make static content accessible via your own custom path too.</p>
+<p>For example, let’s use <code>/static</code> this time:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>app<span class="sc">$</span><span class="fu">static</span>(<span class="at">path =</span> <span class="st">"public"</span>, <span class="at">uri =</span> <span class="st">"static"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then in your code you’ll use this:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>app<span class="sc">$</span><span class="fu">get</span>(<span class="st">"/"</span>, \(req, res) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  res<span class="sc">$</span><span class="fu">send</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"&lt;h1&gt;Hello everyone!&lt;/h1&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;img src='static/image.jpg'/&gt;"</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="keep-this-in-mind" class="level2">
+<h2 class="anchored" data-anchor-id="keep-this-in-mind">Keep this in mind:</h2>
+<ul>
+<li>All static files are exposed and can be accessed via the browser. DO NOT put sensitive files there.</li>
+<li>You can also use <a href="https://rstudio.github.io/htmltools/index.html">htmltools</a> tags instead of writing html strings.</li>
+</ul>
+</section>
+<section id="basic-routing" class="level2">
+<h2 class="anchored" data-anchor-id="basic-routing">Basic routing</h2>
+<p>Learn the ✨<a href="../../posts/03_basic_routing/index.html">basics of routing</a>✨.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

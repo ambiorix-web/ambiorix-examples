@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -154,9 +188,72 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Basic Routing</p>
+<section id="run-app" class="level2">
+<h2 class="anchored" data-anchor-id="run-app">Run app</h2>
+<ol type="1">
+<li><p><code>cd</code> into the <code>03_basic_routing/</code> dir:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> 03_basic_routing/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Fire up R:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Restore package dependencies:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once done, exit R.</p></li>
+<li><p><code>index.R</code> is the entry point. To start the app, run this on the terminal:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> index.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</section>
+<section id="explanation" class="level2">
+<h2 class="anchored" data-anchor-id="explanation">Explanation</h2>
+<p>This app starts a server and listens on port 3000 for connections.</p>
+<p>It has two endpoints:</p>
+<ul>
+<li><code>/</code></li>
+<li><code>/user</code></li>
+</ul>
+<p><strong>Routing</strong> refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).</p>
+<p>Each route can have one or more handler functions, which are executed when the route is matched.</p>
+<p>Route definition takes the following structure:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>app<span class="sc">$</span><span class="fu">METHOD</span>(PATH, HANDLER)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>app</code> is an instance of ambiorix.</li>
+<li><code>METHOD</code> is an <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">HTTP request method</a>, in lowercase.</li>
+<li><code>HANDLER</code> is the function executed when the route is matched.</li>
+</ul>
+<p>The following examples illustrate defining simple routes.</p>
+<p>Respond with <code>Hello World!</code> on the homepage:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>app<span class="sc">$</span><span class="fu">get</span>(<span class="st">"/"</span>, \(req, res) {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  res<span class="sc">$</span><span class="fu">send</span>(<span class="st">"Hello World!"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Respond to POST request on the root route (<code>/</code>), the application’s home page:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>app<span class="sc">$</span><span class="fu">post</span>(<span class="st">"/"</span>, \(req, res) {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  res<span class="sc">$</span><span class="fu">send</span>(<span class="st">"Got a POST request"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Respond to a PUT request to the <code>/user</code> route:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>app<span class="sc">$</span><span class="fu">put</span>(<span class="st">"/user"</span>, \(req, res) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  res<span class="sc">$</span><span class="fu">send</span>(<span class="st">"Got a PUT request at /user"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Respond to a DELETE request to the <code>/user</code> route:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>app<span class="sc">$</span><span class="fu">delete</span>(<span class="st">"/user"</span>, \(req, res) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  res<span class="sc">$</span><span class="fu">send</span>(<span class="st">"Got a DELETE request at /user"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="keep-this-in-mind" class="level2">
+<h2 class="anchored" data-anchor-id="keep-this-in-mind">Keep this in mind:</h2>
+<ul>
+<li>Browsers issue a GET request by default. This means that once you run this example and visit localhost 3000, you’ll only be able to access the homepage (<code>/</code>).</li>
+<li>The easiest way to see the responses from the other routes would be to either:
+<ul>
+<li>Install <a href="https://www.postman.com/">Postman</a> and make the requests from there (<strong>Recommended</strong>). The free tier is more than enough. Here is how issuing the various requests above would look like: <img src="./get-home.png" class="img-fluid" alt="GET request to /"> <img src="./post-home.png" class="img-fluid" alt="POST request to /"> <img src="./put-user.png" class="img-fluid" alt="POST request to /user"> <img src="./delete-user.png" class="img-fluid" alt="DELETE request to /user"></li>
+<li>Open another R session and use <a href="https://httr2.r-lib.org/index.html">httr2</a> to make requests to the endpoints.</li>
+</ul></li>
+</ul>
+</section>
+<section id="a-simple-json-api" class="level2">
+<h2 class="anchored" data-anchor-id="a-simple-json-api">A simple JSON API</h2>
+<p>You’re now ready to build ✨<a href="../../posts/04_simple_json_api/index.html">a simple JSON API</a>✨.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

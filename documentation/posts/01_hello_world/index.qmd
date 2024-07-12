@@ -42,3 +42,7 @@ It has 2 endpoints:
 - `/about`: [localhost:3000/about](http://localhost:3000/about)
 
 For every other path, it will response with a **404 Not Found**.
+
+## Static files
+
+Learn how to serve ✨[Static Files](../02_static_files/index.qmd)✨ using ambiorix.

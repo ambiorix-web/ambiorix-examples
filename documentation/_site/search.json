@@ -28,6 +28,13 @@
     "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nIt has 2 endpoints:\n\n/: localhost:3000/\n/about: localhost:3000/about\n\nFor every other path, it will response with a 404 Not Found."
   },
   {
+    "objectID": "posts/01_hello_world/index.html#static-files",
+    "href": "posts/01_hello_world/index.html#static-files",
+    "title": "01: hello, world!",
+    "section": "Static files",
+    "text": "Static files\nLearn how to serve ✨Static Files✨ using ambiorix."
+  },
+  {
     "objectID": "posts/10_live_reloading/index.html",
     "href": "posts/10_live_reloading/index.html",
     "title": "10: live reloading",
@@ -46,14 +53,63 @@
     "href": "posts/04_simple_json_api/index.html",
     "title": "04: simple json api",
     "section": "",
-    "text": "simple json api"
+    "text": "cd into the 04_simple_json_api/ dir:\ncd 04_simple_json_api/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+  },
+  {
+    "objectID": "posts/04_simple_json_api/index.html#run-app",
+    "href": "posts/04_simple_json_api/index.html#run-app",
+    "title": "04: simple json api",
+    "section": "",
+    "text": "cd into the 04_simple_json_api/ dir:\ncd 04_simple_json_api/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+  },
+  {
+    "objectID": "posts/04_simple_json_api/index.html#explanation",
+    "href": "posts/04_simple_json_api/index.html#explanation",
+    "title": "04: simple json api",
+    "section": "Explanation",
+    "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nIt has two endpoints:\n\n/api/members\n/api/members/:id\n\nIdeally, the backend works hand-in-hand with the database. But for the sake of simplicity, let’s hardcode a list of members:\nmembers &lt;- data.frame(\n  id = as.character(1:3),\n  name = c(\"John Doe\", \"Bob Williams\", \"Shannon Jackson\"),\n  email = c(\"john@gmail.com\", \"bob@gmail.com\", \"shannon@gmail.com\"),\n  status = c(\"active\", \"inactive\", \"active\")\n)\nYou don’t have to worry about converting members into JSON because the res$json() method does it for you.\nCreate a GET request to get all members:\napp$get(\"/api/members\", \\(req, res) {\n  res$json(members)\n})\n\n\n\nGET /api/members\n\n\nCreate a GET request to get a single member by id:\napp$get(\"/api/members/:id\", \\(req, res) {\n  # get the supplied id:\n  member_id &lt;- req$params$id\n\n  # filter member with that id:\n  found &lt;- members |&gt; dplyr::filter(id == member_id)\n\n  res$json(found)\n})\n\n\n\nGET /api/members/:id\n\n\nYou can also dictate how the response changes if no member is found:\n# get a single member:\napp$get(\"/api/members/:id\", \\(req, res) {\n  # get the supplied id:\n  member_id &lt;- req$params$id\n\n  # filter member with that id:\n  found &lt;- members |&gt; dplyr::filter(id == member_id)\n\n  # if a member with that id was found, return the member:\n  if (nrow(found) &gt; 0) {\n    return(res$json(found))\n  }\n\n  # otherwise, change response status to 400 (Bad Request)\n  # and provide a message:\n  msg &lt;- list(msg = sprintf(\"No member with the id of %s\", member_id))\n  res$set_status(400L)$json(msg)\n})\n\n\n\nGET /api/members/:id\n\n\nA POST request to create a new member:\napp$post(\"/api/members\", \\(req, res) {\n  # parse form-data:\n  body &lt;- parse_multipart(req)\n\n  # details of the new member:\n  new_member &lt;- data.frame(\n    id = uuid::UUIDgenerate(),\n    name = body$name,\n    email = body$email,\n    status = body$status\n  )\n\n  # save new member:\n  members &lt;&lt;- dplyr::bind_rows(members, new_member)\n\n  # respond with a message and details of the newly created member:\n  response &lt;- list(\n    msg = \"Member created successfully!\",\n    member = new_member\n  )\n\n  res$json(response)\n})\n\n\n\nPOST /api/members\n\n\nYou can of course ensure all the details are sent (name, email & status) before creating the new member:\napp$post(\"/api/members\", \\(req, res) {\n  # parse form-data:\n  body &lt;- parse_multipart(req)\n\n  name &lt;- body$name\n  email &lt;- body$email\n  status &lt;- body$status\n\n  # require all member details:\n  if (is.null(name) || is.null(email) || is.null(status)) {\n    msg &lt;- list(msg = \"Please include a name, email & status\")\n    return(res$set_status(400L)$json(msg))\n  }\n\n  # details of the new member:\n  new_member &lt;- data.frame(\n    id = uuid::UUIDgenerate(),\n    name = name,\n    email = email,\n    status = status\n  )\n\n  # save new member:\n  members &lt;&lt;- dplyr::bind_rows(members, new_member)\n\n  # respond with a message and details of the newly created member:\n  response &lt;- list(\n    msg = \"Member created successfully!\",\n    member = new_member\n  )\n\n  res$json(response)\n})\n\n\n\nPOST /api/members\n\n\nCreate a PUT request to update a member:\napp$put(\"/api/members/:id\", \\(req, res) {\n  # get the supplied id:\n  member_id &lt;- req$params$id\n\n  # filter member with that id:\n  found &lt;- members |&gt; dplyr::filter(id == member_id)\n\n  # if a member with that id is NOT found, change response status\n  # and provide a message:\n  if (nrow(found) == 0) {\n    msg &lt;- list(msg = sprintf(\"No member with the id of %s\", member_id))\n    return(res$set_status(400L)$json(msg))\n  }\n\n  # otherwise, proceed to update member:\n  body &lt;- parse_multipart(req)\n\n  # only update provided fields:\n  found$name &lt;- body$name %||% found$name\n  found$email &lt;- body$email %||% found$email\n  found$status &lt;- body$status %||% found$status\n\n  members[members$id == found$id, ] &lt;- found\n\n  response &lt;- list(\n    msg = \"Member updated successfully\",\n    member = found\n  )\n  res$json(response)\n})\n\n\n\nPUT /api/members/:id\n\n\nCreate a delete request to, well, delete a member:\napp$delete(\"/api/members/:id\", \\(req, res) {\n  # get the supplied id:\n  member_id &lt;- req$params$id\n\n  # filter member with that id:\n  found &lt;- members |&gt; dplyr::filter(id == member_id)\n\n  # if a member with that id is NOT found, change response status\n  # and provide a message:\n  if (nrow(found) == 0) {\n    msg &lt;- list(msg = sprintf(\"No member with the id of %s\", member_id))\n    return(res$set_status(400L)$json(msg))\n  }\n\n  # otherwise, proceed to delete member:\n  members &lt;&lt;- members |&gt; dplyr::filter(id != member_id)\n\n  response &lt;- list(\n    msg = \"Member deleted successfully\",\n    members = members\n  )\n  res$json(response)\n})\n\n\n\nDELETE /api/members/:id"
+  },
+  {
+    "objectID": "posts/04_simple_json_api/index.html#router",
+    "href": "posts/04_simple_json_api/index.html#router",
+    "title": "04: simple json api",
+    "section": "Router",
+    "text": "Router\nThings are getting out of hand in server.R. Take a look at ✨routers✨."
   },
   {
     "objectID": "posts/03_basic_routing/index.html",
     "href": "posts/03_basic_routing/index.html",
     "title": "03: basic routing",
     "section": "",
-    "text": "Basic Routing"
+    "text": "cd into the 03_basic_routing/ dir:\ncd 03_basic_routing/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+  },
+  {
+    "objectID": "posts/03_basic_routing/index.html#run-app",
+    "href": "posts/03_basic_routing/index.html#run-app",
+    "title": "03: basic routing",
+    "section": "",
+    "text": "cd into the 03_basic_routing/ dir:\ncd 03_basic_routing/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+  },
+  {
+    "objectID": "posts/03_basic_routing/index.html#explanation",
+    "href": "posts/03_basic_routing/index.html#explanation",
+    "title": "03: basic routing",
+    "section": "Explanation",
+    "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nIt has two endpoints:\n\n/\n/user\n\nRouting refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).\nEach route can have one or more handler functions, which are executed when the route is matched.\nRoute definition takes the following structure:\napp$METHOD(PATH, HANDLER)\n\napp is an instance of ambiorix.\nMETHOD is an HTTP request method, in lowercase.\nHANDLER is the function executed when the route is matched.\n\nThe following examples illustrate defining simple routes.\nRespond with Hello World! on the homepage:\napp$get(\"/\", \\(req, res) {\n  res$send(\"Hello World!\")\n})\nRespond to POST request on the root route (/), the application’s home page:\napp$post(\"/\", \\(req, res) {\n  res$send(\"Got a POST request\")\n})\nRespond to a PUT request to the /user route:\napp$put(\"/user\", \\(req, res) {\n  res$send(\"Got a PUT request at /user\")\n})\nRespond to a DELETE request to the /user route:\napp$delete(\"/user\", \\(req, res) {\n  res$send(\"Got a DELETE request at /user\")\n})"
+  },
+  {
+    "objectID": "posts/03_basic_routing/index.html#keep-this-in-mind",
+    "href": "posts/03_basic_routing/index.html#keep-this-in-mind",
+    "title": "03: basic routing",
+    "section": "Keep this in mind:",
+    "text": "Keep this in mind:\n\nBrowsers issue a GET request by default. This means that once you run this example and visit localhost 3000, you’ll only be able to access the homepage (/).\nThe easiest way to see the responses from the other routes would be to either:\n\nInstall Postman and make the requests from there (Recommended). The free tier is more than enough. Here is how issuing the various requests above would look like:    \nOpen another R session and use httr2 to make requests to the endpoints."
+  },
+  {
+    "objectID": "posts/03_basic_routing/index.html#a-simple-json-api",
+    "href": "posts/03_basic_routing/index.html#a-simple-json-api",
+    "title": "03: basic routing",
+    "section": "A simple JSON API",
+    "text": "A simple JSON API\nYou’re now ready to build ✨a simple JSON API✨."
   },
   {
     "objectID": "about.html",
@@ -137,14 +193,77 @@
     "href": "posts/02_static_files/index.html",
     "title": "02: static files",
     "section": "",
-    "text": "Static Files"
+    "text": "cd into the 02_static_files/ dir:\ncd 02_static_files/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+  },
+  {
+    "objectID": "posts/02_static_files/index.html#run-app",
+    "href": "posts/02_static_files/index.html#run-app",
+    "title": "02: static files",
+    "section": "",
+    "text": "cd into the 02_static_files/ dir:\ncd 02_static_files/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+  },
+  {
+    "objectID": "posts/02_static_files/index.html#explanation",
+    "href": "posts/02_static_files/index.html#explanation",
+    "title": "02: static files",
+    "section": "Explanation",
+    "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nIt has a single endpoint:\n\n/: localhost:3000/\n\nNow that the app is running, navigate to these links in your browser:\n\nlocalhost:3000/static/index.html\nlocalhost:3000/static/about.html\nlocalhost:3000/static/index2.R\n\nTo serve static files such as images, CSS files, JavaScript files etc., use the app$static() method.\nFor example, let’s say this is your directory structure:\n|- index.R\n|- public/\n    |- index.html\n    |- about.html\n    |- image.jpg\n    |- css\n        |- styles.css\n    |- index2.R\n    |- main.js\n\n/public\nTo make the files accessible at the path /public, you’d do this:\napp$static(path = \"public\", uri = \"public\")\n\npath specifies the static directory.\nuri defines the path ambiorix should serve the static files from.\n\nSo now you’ll be able to do this in your app:\napp$get(\"/\", \\(req, res) {\n  res$send(\n    \"&lt;h1&gt;Hello everyone!&lt;/h1&gt;\n    &lt;img src='public/image.jpg'/&gt;\"\n  )\n})\nBy making the public/ folder static, any resource placed there can be accessed via the browser eg. http://localhost:3000/public/image.jpg\n\n\n/your-own-path\nYou can make static content accessible via your own custom path too.\nFor example, let’s use /static this time:\napp$static(path = \"public\", uri = \"static\")\nThen in your code you’ll use this:\napp$get(\"/\", \\(req, res) {\n  res$send(\n    \"&lt;h1&gt;Hello everyone!&lt;/h1&gt;\n    &lt;img src='static/image.jpg'/&gt;\"\n  )\n})"
+  },
+  {
+    "objectID": "posts/02_static_files/index.html#keep-this-in-mind",
+    "href": "posts/02_static_files/index.html#keep-this-in-mind",
+    "title": "02: static files",
+    "section": "Keep this in mind:",
+    "text": "Keep this in mind:\n\nAll static files are exposed and can be accessed via the browser. DO NOT put sensitive files there.\nYou can also use htmltools tags instead of writing html strings."
+  },
+  {
+    "objectID": "posts/02_static_files/index.html#basic-routing",
+    "href": "posts/02_static_files/index.html#basic-routing",
+    "title": "02: static files",
+    "section": "Basic routing",
+    "text": "Basic routing\nLearn the ✨basics of routing✨."
   },
   {
     "objectID": "posts/05_router/index.html",
     "href": "posts/05_router/index.html",
     "title": "05: router",
     "section": "",
-    "text": "router"
+    "text": "cd into the 05_router/ dir:\ncd 05_router/\n\nThere are 2 directories there: box/ & r_pkg_structure/.\ncd into any of them, say, r_pkg_structure/:\ncd r_pkg_structure/\n\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+  },
+  {
+    "objectID": "posts/05_router/index.html#run-app",
+    "href": "posts/05_router/index.html#run-app",
+    "title": "05: router",
+    "section": "",
+    "text": "cd into the 05_router/ dir:\ncd 05_router/\n\nThere are 2 directories there: box/ & r_pkg_structure/.\ncd into any of them, say, r_pkg_structure/:\ncd r_pkg_structure/\n\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+  },
+  {
+    "objectID": "posts/05_router/index.html#explanation",
+    "href": "posts/05_router/index.html#explanation",
+    "title": "05: router",
+    "section": "Explanation",
+    "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nIt has two endpoints:\n\n/api/members\n/api/members/:id\n\nRouting refers to how an application’s endpoints (URIs) respond to client requests.\nFor an introduction to routing, see 03_basic_routing.\nIf you look at 04_simple_json_api you’ll notice that the routes we created all belong to /api/members and we kept repeating that base/root route.\nWouldn’t it be nice to only have to use / and /:id and have ambiorix prepend the /api/members automatically?\nThat would give you a better app structure making it manageable."
+  },
+  {
+    "objectID": "posts/05_router/index.html#enter-ambiorixrouter.",
+    "href": "posts/05_router/index.html#enter-ambiorixrouter.",
+    "title": "05: router",
+    "section": "Enter ambiorix::Router().",
+    "text": "Enter ambiorix::Router().\nUse the ambiorix::Router class to create modular, mountable router handlers.\nA Router instance is a complete middleware and routing system; for this reason, it is often referred to as a “mini-app”.\nUsing the example 04_simple_json_api, this is how we would transform it:\n# members.R\nmembers_router &lt;- \\() {\n  router &lt;- Router$new(\"/members\")\n\n  # get all members:\n  router$get(\"/\", \\(req, res) {\n    # ...\n  })\n\n  # get a single member:\n  router$get(\"/:id\", \\(req, res) {\n    # ...\n  })\n\n  # create a new member:\n  router$post(\"/\", \\(req, res)) {\n    # ...\n  }\n\n  # update member:\n  router$put(\"/:id\", \\(req, res) {\n    # ...\n  })\n\n  # delete member:\n  router$delete(\"/:id\", \\(req, res) {\n    # ...\n  })\n\n  router\n}\nThe server.R file would now be:\nlibrary(ambiorix)\n\n# &lt;bring/import the members.R file&gt;\n\nPORT &lt;- 3000\n\napp &lt;- Ambiorix$new()\n\n# mount the router:\napp$use(members_router())\n\napp$start(port = PORT, open = FALSE)"
+  },
+  {
+    "objectID": "posts/05_router/index.html#keep-this-in-mind",
+    "href": "posts/05_router/index.html#keep-this-in-mind",
+    "title": "05: router",
+    "section": "Keep this in mind:",
+    "text": "Keep this in mind:\nAmbiorix is unopinionated. As such, it is up to you to decide how you want to bring/export the members.R file into index.R.\nSome options are:\n\nUse box (Highly recommended, ⭐⭐⭐⭐⭐) especially if you develop large apps/systems, for two reasons:\n\nAllows nested files, folders & modules (a big win)\nExplicit name imports ie. you’re almost always sure from which package a function is from.\n\nUse R package structure (Recommended, ⭐⭐⭐⭐). Will not allow nested folders but will work really well for small to medium apps.\nsource() files (NOT recommended, 1⭐). Haha. Iykyk.\n\nChoose wisely."
+  },
+  {
+    "objectID": "posts/05_router/index.html#multiple-routers",
+    "href": "posts/05_router/index.html#multiple-routers",
+    "title": "05: router",
+    "section": "Multiple routers",
+    "text": "Multiple routers\nLearn how you can mount ✨multiple routers✨."
   },
   {
     "objectID": "posts/09_goals/index.html",
