@@ -1,0 +1,65 @@
+---
+title: "07: dynamic rendering"
+subtitle: "Dynamically render templates"
+author: "Kennedy Mwavu"
+date: "2024-07-10"
+categories: [07_dynamic_rendering]
+---
+
+## Run app
+
+1. `cd` into the `07_dynamic_rendering/` dir:
+
+    ```bash
+    cd 07_dynamic_rendering/
+    ```
+
+1. Fire up R:
+    
+    ```bash
+    R
+    ```
+
+1. Restore package dependencies:
+    
+    ```r
+    renv::restore()
+    ```
+
+    Once done, exit R.
+1. `index.R` is the entry point. To start the app, run this on the terminal:
+    
+    ```bash
+    Rscript index.R
+    ```
+
+## Explanation
+
+This app starts a server and listens on port 3000 for connections.
+
+When building software, these are the available options:
+
+1. Build the backend using ambiorix and the frontend using your favorite frontend framework (React, Angular, Vue, etc.)
+2. Build both the back and frontend using ambiorix
+
+Let's talk about option 2.
+
+First things first, you will be rendering html templates/files.
+In most cases, you want this to be done dynamically. eg. render a portion of the UI depending on whether a user is an admin or not.
+
+This is what is referred to as server-side rendering (SSR).
+
+In this example, I use [htmx](https://htmx.org/) to show you how you can build
+interactive frontends without touching a single line of JavaScript.
+
+If you know HTML then you're all set!
+
+You've already seen how to send HTTP requests to the server & how the server responds (with JSON so far).
+
+With htmx, your responses from the server will ideally be HTML fragments.
+
+This works so well with [htmltools](https://rstudio.github.io/htmltools/) you will not believe it!
+
+## Datatables
+
+Well, R people love tables. Time for you to look at ✨[datatables](../08_datatables/index.qmd)✨.

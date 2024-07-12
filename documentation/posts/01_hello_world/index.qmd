@@ -1,0 +1,49 @@
+---
+title: "01: hello, world!"
+subtitle: "Where else to start? :)"
+author: "Kennedy Mwavu"
+date: "2024-07-10"
+categories: [01_hello_world]
+---
+
+## Run app
+
+1. `cd` into the `01_hello_world/` dir:
+
+    ```bash
+    cd 01_hello_world/
+    ```
+
+1. Fire up R:
+    
+    ```bash
+    R
+    ```
+
+1. Restore package dependencies:
+    
+    ```r
+    renv::restore()
+    ```
+
+    Once done, exit R.
+1. `index.R` is the entry point. To start the app, run this on the terminal:
+    
+    ```bash
+    Rscript index.R
+    ```
+
+## Explanation
+
+This app starts a server and listens on port 3000 for connections.
+
+It has 2 endpoints:
+
+- `/`: [localhost:3000/](http://localhost:3000/)
+- `/about`: [localhost:3000/about](http://localhost:3000/about)
+
+For every other path, it will response with a **404 Not Found**.
+
+## Static files
+
+Learn how to serve ✨[Static Files](../02_static_files/index.qmd)✨ using ambiorix.

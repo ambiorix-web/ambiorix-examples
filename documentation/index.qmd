@@ -1,0 +1,15 @@
+---
+title: "Documentation"
+listing:
+  contents: posts
+  fields: [title, subtitle, date, author]
+  sort: "title asc"
+  type: default
+  categories: true
+  sort-ui: true
+  filter-ui: false
+page-layout: full
+title-block-banner: true
+---
+
+Welcome to the docs for the ✨[ambiorix-examples](https://github.com/kennedymwavu/ambiorix-examples)✨

@@ -1,0 +1,44 @@
+---
+title: "08: datatables"
+subtitle: "R users love tables!"
+author: "Kennedy Mwavu"
+date: "2024-07-10"
+categories: [08_datatables]
+---
+
+## Run app
+
+1. `cd` into the `08_datatables/` dir:
+
+    ```bash
+    cd 08_datatables/
+    ```
+
+1. Fire up R:
+    
+    ```bash
+    R
+    ```
+
+1. Restore package dependencies:
+    
+    ```r
+    renv::restore()
+    ```
+
+    Once done, exit R.
+1. `index.R` is the entry point. To start the app, run this on the terminal:
+    
+    ```bash
+    Rscript index.R
+    ```
+
+## Explanation
+
+This app starts a server and listens on port 3000 for connections.
+
+At this point, I'm not sure there's anything much to say :)
+
+## Goals
+
+Alright, time to build a ✨[CRUD application backend](../09_goals/index.qmd)✨.

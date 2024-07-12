@@ -1,0 +1,120 @@
+---
+title: "02: static files"
+subtitle: "Serve static files"
+author: "Kennedy Mwavu"
+date: "2024-07-10"
+categories: [02_static_files]
+---
+
+## Run app
+
+1. `cd` into the `02_static_files/` dir:
+
+    ```bash
+    cd 02_static_files/
+    ```
+
+1. Fire up R:
+    
+    ```bash
+    R
+    ```
+
+1. Restore package dependencies:
+    
+    ```r
+    renv::restore()
+    ```
+
+    Once done, exit R.
+1. `index.R` is the entry point. To start the app, run this on the terminal:
+    
+    ```bash
+    Rscript index.R
+    ```
+
+## Explanation
+
+This app starts a server and listens on port 3000 for connections.
+
+It has a single endpoint:
+
+- `/`: [localhost:3000/](http://localhost:3000/)
+
+Now that the app is running, navigate to these links in your browser:
+
+- [localhost:3000/static/index.html](http://localhost:3000/static/index.html)
+- [localhost:3000/static/about.html](http://localhost:3000/static/about.html)
+- [localhost:3000/static/index2.R](http://localhost:3000/static/index2.R)
+
+To serve static files such as images, CSS files, JavaScript
+files etc., use the `app$static()` method.
+
+For example, let's say this is your directory structure:
+
+```
+|- index.R
+|- public/
+    |- index.html
+    |- about.html
+    |- image.jpg
+    |- css
+        |- styles.css
+    |- index2.R
+    |- main.js
+```
+
+### `/public`
+
+To make the files accessible at the path `/public`, you'd do this:
+
+```r
+app$static(path = "public", uri = "public")
+```
+
+- `path` specifies the static directory.
+- `uri` defines the path ambiorix should serve the static files from.
+
+So now you'll be able to do this in your app:
+
+```r
+app$get("/", \(req, res) {
+  res$send(
+    "<h1>Hello everyone!</h1>
+    <img src='public/image.jpg'/>"
+  )
+})
+```
+
+By making the `public/` folder static, any resource placed there can be
+accessed via the browser eg. http://localhost:3000/public/image.jpg
+
+### `/your-own-path`
+
+You can make static content accessible via your own custom path too.
+
+For example, let's use `/static` this time:
+
+```r
+app$static(path = "public", uri = "static")
+```
+
+Then in your code you'll use this:
+
+```r
+app$get("/", \(req, res) {
+  res$send(
+    "<h1>Hello everyone!</h1>
+    <img src='static/image.jpg'/>"
+  )
+})
+```
+
+## Keep this in mind:
+
+- All static files are exposed and can be accessed via the browser. DO NOT put sensitive files there.
+- You can also use [htmltools](https://rstudio.github.io/htmltools/index.html) tags instead of writing html strings.
+
+## Basic routing
+
+Learn the ✨[basics of routing](../03_basic_routing/index.qmd)✨.

@@ -1,0 +1,70 @@
+---
+title: "09: goals"
+subtitle: "A CRUD application backend"
+author: "Kennedy Mwavu"
+date: "2024-07-10"
+categories: [09_goals]
+---
+
+## Prerequisites
+
+- An installation of the community edition of [MongoDB](https://www.mongodb.com/docs/manual/installation/)
+- The [mongolite](https://github.com/jeroen/mongolite) R pkg
+
+## Run app
+
+1. `cd` into the `09_goals/` dir:
+
+    ```bash
+    cd 09_goals/
+    ```
+
+1. Fire up R:
+    
+    ```bash
+    R
+    ```
+
+1. Restore package dependencies:
+    
+    ```r
+    renv::restore()
+    ```
+
+    Once done, exit R.
+1. `server.R` is the entry point. To start the app, run this on the terminal:
+    
+    ```bash
+    Rscript server.R
+    ```
+
+## Explanation
+
+This app starts a server and listens on port 5000 for connections.
+
+In this example, we build a CRUD application backend: **Goals**.
+
+Here are the defined routes:
+
+- `/api`:
+    - GET `/goals`: Get all user goals
+    - POST `/goals`: Create a goal
+    - PUT `/goals/:id`: Update a goal
+    - DELETE `/goals/:id`: Delete a goal
+    - `/users`:
+      - POST `/`: Register new user
+      - POST `/login`: Login user
+      - GET `/me`: Get user data
+
+You will be able to **C**reate, **R**ead, **U**pdate & **D**elete Goals.
+
+Here's what's covered:
+
+- Ambiorix + MongoDB
+- Working with middleware:
+  - Auth middleware: You will learn how you can use JSON Web Tokens ([JWT](https://jwt.io/)) to protect routes
+  - Error handling middleware
+
+## Live reloading
+
+See how you can enable ✨[live reloading](../10_live_reloading/index.qmd)✨.
