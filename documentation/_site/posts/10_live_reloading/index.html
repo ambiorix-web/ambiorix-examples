@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -154,9 +188,96 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>live reloading</p>
+<section id="live-reloading" class="level2">
+<h2 class="anchored" data-anchor-id="live-reloading">Live Reloading</h2>
+<p>When building applications (whether backend or frontend), it gets tiring to manually stop &amp; restart the app when you make changes to the source code.</p>
+<p>This guide shows you how you can monitor files for changes and have the app restart automatically.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is not something specific to ambiorix, but it is extremely useful during my development process, so I saw it a good idea to have it included as part of the examples.</p>
+</div>
+</div>
+</section>
+<section id="prerequisites" class="level2">
+<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<ul>
+<li>A working installation of <a href="https://nodejs.org/en">nodejs</a> &amp; <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">npm</a></li>
+</ul>
+<p>In case you’d like to know, we won’t be writing any JavaScript.</p>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<ol type="1">
+<li><p>You of course need to have an app. You can use any of the code in the previous examples. We will use a simple <code>server.R</code> file, which is also the entrypoint:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(ambiorix)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  app <span class="ot">&lt;-</span> Ambiorix<span class="sc">$</span><span class="fu">new</span>()</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  app<span class="sc">$</span><span class="fu">get</span>(<span class="st">"/"</span>, \(req, res){</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    res<span class="sc">$</span><span class="fu">send</span>(<span class="st">"Using {ambiorix}!"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  app<span class="sc">$</span><span class="fu">get</span>(<span class="st">"/about"</span>, \(req, res){</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    res<span class="sc">$</span><span class="fu">text</span>(<span class="st">"About"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  app<span class="sc">$</span><span class="fu">start</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Change to your project’s root dir.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> myproject</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Initialize an npm project &amp; create the <code>package.json</code> file:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> init <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>-y</code> flag accepts the default npm setup.</p></li>
+<li><p>Install <a href="https://www.npmjs.com/package/nodemon"><code>nodemon</code></a> as a dev dependency:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> i <span class="at">-D</span> nodemon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Create the file <code>nodemon.json</code> at the root dir of your project and paste this in it:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"execMap"</span><span class="ex">:</span> {</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"R"</span><span class="ex">:</span> <span class="st">"Rscript"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">},</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ext"</span><span class="ex">:</span> <span class="st">"*"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This specifies an executable mapping for <code>.R</code> files: <code>Rscript</code>.</p>
+<p>It also tells nodemon to monitor all files (<code>*</code>) for changes. You can as well monitor specific file extensions. For example to only watch <code>.R</code>, <code>.html</code>, <code>.css</code> &amp; <code>.js</code> files, change <code>ext</code> to:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="st">"ext"</span><span class="ex">:</span> <span class="st">"R,html,css,js"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Open <code>package.json</code> and edit the “scripts” section to this:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="st">"scripts"</span><span class="ex">:</span> {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"dev"</span><span class="ex">:</span> <span class="st">"nodemon --signal SIGTERM server.R"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This tells nodemon to re-run the file <code>server.R</code> when changes happen.</p>
+<p>The <code>--signal SIGTERM</code> is basically telling nodemon to send a termination signal to the previously running program before spawning a new one. This is especially useful for freeing the port the app is running on, and then re-using it again.</p></li>
+<li><p>Run the app:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This runs the <code>dev</code> script which starts, stops &amp; restarts your app when changes occurs.</p>
+<p>Now try making some changes to your source code and enjoy the experience.</p></li>
+<li><p>When working on the backend, you don’t want a browser tab to open each time the app is restarted since you will mostly be sending requests via postman, so you will set <code>start(open = FALSE)</code> in your <code>server.R</code>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(ambiorix)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  app <span class="ot">&lt;-</span> Ambiorix<span class="sc">$</span><span class="fu">new</span>()</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  app<span class="sc">$</span><span class="fu">get</span>(<span class="st">"/"</span>, \(req, res){</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    res<span class="sc">$</span><span class="fu">send</span>(<span class="st">"Using {ambiorix}!"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  app<span class="sc">$</span><span class="fu">get</span>(<span class="st">"/about"</span>, \(req, res){</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    res<span class="sc">$</span><span class="fu">text</span>(<span class="st">"About"</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  app<span class="sc">$</span><span class="fu">start</span>(<span class="at">open =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>To stop npm, press <code>CTRL</code> + <code>C</code>.</p></li>
+<li><p>Add <code>node_modules/</code> to your <code>.gitignore</code> file.</p></li>
+<li><p>You can as well add <code>nodemon.json</code>, <code>package-lock.json</code>, &amp; <code>package.json</code> to <code>.gitignore</code> since they’re just used for development purposes. I have commited them for this example just so you can see their contents.</p></li>
+</ol>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -5,4 +5,103 @@ date: "2024-07-10"
 categories: [06_multi_router]
 ---
 
-multi-router
+## Run app
+
+1. `cd` into the `06_multi_router/` dir:
+
+    ```bash
+    cd 06_multi_router/
+    ```
+
+1. Fire up R:
+    
+    ```bash
+    R
+    ```
+
+1. Restore package dependencies:
+    
+    ```r
+    renv::restore()
+    ```
+
+    Once done, exit R.
+1. `server.R` is the entry point. To start the app, run this on the terminal:
+    
+    ```bash
+    Rscript index.R
+    ```
+
+## Explanation
+
+This app starts a server and listens on port 3000 for connections.
+
+You can have multiple routers mounted onto `ambiorix::Ambiorix` via the `use()` method.
+
+In this example, I show how you can version your api.
+
+Remember, ambiorix is unopinionated. This is just my way of doing things.
+
+You'll see that using [{box}](https://github.com/klmr/box) is the easiest way to split up &
+organize your files & folders.
+
+This is the directory structure that I've used:
+
+```
+.
+├── api
+│   ├── members.R
+│   ├── v1
+│   │   ├── members
+│   │   │   ├── controllers.R
+│   │   │   ├── create_new_member.R
+│   │   │   ├── delete_member.R
+│   │   │   ├── get_all_members.R
+│   │   │   ├── get_member_by_id.R
+│   │   │   └── update_member_info.R
+│   │   └── members.R
+│   └── v2
+│       ├── members
+│       │   ├── controllers.R
+│       │   ├── create_new_member.R
+│       │   ├── delete_member.R
+│       │   ├── get_all_members.R
+│       │   ├── get_member_by_id.R
+│       │   └── update_member_info.R
+│       └── members.R
+├── index.R
+└── README.md
+```
+
+This is how `server.R` looks like:
+
+```r
+box::use(
+  ambiorix[Ambiorix],
+  . / api / members
+)
+
+Ambiorix$
+  new()$
+  listen(port = 3000L)$
+  use(members$v1)$ # mount API v1 members' router
+  use(members$v2)$ # mount API v2 members' router
+  start(open = FALSE)
+```
+
+Once you run the app, you should be able to perform requests on
+`http://localhost:3000/api/v*/members`, eg.
+
+- `GET` request on `http://localhost:3000/api/v1/members`
+- `PUT` request on `http://localhost:3000/api/v2/members/:3`
+
+... and so on.
+
+Checkout the routers in these files:
+
+- `./api/v1/members.R`
+- `./api/v2/members.R`
+
+## Dynamic rendering
+
+Are you ready for some frontend fun? See ✨[dynamic rendering](../07_dynamic_rendering/index.qmd)✨.

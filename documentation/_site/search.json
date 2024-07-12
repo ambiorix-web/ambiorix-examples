@@ -39,14 +39,56 @@
     "href": "posts/10_live_reloading/index.html",
     "title": "10: live reloading",
     "section": "",
-    "text": "live reloading"
+    "text": "When building applications (whether backend or frontend), it gets tiring to manually stop & restart the app when you make changes to the source code.\nThis guide shows you how you can monitor files for changes and have the app restart automatically.\n\n\n\n\n\n\nNote\n\n\n\nThis is not something specific to ambiorix, but it is extremely useful during my development process, so I saw it a good idea to have it included as part of the examples."
+  },
+  {
+    "objectID": "posts/10_live_reloading/index.html#live-reloading",
+    "href": "posts/10_live_reloading/index.html#live-reloading",
+    "title": "10: live reloading",
+    "section": "",
+    "text": "When building applications (whether backend or frontend), it gets tiring to manually stop & restart the app when you make changes to the source code.\nThis guide shows you how you can monitor files for changes and have the app restart automatically.\n\n\n\n\n\n\nNote\n\n\n\nThis is not something specific to ambiorix, but it is extremely useful during my development process, so I saw it a good idea to have it included as part of the examples."
+  },
+  {
+    "objectID": "posts/10_live_reloading/index.html#prerequisites",
+    "href": "posts/10_live_reloading/index.html#prerequisites",
+    "title": "10: live reloading",
+    "section": "Prerequisites",
+    "text": "Prerequisites\n\nA working installation of nodejs & npm\n\nIn case you’d like to know, we won’t be writing any JavaScript."
+  },
+  {
+    "objectID": "posts/10_live_reloading/index.html#setup",
+    "href": "posts/10_live_reloading/index.html#setup",
+    "title": "10: live reloading",
+    "section": "Setup",
+    "text": "Setup\n\nYou of course need to have an app. You can use any of the code in the previous examples. We will use a simple server.R file, which is also the entrypoint:\n  library(ambiorix)\n\n  app &lt;- Ambiorix$new()\n\n  app$get(\"/\", \\(req, res){\n    res$send(\"Using {ambiorix}!\")\n  })\n\n  app$get(\"/about\", \\(req, res){\n    res$text(\"About\")\n  })\n\n  app$start()\nChange to your project’s root dir.\ncd myproject\nInitialize an npm project & create the package.json file:\nnpm init -y\nThe -y flag accepts the default npm setup.\nInstall nodemon as a dev dependency:\nnpm i -D nodemon\nCreate the file nodemon.json at the root dir of your project and paste this in it:\n{\n  \"execMap\": {\n    \"R\": \"Rscript\"\n  },\n  \"ext\": \"*\"\n}\nThis specifies an executable mapping for .R files: Rscript.\nIt also tells nodemon to monitor all files (*) for changes. You can as well monitor specific file extensions. For example to only watch .R, .html, .css & .js files, change ext to:\n\"ext\": \"R,html,css,js\"\nOpen package.json and edit the “scripts” section to this:\n\"scripts\": {\n  \"dev\": \"nodemon --signal SIGTERM server.R\"\n}\nThis tells nodemon to re-run the file server.R when changes happen.\nThe --signal SIGTERM is basically telling nodemon to send a termination signal to the previously running program before spawning a new one. This is especially useful for freeing the port the app is running on, and then re-using it again.\nRun the app:\nnpm run dev\nThis runs the dev script which starts, stops & restarts your app when changes occurs.\nNow try making some changes to your source code and enjoy the experience.\nWhen working on the backend, you don’t want a browser tab to open each time the app is restarted since you will mostly be sending requests via postman, so you will set start(open = FALSE) in your server.R:\n  library(ambiorix)\n\n  app &lt;- Ambiorix$new()\n\n  app$get(\"/\", \\(req, res){\n    res$send(\"Using {ambiorix}!\")\n  })\n\n  app$get(\"/about\", \\(req, res){\n    res$text(\"About\")\n  })\n\n  app$start(open = FALSE)\nTo stop npm, press CTRL + C.\nAdd node_modules/ to your .gitignore file.\nYou can as well add nodemon.json, package-lock.json, & package.json to .gitignore since they’re just used for development purposes. I have commited them for this example just so you can see their contents."
   },
   {
     "objectID": "posts/06_multi_router/index.html",
     "href": "posts/06_multi_router/index.html",
     "title": "06: multi-router",
     "section": "",
-    "text": "multi-router"
+    "text": "cd into the 06_multi_router/ dir:\ncd 06_multi_router/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+  },
+  {
+    "objectID": "posts/06_multi_router/index.html#run-app",
+    "href": "posts/06_multi_router/index.html#run-app",
+    "title": "06: multi-router",
+    "section": "",
+    "text": "cd into the 06_multi_router/ dir:\ncd 06_multi_router/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+  },
+  {
+    "objectID": "posts/06_multi_router/index.html#explanation",
+    "href": "posts/06_multi_router/index.html#explanation",
+    "title": "06: multi-router",
+    "section": "Explanation",
+    "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nYou can have multiple routers mounted onto ambiorix::Ambiorix via the use() method.\nIn this example, I show how you can version your api.\nRemember, ambiorix is unopinionated. This is just my way of doing things.\nYou’ll see that using {box} is the easiest way to split up & organize your files & folders.\nThis is the directory structure that I’ve used:\n.\n├── api\n│   ├── members.R\n│   ├── v1\n│   │   ├── members\n│   │   │   ├── controllers.R\n│   │   │   ├── create_new_member.R\n│   │   │   ├── delete_member.R\n│   │   │   ├── get_all_members.R\n│   │   │   ├── get_member_by_id.R\n│   │   │   └── update_member_info.R\n│   │   └── members.R\n│   └── v2\n│       ├── members\n│       │   ├── controllers.R\n│       │   ├── create_new_member.R\n│       │   ├── delete_member.R\n│       │   ├── get_all_members.R\n│       │   ├── get_member_by_id.R\n│       │   └── update_member_info.R\n│       └── members.R\n├── index.R\n└── README.md\nThis is how server.R looks like:\nbox::use(\n  ambiorix[Ambiorix],\n  . / api / members\n)\n\nAmbiorix$\n  new()$\n  listen(port = 3000L)$\n  use(members$v1)$ # mount API v1 members' router\n  use(members$v2)$ # mount API v2 members' router\n  start(open = FALSE)\nOnce you run the app, you should be able to perform requests on http://localhost:3000/api/v*/members, eg.\n\nGET request on http://localhost:3000/api/v1/members\nPUT request on http://localhost:3000/api/v2/members/:3\n\n… and so on.\nCheckout the routers in these files:\n\n./api/v1/members.R\n./api/v2/members.R"
+  },
+  {
+    "objectID": "posts/06_multi_router/index.html#dynamic-rendering",
+    "href": "posts/06_multi_router/index.html#dynamic-rendering",
+    "title": "06: multi-router",
+    "section": "Dynamic rendering",
+    "text": "Dynamic rendering\nAre you ready for some frontend fun? See ✨dynamic rendering✨."
   },
   {
     "objectID": "posts/04_simple_json_api/index.html",
@@ -186,7 +228,28 @@
     "href": "posts/08_datatables/index.html",
     "title": "08: datatables",
     "section": "",
-    "text": "datatables"
+    "text": "cd into the 08_datatables/ dir:\ncd 08_datatables/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+  },
+  {
+    "objectID": "posts/08_datatables/index.html#run-app",
+    "href": "posts/08_datatables/index.html#run-app",
+    "title": "08: datatables",
+    "section": "",
+    "text": "cd into the 08_datatables/ dir:\ncd 08_datatables/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+  },
+  {
+    "objectID": "posts/08_datatables/index.html#explanation",
+    "href": "posts/08_datatables/index.html#explanation",
+    "title": "08: datatables",
+    "section": "Explanation",
+    "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nAt this point, I’m not sure there’s anything much to say :)"
+  },
+  {
+    "objectID": "posts/08_datatables/index.html#goals",
+    "href": "posts/08_datatables/index.html#goals",
+    "title": "08: datatables",
+    "section": "Goals",
+    "text": "Goals\nAlright, time to build a ✨CRUD application backend✨."
   },
   {
     "objectID": "posts/02_static_files/index.html",
@@ -270,13 +333,62 @@
     "href": "posts/09_goals/index.html",
     "title": "09: goals",
     "section": "",
-    "text": "GOALS"
+    "text": "An installation of the community edition of MongoDB\nThe mongolite R pkg"
+  },
+  {
+    "objectID": "posts/09_goals/index.html#prerequisites",
+    "href": "posts/09_goals/index.html#prerequisites",
+    "title": "09: goals",
+    "section": "",
+    "text": "An installation of the community edition of MongoDB\nThe mongolite R pkg"
+  },
+  {
+    "objectID": "posts/09_goals/index.html#run-app",
+    "href": "posts/09_goals/index.html#run-app",
+    "title": "09: goals",
+    "section": "Run app",
+    "text": "Run app\n\ncd into the 09_goals/ dir:\ncd 09_goals/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript server.R"
+  },
+  {
+    "objectID": "posts/09_goals/index.html#explanation",
+    "href": "posts/09_goals/index.html#explanation",
+    "title": "09: goals",
+    "section": "Explanation",
+    "text": "Explanation\nThis app starts a server and listens on port 5000 for connections.\nIn this example, we build a CRUD application backend: Goals.\nHere are the defined routes:\n\n/api:\n\nGET /goals: Get all user goals\nPOST /goals: Create a goal\nPUT /goals/:id: Update a goal\nDELETE /goals/:id: Delete a goal\n/users:\n\nPOST /: Register new user\nPOST /login: Login user\nGET /me: Get user data\n\n\n\nYou will be able to Create, Read, Update & Delete Goals.\nHere’s what’s covered:\n\nAmbiorix + MongoDB\nWorking with middleware:\n\nAuth middleware: You will learn how you can use JSON Web Tokens (JWT) to protect routes\nError handling middleware"
+  },
+  {
+    "objectID": "posts/09_goals/index.html#live-reloading",
+    "href": "posts/09_goals/index.html#live-reloading",
+    "title": "09: goals",
+    "section": "Live reloading",
+    "text": "Live reloading\nSee how you can enable ✨live reloading✨."
   },
   {
     "objectID": "posts/07_dynamic_rendering/index.html",
     "href": "posts/07_dynamic_rendering/index.html",
     "title": "07: dynamic rendering",
     "section": "",
-    "text": "dynamic rendering"
+    "text": "cd into the 07_dynamic_rendering/ dir:\ncd 07_dynamic_rendering/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+  },
+  {
+    "objectID": "posts/07_dynamic_rendering/index.html#run-app",
+    "href": "posts/07_dynamic_rendering/index.html#run-app",
+    "title": "07: dynamic rendering",
+    "section": "",
+    "text": "cd into the 07_dynamic_rendering/ dir:\ncd 07_dynamic_rendering/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+  },
+  {
+    "objectID": "posts/07_dynamic_rendering/index.html#explanation",
+    "href": "posts/07_dynamic_rendering/index.html#explanation",
+    "title": "07: dynamic rendering",
+    "section": "Explanation",
+    "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nWhen building software, these are the available options:\n\nBuild the backend using ambiorix and the frontend using your favorite frontend framework (React, Angular, Vue, etc.)\nBuild both the back and frontend using ambiorix\n\nLet’s talk about option 2.\nFirst things first, you will be rendering html templates/files. In most cases, you want this to be done dynamically. eg. render a portion of the UI depending on whether a user is an admin or not.\nThis is what is referred to as server-side rendering (SSR).\nIn this example, I use htmx to show you how you can build interactive frontends without touching a single line of JavaScript.\nIf you know HTML then you’re all set!\nYou’ve already seen how to send HTTP requests to the server & how the server responds (with JSON so far).\nWith htmx, your responses from the server will ideally be HTML fragments.\nThis works so well with htmltools you will not believe it!"
+  },
+  {
+    "objectID": "posts/07_dynamic_rendering/index.html#datatables",
+    "href": "posts/07_dynamic_rendering/index.html#datatables",
+    "title": "07: dynamic rendering",
+    "section": "Datatables",
+    "text": "Datatables\nWell, R people love tables. Time for you to look at ✨datatables✨."
   }
 ]
