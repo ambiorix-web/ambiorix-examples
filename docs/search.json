@@ -347,7 +347,7 @@
     "href": "posts/09_goals/index.html#run-app",
     "title": "09: goals",
     "section": "Run app",
-    "text": "Run app\n\ncd into the 09_goals/ dir:\ncd 09_goals/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript server.R"
+    "text": "Run app\n\ncd into the 09_goals/backend/ dir:\ncd 09_goals/backend/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript server.R"
   },
   {
     "objectID": "posts/09_goals/index.html#explanation",

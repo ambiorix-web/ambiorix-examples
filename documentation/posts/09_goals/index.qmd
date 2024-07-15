@@ -13,10 +13,10 @@ categories: [09_goals]
 
 ## Run app
 
-1. `cd` into the `09_goals/` dir:
+1. `cd` into the `09_goals/backend/` dir:
 
     ```bash
-    cd 09_goals/
+    cd 09_goals/backend/
     ```
 
 1. Fire up R:
