@@ -11,15 +11,15 @@ to build full stack applications.
 
 ## "Unopinionated and Minimalist"... What does that mean?
 
-Ambiorix does not assume you're going to build your API in any
+Ambiorix does not assume you're going to build your app/API in any
 certain way or using a certain design pattern. You have absolute
-full control of how you handle your requests to the server and
+full control of how you handle requests to the server and
 how you respond.
 
 ## So, why should I use ambiorix?
 
 - Makes building web applications with R **VERY** easy
-- Used for both server rendered apps as well as API/Microservices
+- Used for both server rendered apps (SSRs) as well as API/Microservices
 - Full control of the request and response cycle
 - Great to use with your favorite client side framework (whether React, Angular, Vue etc.)
 
@@ -30,7 +30,7 @@ large systems & applications:
 
 - Out of the box **routing**
 - Creating a robust **API** is quick and easy
-- HTML templating
+- Templating (HTML, markdown, pug, etc.)
 - Websockets in case you need bidirectional communication
 
 ## What should I know first?
