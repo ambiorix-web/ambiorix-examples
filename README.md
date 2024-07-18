@@ -59,3 +59,11 @@ To install the dependencies for a specific example eg. `05_router`:
     ```r
     renv::restore()
     ```
+
+## Documentation
+
+You can find documentation on each of the examples at [mwavu.com/ambiorix-examples](https://mwavu.com/ambiorix-examples/).
+
+The documentation includes:
+- how to run each example
+- code and concept explanations where necessary
