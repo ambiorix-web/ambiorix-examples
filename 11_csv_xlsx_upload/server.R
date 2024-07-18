@@ -15,8 +15,7 @@ box::use(
 home_get <- \(req, res) {
   response <- list(
     code = 200L,
-    msg = "success",
-    result = "hello, world!"
+    msg = "hello, world!"
   )
 
   res$json(response)
