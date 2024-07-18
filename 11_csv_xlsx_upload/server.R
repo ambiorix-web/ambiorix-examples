@@ -28,8 +28,23 @@ home_get <- \(req, res) {
 #' @return `res$json()`
 #' @export
 csv_upload_post <- \(req, res) {
+  body <- req$rook.input$read()
+
+  response_400 <- list(
+    code = 400L,
+    msg = "please upload a csv file with the key 'file' in the request body"
+  )
+
+  # if the req body is empty, return a 400:
+  empty <- length(body) == 0L
+  if (empty) {
+    return(
+      res$set_status(400L)$json(response_400)
+    )
+  }
+
   postdata <- parse_http(
-    body = req$rook.input$read(),
+    body = body,
     content_type = req$CONTENT_TYPE
   )
 
@@ -44,13 +59,8 @@ csv_upload_post <- \(req, res) {
   # https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
 
   if (!ok) {
-    response <- list(
-      code = 400L,
-      msg = "please upload a csv file"
-    )
-
     return(
-      res$json(body = response, status = 400L)
+      res$set_status(400L)$json(response_400)
     )
   }
 
@@ -78,8 +88,23 @@ csv_upload_post <- \(req, res) {
 #' @return `res$json()`
 #' @export
 xlsx_upload_post <- \(req, res) {
+  body <- req$rook.input$read()
+
+  response_400 <- list(
+    code = 400L,
+    msg = "please upload an xlsx file with the key 'file' in the request body"
+  )
+
+  # if the req body is empty, return a 400:
+  empty <- length(body) == 0L
+  if (empty) {
+    return(
+      res$set_status(400L)$json(response_400)
+    )
+  }
+
   postdata <- parse_http(
-    body = req$rook.input$read(),
+    body = body,
     content_type = req$CONTENT_TYPE
   )
 
@@ -94,13 +119,8 @@ xlsx_upload_post <- \(req, res) {
   # https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
 
   if (!ok) {
-    response <- list(
-      code = 400L,
-      msg = "please upload an xlsx file"
-    )
-
     return(
-      res$json(body = response, status = 400L)
+      res$set_status(400L)$json(response_400)
     )
   }
 
@@ -139,7 +159,7 @@ error_handler <- \(req, res, error = NULL) {
     msg = "A server error occurred!"
   )
 
-  res$json(body = response, status = 500L)
+  res$set_status(500L)$json(response)
 }
 
 app <- Ambiorix$new(port = 3000, host = "127.0.0.1")
