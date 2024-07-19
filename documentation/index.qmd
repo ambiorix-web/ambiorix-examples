@@ -4,7 +4,7 @@ listing:
   contents: posts
   fields: [title, subtitle, date, author]
   sort: "title asc"
-  type: default
+  type: grid
   categories: true
   sort-ui: true
   filter-ui: false

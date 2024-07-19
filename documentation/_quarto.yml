@@ -13,6 +13,6 @@ website:
         href: https://x.com/kennedymwavu
 format:
   html:
-    theme: cosmo
+    theme: lux
     css: styles.css
     toc: true
