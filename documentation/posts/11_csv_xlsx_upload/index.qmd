@@ -1,0 +1,356 @@
+---
+title: "11: csv & xlsx upload"
+subtitle: "file upload to an ambiorix API"
+author: "Kennedy Mwavu"
+date: "2024-07-19"
+categories: [11_csv_xlsx_upload]
+---
+
+# Run app
+
+1. `cd` into the `11_csv_xlsx_upload/` dir:
+
+    ```bash
+    cd 11_csv_xlsx_upload/
+    ```
+
+1. Fire up R:
+    
+    ```bash
+    R
+    ```
+
+1. Restore package dependencies:
+    
+    ```r
+    renv::restore()
+    ```
+
+    Once done, exit R.
+1. `server.R` is the entry point. To start the API, run this on the terminal:
+    
+    ```bash
+    Rscript server.R
+    ```
+
+# Explanation
+
+Let's first import the functions we'll be using:
+
+```r
+box::use(
+  readxl[read_xlsx],
+  data.table[fread],
+  ambiorix[Ambiorix],
+  webutils[parse_http],
+  cli[cli_alert_danger],
+)
+```
+
+I've come to love [`{box}`](https://klmr.me/box/) because it forces me to be explicit about my imports.
+I almost always know from which package/module a function/object is from.
+
+## Skeleton
+
+Next, let's define the API skeleton:
+
+```r
+app <- Ambiorix$new(port = 3000, host = "127.0.0.1") # <1>
+app$limit <- 35 * 1024 * 1024 # <2>
+
+app$
+  set_error(error_handler)$ # <3>
+  get("/", home_get)$ # <4>
+  post("/csv", csv_upload_post)$ # <5>
+  post("/xlsx", xlsx_upload_post)$ # <6>
+  start() # <7>
+```
+1. Initialize a new ambiorix app. Set `port` & `host` to run app on.
+2. Increase max body size to 35 MB. Think of this as the max file upload size for now.
+3. Set an error handler for the API.
+4. Add handler for requests at `/`.
+5. Add handler for requests at `/csv`.
+6. Add handler for requests at `/xlsx`.
+7. Start API.
+
+Now, let's create the handlers.
+
+## Error handler
+
+I've made it a habit to always have an error handler for my APIs. Ideally, this
+is where you log any server errors that occurred, either due to failed operations
+or bugs.
+
+```r
+#' 500 error handler middleware
+#'
+#' @param req Request object.
+#' @param res Response object.
+#' @param error Error object. See [stop()].
+#' @return `res$json()`
+#' @export
+error_handler <- \(req, res, error = NULL) {
+  if (!is.null(error)) {
+    msg <- conditionMessage(error)
+    cli_alert_danger(text = msg)
+  }
+
+  response <- list(
+    code = 500L,
+    msg = "A server error occurred!"
+  )
+
+  res$set_status(500L)$json(response)
+}
+```
+
+## Hello, World!
+
+Are you even a real programmer if you don't always start with a "Hello, World"?
+
+```r
+#' Handle GET at '/'
+#'
+#' @param req Request object.
+#' @param res Response object.
+#' @return `res$json()`
+#' @export
+home_get <- \(req, res) {
+  response <- list(
+    code = 200L,
+    msg = "hello, world!"
+  )
+
+  res$json(response)
+}
+```
+
+## csv upload
+
+We're finally at the juicy part of this post! 
+
+```r
+#' Handle POST at '/csv'
+#'
+#' @param req Request object.
+#' @param res Response object.
+#' @return `res$json()`
+#' @export
+csv_upload_post <- \(req, res) {
+  body <- req$rook.input$read() # <1>
+
+  response_400 <- list( # <2>
+    code = 400L,
+    msg = "please upload a csv file with the key 'file' in the request body"
+  )
+
+  # if the req body is empty, return a 400:
+  empty <- length(body) == 0L # <3>
+  if (empty) {
+    return(
+      res$set_status(400L)$json(response_400)
+    )
+  }
+
+  postdata <- parse_http( # <4>
+    body = body,
+    content_type = req$CONTENT_TYPE
+  )
+
+  file_details <- postdata$file # <5>
+
+  # check 'content_type' of file:
+  ok <- identical( # <6>
+    x = file_details$content_type,
+    y = "text/csv"
+  )
+
+  if (!ok) {
+    return(
+      res$set_status(400L)$json(response_400)
+    )
+  }
+
+  # write file temporarily:
+  temp <- tempfile(fileext = ".csv") # <7>
+  on.exit(unlink(x = temp))
+  writeBin(object = file_details$value, con = temp)
+
+  # read file:
+  x <- fread(file = temp) # <8>
+  print(x) # <9>
+
+  response <- list( # <10>
+    code = 200L,
+    msg = "file uploaded!"
+  )
+
+  res$json(response)
+}
+```
+1. Read the request body.
+2. Create a bad request response: `response_400`.
+3. If the request body is empty, return `response_400`.
+4. Parse the body into a named list of key-value pairs. POST request variables are stored as key-value pairs in the request body.
+5. Get the variable/field named `file` from the list.
+6. If the content type of the file is not `text/csv`, return `response_400`. To learn about common mime types, refer to [MIME_types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types).
+7. Temporarily write the file to disk.
+8. Read the file.
+9. Print the `data.table`.
+10. Return a 200 success response.
+
+## xlsx upload
+
+This is almost identical to how we've handled the csv file upload, except that we are now working with xlsx files.
+
+```r
+#' Handle POST at '/xlsx'
+#'
+#' @param req Request object.
+#' @param res Response object.
+#' @return `res$json()`
+#' @export
+xlsx_upload_post <- \(req, res) {
+  body <- req$rook.input$read()
+
+  response_400 <- list(
+    code = 400L,
+    msg = "please upload an xlsx file with the key 'file' in the request body"
+  )
+
+  # if the req body is empty, return a 400:
+  empty <- length(body) == 0L
+  if (empty) {
+    return(
+      res$set_status(400L)$json(response_400)
+    )
+  }
+
+  postdata <- parse_http(
+    body = body,
+    content_type = req$CONTENT_TYPE
+  )
+
+  file_details <- postdata$file
+
+  # check 'content_type' of file:
+  ok <- identical(
+    x = file_details$content_type,
+    y = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+  )
+
+  if (!ok) {
+    return(
+      res$set_status(400L)$json(response_400)
+    )
+  }
+
+  # write file temporarily:
+  temp <- tempfile(fileext = ".xlsx")
+  on.exit(unlink(x = temp))
+  writeBin(object = file_details$value, con = temp)
+
+  # read file:
+  x <- read_xlsx(path = temp)
+  print(x)
+
+  response <- list(
+    code = 200L,
+    msg = "file uploaded!"
+  )
+
+  res$json(response)
+}
+```
+
+## Test
+
+This example comes with:
+
+- `iris.csv`: A csv test file.
+- `iris.xlsx`: An xlsx test file.
+- `example.R`: An R script showing how you can make requests to the API using R.
+
+To make requests to the API, you can either use [postman](https://www.postman.com/) or open another R session in the same working directory as this example and run `example.R`:
+
+:::{.panel-tabset}
+
+### csv
+
+```r
+box::use(
+  curl[form_file],
+  httr2[
+    request,
+    req_perform,
+    req_url_path,
+    last_response,
+    resp_body_json,
+    req_body_multipart,
+  ]
+)
+
+base_url <- "http://127.0.0.1:3000"
+file <- form_file(
+  path = "iris.csv",
+  type = "text/csv",
+  name = "iris.csv"
+)
+
+req <- request(base_url = base_url) |>
+  req_url_path("/csv") |>
+  req_body_multipart(file = file)
+
+# use `tryCatch()` in case an error occurs while performing the request:
+tryCatch(
+  expr = req |>
+    req_perform() |>
+    resp_body_json(),
+  error = \(e) {
+    print("An error occurred!")
+    error <- last_response() |> resp_body_json()
+    print(error)
+  }
+)
+```
+
+### xlsx
+
+```r
+box::use(
+  curl[form_file],
+  httr2[
+    request,
+    req_perform,
+    req_url_path,
+    last_response,
+    resp_body_json,
+    req_body_multipart,
+  ]
+)
+
+base_url <- "http://127.0.0.1:3000"
+file <- form_file(
+  path = "iris.xlsx",
+  type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  name = "iris.xlsx"
+)
+
+req <- request(base_url = base_url) |>
+  req_url_path("/xlsx") |>
+  req_body_multipart(file = file)
+
+# use `tryCatch()` in case an error occurs while performing the request:
+tryCatch(
+  expr = req |>
+    req_perform() |>
+    resp_body_json(),
+  error = \(e) {
+    print("An error occurred!")
+    error <- last_response() |> resp_body_json()
+    print(error)
+  }
+)
+```
+
+:::

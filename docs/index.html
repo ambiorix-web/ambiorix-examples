@@ -80,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-title','listing-subtitle','listing-date','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -191,7 +191,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(11)</span></div><div class="category" data-category="00_getting_started">00_getting_started <span class="quarto-category-count">(1)</span></div><div class="category" data-category="01_hello_world">01_hello_world <span class="quarto-category-count">(1)</span></div><div class="category" data-category="02_static_files">02_static_files <span class="quarto-category-count">(1)</span></div><div class="category" data-category="03_basic_routing">03_basic_routing <span class="quarto-category-count">(1)</span></div><div class="category" data-category="04_simple_json_api">04_simple_json_api <span class="quarto-category-count">(1)</span></div><div class="category" data-category="05_router">05_router <span class="quarto-category-count">(1)</span></div><div class="category" data-category="06_multi_router">06_multi_router <span class="quarto-category-count">(1)</span></div><div class="category" data-category="07_dynamic_rendering">07_dynamic_rendering <span class="quarto-category-count">(1)</span></div><div class="category" data-category="08_datatables">08_datatables <span class="quarto-category-count">(1)</span></div><div class="category" data-category="09_goals">09_goals <span class="quarto-category-count">(1)</span></div><div class="category" data-category="10_live_reloading">10_live_reloading <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(12)</span></div><div class="category" data-category="00_getting_started">00_getting_started <span class="quarto-category-count">(1)</span></div><div class="category" data-category="01_hello_world">01_hello_world <span class="quarto-category-count">(1)</span></div><div class="category" data-category="02_static_files">02_static_files <span class="quarto-category-count">(1)</span></div><div class="category" data-category="03_basic_routing">03_basic_routing <span class="quarto-category-count">(1)</span></div><div class="category" data-category="04_simple_json_api">04_simple_json_api <span class="quarto-category-count">(1)</span></div><div class="category" data-category="05_router">05_router <span class="quarto-category-count">(1)</span></div><div class="category" data-category="06_multi_router">06_multi_router <span class="quarto-category-count">(1)</span></div><div class="category" data-category="07_dynamic_rendering">07_dynamic_rendering <span class="quarto-category-count">(1)</span></div><div class="category" data-category="08_datatables">08_datatables <span class="quarto-category-count">(1)</span></div><div class="category" data-category="09_goals">09_goals <span class="quarto-category-count">(1)</span></div><div class="category" data-category="10_live_reloading">10_live_reloading <span class="quarto-category-count">(1)</span></div><div class="category" data-category="11_csv_xlsx_upload">11_csv_xlsx_upload <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -204,7 +204,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="listing-actions-group">
    <div class="input-group input-group-sm quarto-listing-sort">
      <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
@@ -226,226 +226,270 @@ window.Quarto = {
      </select>
   </div>
 </div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="00_getting_started" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588117" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="41">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/00_getting_started/index.html" class="no-external">00: getting started</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/00_getting_started/index.html" class="no-external">Installation</a>
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="00_getting_started" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588117" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="41">
+<a href="./posts/00_getting_started/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+00: getting started
+</h5>
+<div class="card-subtitle listing-subtitle">
+Installation
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/00_getting_started/index.html" class="no-external">
-<div class="listing-date">
-Jul 10, 2024
-</div>
+<div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Kennedy Mwavu
 </div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="01_hello_world" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588117" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="134">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/01_hello_world/index.html" class="no-external">01: hello, world!</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/01_hello_world/index.html" class="no-external">Where else to start? :)</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/01_hello_world/index.html" class="no-external">
 <div class="listing-date">
 Jul 10, 2024
 </div>
-<div class="listing-author">
-Kennedy Mwavu
+</div>
+</div>
 </div>
 </a>
 </div>
+<div class="g-col-1" data-index="1" data-categories="01_hello_world" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588117" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="134">
+<a href="./posts/01_hello_world/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+01: hello, world!
+</h5>
+<div class="card-subtitle listing-subtitle">
+Where else to start? :)
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="02_static_files" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588117" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="352">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/02_static_files/index.html" class="no-external">02: static files</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/02_static_files/index.html" class="no-external">Serve static files</a>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Kennedy Mwavu
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/02_static_files/index.html" class="no-external">
 <div class="listing-date">
 Jul 10, 2024
 </div>
-<div class="listing-author">
-Kennedy Mwavu
+</div>
+</div>
 </div>
 </a>
 </div>
+<div class="g-col-1" data-index="2" data-categories="02_static_files" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588117" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="352">
+<a href="./posts/02_static_files/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+02: static files
+</h5>
+<div class="card-subtitle listing-subtitle">
+Serve static files
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="03_basic_routing" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588118" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="410">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/03_basic_routing/index.html" class="no-external">03: basic routing</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/03_basic_routing/index.html" class="no-external">An intro to routes</a>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Kennedy Mwavu
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/03_basic_routing/index.html" class="no-external">
 <div class="listing-date">
 Jul 10, 2024
 </div>
-<div class="listing-author">
-Kennedy Mwavu
+</div>
+</div>
 </div>
 </a>
 </div>
+<div class="g-col-1" data-index="3" data-categories="03_basic_routing" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588118" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="410">
+<a href="./posts/03_basic_routing/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+03: basic routing
+</h5>
+<div class="card-subtitle listing-subtitle">
+An intro to routes
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="04_simple_json_api" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588118" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="867">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/04_simple_json_api/index.html" class="no-external">04: simple json api</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/04_simple_json_api/index.html" class="no-external">Build a simple API</a>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Kennedy Mwavu
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/04_simple_json_api/index.html" class="no-external">
 <div class="listing-date">
 Jul 10, 2024
 </div>
-<div class="listing-author">
-Kennedy Mwavu
+</div>
+</div>
 </div>
 </a>
 </div>
+<div class="g-col-1" data-index="4" data-categories="04_simple_json_api" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588118" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="867">
+<a href="./posts/04_simple_json_api/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+04: simple json api
+</h5>
+<div class="card-subtitle listing-subtitle">
+Build a simple API
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="05_router" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="498">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/05_router/index.html" class="no-external">05: router</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/05_router/index.html" class="no-external">What’s a router?</a>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Kennedy Mwavu
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/05_router/index.html" class="no-external">
 <div class="listing-date">
 Jul 10, 2024
 </div>
-<div class="listing-author">
-Kennedy Mwavu
+</div>
+</div>
 </div>
 </a>
 </div>
+<div class="g-col-1" data-index="5" data-categories="05_router" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="498">
+<a href="./posts/05_router/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+05: router
+</h5>
+<div class="card-subtitle listing-subtitle">
+What’s a router?
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="06_multi_router" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="336">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/06_multi_router/index.html" class="no-external">06: multi-router</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/06_multi_router/index.html" class="no-external">Mount multiple routers</a>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Kennedy Mwavu
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/06_multi_router/index.html" class="no-external">
 <div class="listing-date">
 Jul 10, 2024
 </div>
-<div class="listing-author">
-Kennedy Mwavu
+</div>
+</div>
 </div>
 </a>
 </div>
+<div class="g-col-1" data-index="6" data-categories="06_multi_router" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="336">
+<a href="./posts/06_multi_router/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+06: multi-router
+</h5>
+<div class="card-subtitle listing-subtitle">
+Mount multiple routers
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="07_dynamic_rendering" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="265">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/07_dynamic_rendering/index.html" class="no-external">07: dynamic rendering</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/07_dynamic_rendering/index.html" class="no-external">Dynamically render templates</a>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Kennedy Mwavu
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/07_dynamic_rendering/index.html" class="no-external">
 <div class="listing-date">
 Jul 10, 2024
 </div>
-<div class="listing-author">
-Kennedy Mwavu
+</div>
+</div>
 </div>
 </a>
 </div>
+<div class="g-col-1" data-index="7" data-categories="07_dynamic_rendering" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="265">
+<a href="./posts/07_dynamic_rendering/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+07: dynamic rendering
+</h5>
+<div class="card-subtitle listing-subtitle">
+Dynamically render templates
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="08_datatables" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="126">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/08_datatables/index.html" class="no-external">08: datatables</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/08_datatables/index.html" class="no-external">R users love tables!</a>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Kennedy Mwavu
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/08_datatables/index.html" class="no-external">
 <div class="listing-date">
 Jul 10, 2024
 </div>
-<div class="listing-author">
-Kennedy Mwavu
+</div>
+</div>
 </div>
 </a>
 </div>
+<div class="g-col-1" data-index="8" data-categories="08_datatables" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="126">
+<a href="./posts/08_datatables/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+08: datatables
+</h5>
+<div class="card-subtitle listing-subtitle">
+R users love tables!
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="09_goals" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079945606" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="258">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/09_goals/index.html" class="no-external">09: goals</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/09_goals/index.html" class="no-external">A CRUD application backend</a>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Kennedy Mwavu
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/09_goals/index.html" class="no-external">
 <div class="listing-date">
 Jul 10, 2024
 </div>
-<div class="listing-author">
-Kennedy Mwavu
+</div>
+</div>
 </div>
 </a>
 </div>
+<div class="g-col-1" data-index="9" data-categories="09_goals" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079945606" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="258">
+<a href="./posts/09_goals/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+09: goals
+</h5>
+<div class="card-subtitle listing-subtitle">
+A CRUD application backend
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="10_live_reloading" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="727">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/10_live_reloading/index.html" class="no-external">10: live reloading</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/10_live_reloading/index.html" class="no-external">Manual reloading is such a pain!</a>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Kennedy Mwavu
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/10_live_reloading/index.html" class="no-external">
 <div class="listing-date">
 Jul 10, 2024
 </div>
-<div class="listing-author">
-Kennedy Mwavu
+</div>
+</div>
 </div>
 </a>
 </div>
+<div class="g-col-1" data-index="10" data-categories="10_live_reloading" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="727">
+<a href="./posts/10_live_reloading/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+10: live reloading
+</h5>
+<div class="card-subtitle listing-subtitle">
+Manual reloading is such a pain!
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Kennedy Mwavu
+</div>
+<div class="listing-date">
+Jul 10, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="11" data-categories="11_csv_xlsx_upload" data-listing-date-sort="1721336400000" data-listing-file-modified-sort="1721346735647" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1235">
+<a href="./posts/11_csv_xlsx_upload/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+11: csv &amp; xlsx upload
+</h5>
+<div class="card-subtitle listing-subtitle">
+file upload to an ambiorix API
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Kennedy Mwavu
+</div>
+<div class="listing-date">
+Jul 19, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
 </div>
 </div>
 <div class="listing-no-matching d-none">
