@@ -2,8 +2,8 @@ box::use(
   ambiorix[parse_multipart],
   sodium[password_store, password_verify],
   lubridate[now],
-  shiny[isTruthy],
   .. / config / db[users_conn],
+  .. / helpers / truthiness[is_falsy],
   .. / helpers / mongo_query[mongo_query],
   .. / helpers / generate_token[generate_token]
 )
@@ -19,7 +19,7 @@ register_user <- \(req, res) {
   email <- body$email
   password <- body$password
 
-  if (!isTruthy(name) || !isTruthy(email) || !isTruthy(password)) {
+  if (is_falsy(name) || is_falsy(email) || is_falsy(password)) {
     response <- list(msg = "Please add all fields")
     return(
       res$set_status(400L)$json(response)
@@ -82,7 +82,7 @@ login_user <- \(req, res) {
   email <- body$email
   password <- body$password
 
-  if (!isTruthy(email) || !isTruthy(password)) {
+  if (is_falsy(email) || is_falsy(password)) {
     response <- list(msg = "Invalid credentials")
     return(
       res$set_status(400L)$json(response)
