@@ -6,17 +6,17 @@ date: "2024-07-10"
 categories: [09_goals]
 ---
 
-## Prerequisites
+# Prerequisites
 
 - An installation of the community edition of [MongoDB](https://www.mongodb.com/docs/manual/installation/)
 - The [mongolite](https://github.com/jeroen/mongolite) R pkg
 
-## Run app
+# Run app
 
-1. `cd` into the `09_goals/backend/` dir:
+1. `cd` into the `09_goals/` dir:
 
     ```bash
-    cd 09_goals/backend/
+    cd 09_goals/
     ```
 
 1. Fire up R:
@@ -38,7 +38,7 @@ categories: [09_goals]
     Rscript server.R
     ```
 
-## Explanation
+# Explanation
 
 This app starts a server and listens on port 5000 for connections.
 
@@ -65,6 +65,365 @@ Here's what's covered:
   - Auth middleware: You will learn how you can use JSON Web Tokens ([JWT](https://jwt.io/)) to protect routes
   - Error handling middleware
 
-## Live reloading
+# Requests to the API
+
+Let's explore how you can send requests to the API. We'll do so from another R session.
+
+Be sure to import the required functions first:
+
+```r
+box::use(
+  httr2[
+    request,
+    req_method,
+    req_perform,
+    req_url_path,
+    last_response,
+    resp_body_json,
+    req_body_multipart,
+    req_auth_bearer_token,
+  ]
+)
+```
+
+## `/api/users*`
+
+:::{.panel-tabset}
+
+### Register
+
+Since the API requires JWT auth, you first need to create an account. To do that,
+make a POST request to `/api/users`:
+
+```r
+base_url <- "http://127.0.0.1:5000"
+
+# registration details:
+user_details <- list(
+  name = "mwavu",
+  email = "mwavu@mail.com",
+  password = "test123"
+)
+
+req <- request(base_url = base_url) |>
+  req_url_path("/api/users") |>
+  req_body_multipart(!!!user_details)
+
+# use `tryCatch()` in case an error occurs while performing the request:
+tryCatch(
+  expr = req |>
+    req_perform() |>
+    resp_body_json(),
+  error = \(e) {
+    print("An error occurred!")
+    error <- last_response() |> resp_body_json()
+    print(error)
+  }
+)
+```
+
+If that's successful, you get back a list containing a named list of 4 items:
+- `_id`
+- `name`
+- `email`
+- `token`: A JWT token
+
+Here is an example:
+
+```
+[[1]]
+[[1]]$`_id`
+[1] "669c6ee4ddfa7be6a10f07e1"
+
+[[1]]$name
+[1] "mwavu"
+
+[[1]]$email
+[1] "mwavu@mail.com"
+
+[[1]]$token
+[1] "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQyMDY0MzcsImlhdCI6MTcyMTUyODAzNywidXNlcl9pZCI6IjY2OWM2ZWU0ZGRmYTdiZTZhMTBmMDdlMSJ9.ebhkSXwJChW4iqLDRRoLOGrX3hb7NevRW4vZncjm5MY"
+```
+
+### Login
+
+To login a user, we make a POST request to `/api/users/login`:
+
+```r
+base_url <- "http://127.0.0.1:5000"
+
+# login details:
+user_details <- list(
+  email = "mwavu@mail.com",
+  password = "test123"
+)
+
+req <- request(base_url = base_url) |>
+  req_url_path("/api/users/login") |>
+  req_body_multipart(!!!user_details)
+
+# use `tryCatch()` in case an error occurs while performing the request:
+tryCatch(
+  expr = req |>
+    req_perform() |>
+    resp_body_json(),
+  error = \(e) {
+    print("An error occurred!")
+    error <- last_response() |> resp_body_json()
+    print(error)
+  }
+)
+```
+
+Again, on successful login, you get back a list containing a named list of 4 items:
+
+- `_id`
+- `name`
+- `email`
+- `token`: A JWT token
+
+```
+[[1]]
+[[1]]$`_id`
+[1] "669c6ee4ddfa7be6a10f07e1"
+
+[[1]]$name
+[1] "mwavu"
+
+[[1]]$email
+[1] "mwavu@mail.com"
+
+[[1]]$token
+[1] "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQyMDY5NDcsImlhdCI6MTcyMTUyODU0NywidXNlcl9pZCI6IjY2OWM2ZWU0ZGRmYTdiZTZhMTBmMDdlMSJ9.rpSOL0LynYm2BBP60Ikpz-GNIY6mR_ZKKzH9Tai2IS4"
+```
+
+### Details
+
+To get details of a specific user, you need the JWT token returned during
+register or login. The token is verified by the auth middleware.
+
+Make a GET request to `/api/users/me` and include the JWT as an auth bearer token:
+
+```r
+base_url <- "http://127.0.0.1:5000"
+
+# the JWT token from signup/login:
+token <- "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQyMDY5NDcsImlhdCI6MTcyMTUyODU0NywidXNlcl9pZCI6IjY2OWM2ZWU0ZGRmYTdiZTZhMTBmMDdlMSJ9.rpSOL0LynYm2BBP60Ikpz-GNIY6mR_ZKKzH9Tai2IS4"
+
+req <- request(base_url = base_url) |>
+  req_url_path("/api/users/me") |>
+  req_auth_bearer_token(token = token)
+
+# use `tryCatch()` in case an error occurs while performing the request:
+tryCatch(
+  expr = req |>
+    req_perform() |>
+    resp_body_json(),
+  error = \(e) {
+    print("An error occurred!")
+    error <- last_response() |> resp_body_json()
+    print(error)
+  }
+)
+```
+
+If successful, that returns a named list of 3:
+
+- `_id`
+- `name`
+- `email`
+
+:::
+
+## `/api/goals*`
+
+Every route in `/api/goals*` is protected, meaning they can only be accessed
+by an authenticated user. Also, each user only has access to the goals they set,
+not anyone elses.
+
+In other words, send the JWT as an auth bearer token in your requests.
+
+:::{.panel-tabset}
+
+### Create
+
+Let's set a goal by sending a POST request to `/api/goals`:
+
+```r
+base_url <- "http://127.0.0.1:5000"
+
+# the JWT token from signup/login:
+token <- "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQyMDY5NDcsImlhdCI6MTcyMTUyODU0NywidXNlcl9pZCI6IjY2OWM2ZWU0ZGRmYTdiZTZhMTBmMDdlMSJ9.rpSOL0LynYm2BBP60Ikpz-GNIY6mR_ZKKzH9Tai2IS4"
+
+# your goal:
+text <- "Learn Rust"
+
+req <- request(base_url = base_url) |>
+  req_url_path("/api/goals") |>
+  req_auth_bearer_token(token = token) |>
+  req_body_multipart(text = text)
+
+# use `tryCatch()` in case an error occurs while performing the request:
+tryCatch(
+  expr = req |>
+    req_perform() |>
+    resp_body_json(),
+  error = \(e) {
+    print("An error occurred!")
+    error <- last_response() |> resp_body_json()
+    print(error)
+  }
+)
+```
+
+If successful, that should return a list containing a named list of 3:
+
+- `_id`
+- `user_id`
+- `text`
+
+For example:
+
+```
+[[1]]
+[[1]]$`_id`
+[1] "669c74e6ddfa7be6a10f07e2"
+
+[[1]]$user_id
+[1] "669c6ee4ddfa7be6a10f07e1"
+
+[[1]]$text
+[1] "Learn Rust"
+```
+
+### Read
+
+To get all goals a user has set, send a GET request to `/api/goals`:
+
+```r
+base_url <- "http://127.0.0.1:5000"
+
+# the JWT token from signup/login:
+token <- "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQyMDY5NDcsImlhdCI6MTcyMTUyODU0NywidXNlcl9pZCI6IjY2OWM2ZWU0ZGRmYTdiZTZhMTBmMDdlMSJ9.rpSOL0LynYm2BBP60Ikpz-GNIY6mR_ZKKzH9Tai2IS4"
+
+req <- request(base_url = base_url) |>
+  req_url_path("/api/goals") |>
+  req_auth_bearer_token(token = token)
+
+# use `tryCatch()` in case an error occurs while performing the request:
+res <- tryCatch(
+  expr = req |>
+    req_perform() |>
+    resp_body_json(),
+  error = \(e) {
+    print("An error occurred!")
+    error <- last_response() |> resp_body_json()
+    print(error)
+  }
+)
+```
+
+If successful, that should return a list of named lists. Each of the nested 
+lists has 2 items:
+
+- `_id`: Id of the goal
+- `text`: The goal
+
+For example:
+
+```r
+str(res)
+# List of 1
+#  $ :List of 2
+#   ..$ _id : chr "669c74e6ddfa7be6a10f07e2"
+#   ..$ text: chr "Learn Rust"
+```
+
+### Update
+
+To update a goal, send a PUT request to `/api/users/:id`:
+
+```r
+base_url <- "http://127.0.0.1:5000"
+
+# the JWT token from signup/login:
+token <- "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQyMDY5NDcsImlhdCI6MTcyMTUyODU0NywidXNlcl9pZCI6IjY2OWM2ZWU0ZGRmYTdiZTZhMTBmMDdlMSJ9.rpSOL0LynYm2BBP60Ikpz-GNIY6mR_ZKKzH9Tai2IS4"
+
+updated_goal <- "Learn Rust & Postgres"
+
+req <- request(base_url = base_url) |>
+  req_url_path("/api/goals/669c74e6ddfa7be6a10f07e2") |>
+  req_auth_bearer_token(token = token) |>
+  req_method(method = "PUT") |>
+  req_body_multipart(text = updated_goal)
+
+# use `tryCatch()` in case an error occurs while performing the request:
+res <- tryCatch(
+  expr = req |>
+    req_perform() |>
+    resp_body_json(),
+  error = \(e) {
+    print("An error occurred!")
+    error <- last_response() |> resp_body_json()
+    print(error)
+  }
+)
+```
+
+If successful, you should get back a named list of 2:
+
+```r
+str(res)
+# List of 2
+#  $ msg : chr "Goal updated successfully"
+#  $ goal:List of 1
+#   ..$ :List of 2
+#   .. ..$ _id : chr "669c74e6ddfa7be6a10f07e2"
+#   .. ..$ text: chr "Learn Rust & Postgres"
+```
+
+### Delete
+
+To delete a goal, send a, well, DELETE request to `/api/goals/:id`:
+
+```r
+base_url <- "http://127.0.0.1:5000"
+
+# the JWT token from signup/login:
+token <- "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQyMDY5NDcsImlhdCI6MTcyMTUyODU0NywidXNlcl9pZCI6IjY2OWM2ZWU0ZGRmYTdiZTZhMTBmMDdlMSJ9.rpSOL0LynYm2BBP60Ikpz-GNIY6mR_ZKKzH9Tai2IS4"
+
+req <- request(base_url = base_url) |>
+  req_url_path("/api/goals/669c74e6ddfa7be6a10f07e2") |>
+  req_auth_bearer_token(token = token) |>
+  req_method(method = "DELETE")
+
+# use `tryCatch()` in case an error occurs while performing the request:
+res <- tryCatch(
+  expr = req |>
+    req_perform() |>
+    resp_body_json(),
+  error = \(e) {
+    print("An error occurred!")
+    error <- last_response() |> resp_body_json()
+    print(error)
+  }
+)
+```
+
+If successful, you will again get back a named list of 2:
+
+```r
+str(res)
+# List of 2
+#  $ msg : chr "Goal deleted successfully"
+#  $ goal:List of 1
+#   ..$ :List of 2
+#   .. ..$ _id : chr "669c74e6ddfa7be6a10f07e2"
+#   .. ..$ text: chr "Learn Rust & Postgres"
+```
+
+:::
+
+# Live reloading
 
 See how you can enable ✨[live reloading](../10_live_reloading/index.qmd)✨.

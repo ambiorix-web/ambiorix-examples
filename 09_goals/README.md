@@ -18,10 +18,10 @@ Here's what's covered:
 
 ## Run API
 
-1. `cd` into the `09_goals/backend/` dir:
+1. `cd` into the `09_goals/` dir:
 
     ```bash
-    cd 09_goals/backend/
+    cd 09_goals/
     ```
 
 1. Fire up R and restore package dependencies:
