@@ -67,3 +67,9 @@ You can find documentation on each of the examples at [mwavu.com/ambiorix-exampl
 The documentation includes:
 - how to run each example
 - code and concept explanations where necessary
+
+## Note
+
+In some of the examples I've committed the `.Renviron` files. I did this just to make it easier for you to run the examples.
+
+However, you should **NEVER** commit a file that has any type of credentials (`.Renviron` in this case). Such files should always be included in your `.gitignore` so that git doesn't track them.
