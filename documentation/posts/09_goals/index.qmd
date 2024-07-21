@@ -235,6 +235,93 @@ If successful, that returns a named list of 3:
 - `name`
 - `email`
 
+### Update
+
+To update user details (name, email, password), send a PUT request to `/api/users/me` with the new details in the body of the request:
+
+```r
+base_url <- "http://127.0.0.1:5000"
+
+# the JWT token from signup/login:
+token <- "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQyNjE1MDUsImlhdCI6MTcyMTU4MzEwNSwidXNlcl9pZCI6IjY2OWQ0NjAxYzdhZjI5MmMxNjA4YzIzMSJ9.C9ooaUJz-eZWJ69SSpbjGQXc1Mprd9hLm58vt3z6Ons"
+
+# you can update the name, email or password:
+new_details <- list(
+  name = "mwavukennedy",
+  password = "test1234"
+)
+
+req <- request(base_url = base_url) |>
+  req_url_path("/api/users/me") |>
+  req_auth_bearer_token(token = token) |>
+  req_method(method = "PUT") |>
+  req_body_multipart(!!!new_details)
+
+# use `tryCatch()` in case an error occurs while performing the request:
+res <- tryCatch(
+  expr = req |>
+    req_perform() |>
+    resp_body_json(),
+  error = \(e) {
+    print("An error occurred!")
+    error <- last_response() |> resp_body_json()
+    print(error)
+  }
+)
+```
+
+If successful, you should get back details of the updated user:
+
+```r
+str(res)
+
+# List of 2
+#  $ msg : chr "Updated successfully!"
+#  $ user:List of 1
+#   ..$ :List of 3
+#   .. ..$ _id  : chr "669d4601c7af292c1608c231"
+#   .. ..$ name : chr "mwavukennedy"
+#   .. ..$ email: chr "mwavu@mail.com"
+```
+
+If you change the email/password and try logging in using the old credentials, note that the login attempt will fail.
+
+### Delete
+
+To delete a user account, send a DELETE request to `/api/users/me`:
+
+```r
+base_url <- "http://127.0.0.1:5000"
+
+# the JWT token from signup/login:
+token <- "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQyNjE1MDUsImlhdCI6MTcyMTU4MzEwNSwidXNlcl9pZCI6IjY2OWQ0NjAxYzdhZjI5MmMxNjA4YzIzMSJ9.C9ooaUJz-eZWJ69SSpbjGQXc1Mprd9hLm58vt3z6Ons"
+
+req <- request(base_url = base_url) |>
+  req_url_path("/api/users/me") |>
+  req_auth_bearer_token(token = token) |>
+  req_method(method = "DELETE")
+
+# use `tryCatch()` in case an error occurs while performing the request:
+res <- tryCatch(
+  expr = req |>
+    req_perform() |>
+    resp_body_json(),
+  error = \(e) {
+    print("An error occurred!")
+    error <- last_response() |> resp_body_json()
+    print(error)
+  }
+)
+```
+
+If successful, you get back a 200 and a message:
+
+```r
+str(res)
+# List of 1
+#  $ msg: chr "Account deleted"
+```
+
 :::
 
 ## `/api/goals*`
