@@ -156,6 +156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#what-exciting-features-can-i-look-forward-to" id="toc-what-exciting-features-can-i-look-forward-to" class="nav-link" data-scroll-target="#what-exciting-features-can-i-look-forward-to">What exciting features can I look forward to?</a></li>
   <li><a href="#what-should-i-know-first" id="toc-what-should-i-know-first" class="nav-link" data-scroll-target="#what-should-i-know-first">What should I know first?</a></li>
   <li><a href="#package-dependencies-used-in-examples" id="toc-package-dependencies-used-in-examples" class="nav-link" data-scroll-target="#package-dependencies-used-in-examples">Package dependencies used in examples</a></li>
+  <li><a href="#note" id="toc-note" class="nav-link" data-scroll-target="#note">Note</a></li>
   </ul>
 </nav>
     </div>
@@ -222,6 +223,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Fire up R and restore the dependencies:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
+</section>
+<section id="note" class="level2">
+<h2 data-anchor-id="note">Note</h2>
+<p>In some of the examples I’ve committed the <code>.Renviron</code> files. I did this just to make it easier for you to run the examples.</p>
+<p>However, you should <strong>NEVER</strong> commit a file that has any type of credentials (<code>.Renviron</code> in this case). Such files should always be included in your <code>.gitignore</code> so that git doesn’t track them.</p>
 
 
 </section>

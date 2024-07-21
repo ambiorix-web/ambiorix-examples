@@ -79,3 +79,8 @@ To install the dependencies for a specific example eg. `05_router`:
     renv::restore()
     ```
 
+## Note
+
+In some of the examples I've committed the `.Renviron` files. I did this just to make it easier for you to run the examples.
+
+However, you should **NEVER** commit a file that has any type of credentials (`.Renviron` in this case). Such files should always be included in your `.gitignore` so that git doesn't track them.

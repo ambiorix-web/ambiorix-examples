@@ -238,6 +238,13 @@
     "text": "Package dependencies used in examples\nEach example has been bootstrapped using {renv} to ease reproducibility.\nTo install the dependencies for a specific example eg. 05_router:\n\nSwitch to its directory\ncd 05_router\nAdd this to the .Renviron file:\nRENV_CONFIG_SANDBOX_ENABLED = FALSE\nFire up R and restore the dependencies:\nrenv::restore()"
   },
   {
+    "objectID": "about.html#note",
+    "href": "about.html#note",
+    "title": "About",
+    "section": "Note",
+    "text": "Note\nIn some of the examples I’ve committed the .Renviron files. I did this just to make it easier for you to run the examples.\nHowever, you should NEVER commit a file that has any type of credentials (.Renviron in this case). Such files should always be included in your .gitignore so that git doesn’t track them."
+  },
+  {
     "objectID": "posts/03_basic_routing/index.html",
     "href": "posts/03_basic_routing/index.html",
     "title": "03: basic routing",
