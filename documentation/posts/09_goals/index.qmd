@@ -51,6 +51,8 @@ Here are the defined routes:
       - POST `/`: Register new user
       - POST `/login`: Login user
       - GET `/me`: Get user data
+      - PUT `/me`: Update user details
+      - DELETE `/me`: Delete user account
     - `/goals`:
         - GET `/`: Get all user goals
         - POST `/`: Create a goal
@@ -111,7 +113,7 @@ req <- request(base_url = base_url) |>
   req_body_multipart(!!!user_details)
 
 # use `tryCatch()` in case an error occurs while performing the request:
-tryCatch(
+res <- tryCatch(
   expr = req |>
     req_perform() |>
     resp_body_json(),
@@ -132,19 +134,14 @@ If that's successful, you get back a list containing a named list of 4 items:
 
 Here is an example:
 
-```
-[[1]]
-[[1]]$`_id`
-[1] "669c6ee4ddfa7be6a10f07e1"
-
-[[1]]$name
-[1] "mwavu"
-
-[[1]]$email
-[1] "mwavu@mail.com"
-
-[[1]]$token
-[1] "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQyMDY0MzcsImlhdCI6MTcyMTUyODAzNywidXNlcl9pZCI6IjY2OWM2ZWU0ZGRmYTdiZTZhMTBmMDdlMSJ9.ebhkSXwJChW4iqLDRRoLOGrX3hb7NevRW4vZncjm5MY"
+```r
+str(res)
+# List of 1
+#  $ :List of 4
+#   ..$ _id  : chr "669d4ccfd20e4cd0080779c1"
+#   ..$ name : chr "mwavu"
+#   ..$ email: chr "mwavu@mail.com"
+#   ..$ token: chr "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQyNjMyNDgsImlhdCI6MTcyMTU4NDg0OCwidXNlcl9pZCI6IjY2OWQ0Y2NmZD"| __truncated__
 ```
 
 ### Login
@@ -165,7 +162,7 @@ req <- request(base_url = base_url) |>
   req_body_multipart(!!!user_details)
 
 # use `tryCatch()` in case an error occurs while performing the request:
-tryCatch(
+res <- tryCatch(
   expr = req |>
     req_perform() |>
     resp_body_json(),
@@ -184,19 +181,14 @@ Again, on successful login, you get back a list containing a named list of 4 ite
 - `email`
 - `token`: A JWT token
 
-```
-[[1]]
-[[1]]$`_id`
-[1] "669c6ee4ddfa7be6a10f07e1"
-
-[[1]]$name
-[1] "mwavu"
-
-[[1]]$email
-[1] "mwavu@mail.com"
-
-[[1]]$token
-[1] "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQyMDY5NDcsImlhdCI6MTcyMTUyODU0NywidXNlcl9pZCI6IjY2OWM2ZWU0ZGRmYTdiZTZhMTBmMDdlMSJ9.rpSOL0LynYm2BBP60Ikpz-GNIY6mR_ZKKzH9Tai2IS4"
+```r
+str(res)
+# List of 1
+#  $ :List of 4
+#   ..$ _id  : chr "669d4ccfd20e4cd0080779c1"
+#   ..$ name : chr "mwavu"
+#   ..$ email: chr "mwavu@mail.com"
+#   ..$ token: chr "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQyNjMzNjksImlhdCI6MTcyMTU4NDk2OSwidXNlcl9pZCI6IjY2OWQ0Y2NmZD"| __truncated__
 ```
 
 ### Details
@@ -217,7 +209,7 @@ req <- request(base_url = base_url) |>
   req_auth_bearer_token(token = token)
 
 # use `tryCatch()` in case an error occurs while performing the request:
-tryCatch(
+res <- tryCatch(
   expr = req |>
     req_perform() |>
     resp_body_json(),
@@ -229,11 +221,23 @@ tryCatch(
 )
 ```
 
-If successful, that returns a named list of 3:
+If successful, that returns list containing a named list of 3:
 
 - `_id`
 - `name`
 - `email`
+
+For example:
+
+```r
+str(res)
+# List of 1
+#  $ :List of 3
+#   ..$ _id  : chr "669d4ccfd20e4cd0080779c1"
+#   ..$ name : chr "mwavu"
+#   ..$ email: chr "mwavu@mail.com"
+```
+
 
 ### Update
 
@@ -353,7 +357,7 @@ req <- request(base_url = base_url) |>
   req_body_multipart(text = text)
 
 # use `tryCatch()` in case an error occurs while performing the request:
-tryCatch(
+res <- tryCatch(
   expr = req |>
     req_perform() |>
     resp_body_json(),
@@ -373,16 +377,13 @@ If successful, that should return a list containing a named list of 3:
 
 For example:
 
-```
-[[1]]
-[[1]]$`_id`
-[1] "669c74e6ddfa7be6a10f07e2"
-
-[[1]]$user_id
-[1] "669c6ee4ddfa7be6a10f07e1"
-
-[[1]]$text
-[1] "Learn Rust"
+```r
+str(res)
+# List of 1
+#  $ :List of 3
+#   ..$ _id    : chr "669d4e89d20e4cd0080779c2"
+#   ..$ user_id: chr "669d4ccfd20e4cd0080779c1"
+#   ..$ text   : chr "Learn Rust"
 ```
 
 ### Read
