@@ -234,15 +234,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><code>/api</code>:
 <ul>
-<li>GET <code>/goals</code>: Get all user goals</li>
-<li>POST <code>/goals</code>: Create a goal</li>
-<li>PUT <code>/goals/:id</code>: Update a goal</li>
-<li>DELETE <code>/goals/:id</code>: Delete a goal</li>
 <li><code>/users</code>:
 <ul>
 <li>POST <code>/</code>: Register new user</li>
 <li>POST <code>/login</code>: Login user</li>
 <li>GET <code>/me</code>: Get user data</li>
+</ul></li>
+<li><code>/goals</code>:
+<ul>
+<li>GET <code>/</code>: Get all user goals</li>
+<li>POST <code>/</code>: Create a goal</li>
+<li>PUT <code>/:id</code>: Update a goal</li>
+<li>DELETE <code>/:id</code>: Delete a goal</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -252,7 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Ambiorix + MongoDB</li>
 <li>Working with middleware:
 <ul>
-<li>Auth middleware: You will learn how you can use JSON Web Tokens (<a href="https://jwt.io/">JWT</a>) to protect routes</li>
+<li>Auth middleware: You will learn how you can use JSON Web Tokens (<a href="https:/jwt.io/">JWT</a>) to protect routes</li>
 <li>Error handling middleware</li>
 </ul></li>
 </ul>
@@ -304,7 +307,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(error)</span>
 <span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If that’s successful, you get back a list containing a named list of 4 items: - <code>_id</code> - <code>name</code> - <code>email</code> - <code>token</code>: A JWT token</p>
+<p>If that’s successful, you get back a list containing a named list of 4 items:</p>
+<ul>
+<li><code>_id</code></li>
+<li><code>name</code></li>
+<li><code>email</code></li>
+<li><code>token</code>: A JWT token</li>
+</ul>
 <p>Here is an example:</p>
 <pre><code>[[1]]
 [[1]]$`_id`

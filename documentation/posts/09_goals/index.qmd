@@ -47,14 +47,15 @@ In this example, we build a CRUD application backend: **Goals**.
 Here are the defined routes:
 
 - `/api`:
-    - GET `/goals`: Get all user goals
-    - POST `/goals`: Create a goal
-    - PUT `/goals/:id`: Update a goal
-    - DELETE `/goals/:id`: Delete a goal
     - `/users`:
       - POST `/`: Register new user
       - POST `/login`: Login user
       - GET `/me`: Get user data
+    - `/goals`:
+        - GET `/`: Get all user goals
+        - POST `/`: Create a goal
+        - PUT `/:id`: Update a goal
+        - DELETE `/:id`: Delete a goal
 
 You will be able to **C**reate, **R**ead, **U**pdate & **D**elete Goals.
 
@@ -62,7 +63,7 @@ Here's what's covered:
 
 - Ambiorix + MongoDB
 - Working with middleware:
-  - Auth middleware: You will learn how you can use JSON Web Tokens ([JWT](https://jwt.io/)) to protect routes
+  - Auth middleware: You will learn how you can use JSON Web Tokens ([JWT](https:/jwt.io/)) to protect routes
   - Error handling middleware
 
 # Requests to the API
@@ -123,6 +124,7 @@ tryCatch(
 ```
 
 If that's successful, you get back a list containing a named list of 4 items:
+
 - `_id`
 - `name`
 - `email`
