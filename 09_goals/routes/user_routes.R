@@ -3,7 +3,8 @@ box::use(
   .. / controllers / user_controller[
     register_user,
     login_user,
-    get_me
+    update_me,
+    get_me,
   ],
   .. / middleware / auth_middleware[protect]
 )
@@ -16,4 +17,5 @@ router <- Router$
   use(protect)$
   post("/", register_user)$
   post("/login", login_user)$
+  put("/me", update_me)$
   get("/me", get_me)

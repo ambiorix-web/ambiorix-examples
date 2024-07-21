@@ -3,7 +3,7 @@ box::use(
   sodium[password_store, password_verify],
   lubridate[now],
   .. / config / db[users_conn],
-  .. / helpers / truthiness[is_falsy],
+  .. / helpers / truthiness[is_falsy, is_truthy],
   .. / helpers / mongo_query[mongo_query],
   .. / helpers / generate_token[generate_token]
 )
@@ -131,11 +131,74 @@ login_user <- \(req, res) {
 get_me <- \(req, res) {
   # we already captured the logged in user in the `protect()` middleware
   me <- req$user
-  if (is.null(me) || nrow(me) != 1L) {
+  if (is_falsy(me) || nrow(me) != 1L) {
     msg <- list(msg = "Not authorized")
     return(
       res$set_status(401L)$json(msg)
     )
   }
+  print(me$`_id`)
   res$json(me)
+}
+
+#' Update user data
+#'
+#' PUT at `/api/users/me`. Private access.
+#' @export
+update_me <- \(req, res) {
+  me <- req$user
+  if (is_falsy(me) || nrow(me) != 1L) {
+    msg <- list(msg = "Not authorized")
+    return(
+      res$set_status(401L)$json(msg)
+    )
+  }
+
+  body <- parse_multipart(req)
+  password <- body$password
+  new_details <- list(
+    name = body$name,
+    email = body$email,
+    password = if (is_truthy(password)) {
+      password_store(password)
+    }
+  ) |>
+    Filter(f = Negate(is.null))
+
+  # in there are no new details, just return a 200:
+  if (length(new_details) == 0L) {
+    response <- list(
+      msg = "No updates made. Retaining user details."
+    )
+    return(
+      res$json(response)
+    )
+  }
+
+  # create the query & update statements:
+  query <- mongo_query(
+    `_id` = list(
+      `$oid` = me$`_id`
+    )
+  )
+  update <- mongo_query(
+    `$set` = new_details
+  )
+
+  # update:
+  users_conn$update(query = query, update = update)
+
+  # get the updated user:
+  fields <- mongo_query(`_id` = TRUE, name = TRUE, email = TRUE)
+  new_me <- users_conn$find(
+    query = query,
+    fields = fields
+  )
+
+  response <- list(
+    msg = "Updated successfully!",
+    user = new_me
+  )
+
+  res$json(response)
 }
