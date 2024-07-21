@@ -202,3 +202,28 @@ update_me <- \(req, res) {
 
   res$json(response)
 }
+
+#' Delete user account
+#'
+#' DELETE at `/api/users/me`. Private access.
+#' @export
+delete_me <- \(req, res) {
+  me <- req$user
+  if (is_falsy(me) || nrow(me) != 1L) {
+    msg <- list(msg = "Not authorized")
+    return(
+      res$set_status(401L)$json(msg)
+    )
+  }
+
+  query <- mongo_query(
+    `_id` = list(
+      `$oid` = me$`_id`
+    )
+  )
+  users_conn$remove(query = query)
+
+  response <- list(msg = "Account deleted")
+
+  res$json(response)
+}
