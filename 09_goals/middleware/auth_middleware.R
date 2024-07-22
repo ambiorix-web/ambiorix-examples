@@ -37,10 +37,14 @@ protect <- \(req, res) {
   is_valid <- !is.null(auth_headers) &&
     startsWith(x = auth_headers, prefix = "Bearer")
 
+  response_401 <- list(
+    code = 401L,
+    msg = "Not authorized"
+  )
+
   if (!is_valid) {
-    msg <- list(msg = "Not authorized, no token")
     return(
-      res$set_status(401L)$json(msg)
+      res$set_status(401L)$json(response_401)
     )
   }
 
@@ -64,8 +68,7 @@ protect <- \(req, res) {
     },
     error = \(e) {
       print(e)
-      msg <- list(msg = "Not authorized")
-      res$set_status(401L)$json(msg)
+      res$set_status(401L)$json(response_401)
     }
   )
 }

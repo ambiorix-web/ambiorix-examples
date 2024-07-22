@@ -20,7 +20,10 @@ register_user <- \(req, res) {
   password <- body$password
 
   if (is_falsy(name) || is_falsy(email) || is_falsy(password)) {
-    response <- list(msg = "Please add all fields")
+    response <- list(
+      code = 400L,
+      msg = "Please add all fields"
+    )
     return(
       res$set_status(400L)$json(response)
     )
@@ -32,9 +35,12 @@ register_user <- \(req, res) {
   )
   user_exists <- nrow(found) == 1L
   if (user_exists) {
-    response <- list(msg = "User already exists")
+    response <- list(
+      code = 409L,
+      msg = "User already exists!"
+    )
     return(
-      res$set_status(400L)$json(response)
+      res$set_status(409L)$json(response)
     )
   }
 
@@ -60,17 +66,26 @@ register_user <- \(req, res) {
   )
   user_exists <- nrow(found) == 1L
   if (!user_exists) {
-    # if user was not created, return a 400 status:
-    response <- list(msg = "Invalid user data")
+    # if user was not created, return a 500 status:
+    response <- list(
+      code = 500L,
+      msg = "Invalid user data"
+    )
     return(
-      res$set_status(400L)$json(response)
+      res$set_status(500L)$json(response)
     )
   }
 
   # add jwt:
   found$token <- generate_token(user_id = found$`_id`)
 
-  res$set_status(201L)$json(found)
+  response <- list(
+    code = 201L,
+    msg = "Success.",
+    user = as.list(found)
+  )
+
+  res$set_status(201L)$json(response)
 }
 
 #' Authenticate user
@@ -82,10 +97,14 @@ login_user <- \(req, res) {
   email <- body$email
   password <- body$password
 
+  invalid_creds_response <- list(
+    code = 401L,
+    msg = "Invalid credentials"
+  )
+
   if (is_falsy(email) || is_falsy(password)) {
-    response <- list(msg = "Invalid credentials")
     return(
-      res$set_status(400L)$json(response)
+      res$set_status(401L)$json(invalid_creds_response)
     )
   }
 
@@ -102,17 +121,15 @@ login_user <- \(req, res) {
 
   user_exists <- nrow(found) == 1L
   if (!user_exists) {
-    response <- list(msg = "Invalid credentials")
     return(
-      res$set_status(400L)$json(response)
+      res$set_status(401L)$json(invalid_creds_response)
     )
   }
 
   password_okay <- password_verify(hash = found$password, password = password)
   if (!password_okay) {
-    response <- list(msg = "Invalid credentials")
     return(
-      res$set_status(400L)$json(response)
+      res$set_status(401L)$json(invalid_creds_response)
     )
   }
 
@@ -121,7 +138,13 @@ login_user <- \(req, res) {
   # add jwt token:
   found$token <- generate_token(user_id = found$`_id`)
 
-  res$json(found)
+  response <- list(
+    code = 200L,
+    msg = "Success.",
+    user = as.list(found)
+  )
+
+  res$json(response)
 }
 
 #' Get user data
@@ -132,13 +155,21 @@ get_me <- \(req, res) {
   # we already captured the logged in user in the `protect()` middleware
   me <- req$user
   if (is_falsy(me) || nrow(me) != 1L) {
-    msg <- list(msg = "Not authorized")
+    msg <- list(
+      code = 401L,
+      msg = "Not authorized"
+    )
     return(
       res$set_status(401L)$json(msg)
     )
   }
-  print(me$`_id`)
-  res$json(me)
+
+  response <- list(
+    code = 200L,
+    msg = "Success.",
+    user = as.list(me)
+  )
+  res$json(response)
 }
 
 #' Update user data
@@ -148,7 +179,10 @@ get_me <- \(req, res) {
 update_me <- \(req, res) {
   me <- req$user
   if (is_falsy(me) || nrow(me) != 1L) {
-    msg <- list(msg = "Not authorized")
+    msg <- list(
+      code = 401L,
+      msg = "Not authorized"
+    )
     return(
       res$set_status(401L)$json(msg)
     )
@@ -165,9 +199,10 @@ update_me <- \(req, res) {
   ) |>
     Filter(f = Negate(is.null))
 
-  # in there are no new details, just return a 200:
+  # if there are no new details, just return a 200:
   if (length(new_details) == 0L) {
     response <- list(
+      code = 200L,
       msg = "No updates made. Retaining user details."
     )
     return(
@@ -196,6 +231,7 @@ update_me <- \(req, res) {
   )
 
   response <- list(
+    code = 200L,
     msg = "Updated successfully!",
     user = new_me
   )
@@ -210,7 +246,10 @@ update_me <- \(req, res) {
 delete_me <- \(req, res) {
   me <- req$user
   if (is_falsy(me) || nrow(me) != 1L) {
-    msg <- list(msg = "Not authorized")
+    msg <- list(
+      code = 401L,
+      msg = "Not authorized"
+    )
     return(
       res$set_status(401L)$json(msg)
     )
@@ -223,7 +262,10 @@ delete_me <- \(req, res) {
   )
   users_conn$remove(query = query)
 
-  response <- list(msg = "Account deleted")
+  response <- list(
+    code = 200L,
+    msg = "Account deleted"
+  )
 
   res$json(response)
 }
