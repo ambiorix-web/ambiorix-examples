@@ -22,7 +22,7 @@ register_user <- \(req, res) {
   if (is_falsy(name) || is_falsy(email) || is_falsy(password)) {
     response <- list(
       code = 400L,
-      msg = "Please add all fields"
+      msg = "Please add all fields: 'name', 'email', and 'password'."
     )
     return(
       res$set_status(400L)$json(response)

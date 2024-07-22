@@ -125,23 +125,28 @@ res <- tryCatch(
 )
 ```
 
-If that's successful, you get back a list containing a named list of 4 items:
+If that's successful, you get back a named list of 3:
 
-- `_id`
-- `name`
-- `email`
-- `token`: A JWT token
+- `code`
+- `msg`
+- `user`:
+    - `_id`: User id
+    - `name`
+    - `email`
+    - `token`: A JWT token
 
 Here is an example:
 
 ```r
 str(res)
-# List of 1
-#  $ :List of 4
-#   ..$ _id  : chr "669d4ccfd20e4cd0080779c1"
+# List of 3
+#  $ code: int 201
+#  $ msg : chr "Success."
+#  $ user:List of 4
+#   ..$ _id  : chr "669ecec3f555b0571b09a3e1"
 #   ..$ name : chr "mwavu"
 #   ..$ email: chr "mwavu@mail.com"
-#   ..$ token: chr "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQyNjMyNDgsImlhdCI6MTcyMTU4NDg0OCwidXNlcl9pZCI6IjY2OWQ0Y2NmZD"| __truncated__
+#   ..$ token: chr "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQzNjIwNTIsImlhdCI6MTcyMTY4MzY1MiwidXNlcl9pZCI6IjY2OWVjZWMzZj"| __truncated__
 ```
 
 ### Login
@@ -174,21 +179,26 @@ res <- tryCatch(
 )
 ```
 
-Again, on successful login, you get back a list containing a named list of 4 items:
+Again, on successful login, you get back a named list of 3:
 
-- `_id`
-- `name`
-- `email`
-- `token`: A JWT token
+- `code`
+- `msg`
+- `user`:
+    - `_id`
+    - `name`
+    - `email`
+    - `token`: A JWT token
 
 ```r
 str(res)
-# List of 1
-#  $ :List of 4
-#   ..$ _id  : chr "669d4ccfd20e4cd0080779c1"
+# List of 3
+#  $ code: int 200
+#  $ msg : chr "Success."
+#  $ user:List of 4
+#   ..$ _id  : chr "669ecec3f555b0571b09a3e1"
 #   ..$ name : chr "mwavu"
 #   ..$ email: chr "mwavu@mail.com"
-#   ..$ token: chr "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQyNjMzNjksImlhdCI6MTcyMTU4NDk2OSwidXNlcl9pZCI6IjY2OWQ0Y2NmZD"| __truncated__
+#   ..$ token: chr "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQzNjIzMjksImlhdCI6MTcyMTY4MzkyOSwidXNlcl9pZCI6IjY2OWVjZWMzZj"| __truncated__
 ```
 
 ### Details
@@ -202,7 +212,7 @@ Make a GET request to `/api/users/me` and include the JWT as an auth bearer toke
 base_url <- "http://127.0.0.1:5000"
 
 # the JWT token from signup/login:
-token <- "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQyMDY5NDcsImlhdCI6MTcyMTUyODU0NywidXNlcl9pZCI6IjY2OWM2ZWU0ZGRmYTdiZTZhMTBmMDdlMSJ9.rpSOL0LynYm2BBP60Ikpz-GNIY6mR_ZKKzH9Tai2IS4"
+token <- "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQzNjIzMjksImlhdCI6MTcyMTY4MzkyOSwidXNlcl9pZCI6IjY2OWVjZWMzZjU1NWIwNTcxYjA5YTNlMSJ9.pzuhMl49qoXRKrUyLvTNHNRkO9bxMgSZd8dEeJR-adM"
 
 req <- request(base_url = base_url) |>
   req_url_path("/api/users/me") |>
@@ -223,17 +233,22 @@ res <- tryCatch(
 
 If successful, that returns list containing a named list of 3:
 
-- `_id`
-- `name`
-- `email`
+- `code`
+- `msg`
+- `user`:
+    - `_id`
+    - `name`
+    - `email`
 
 For example:
 
 ```r
 str(res)
-# List of 1
-#  $ :List of 3
-#   ..$ _id  : chr "669d4ccfd20e4cd0080779c1"
+# List of 3
+#  $ code: int 200
+#  $ msg : chr "Success."
+#  $ user:List of 3
+#   ..$ _id  : chr "669ecec3f555b0571b09a3e1"
 #   ..$ name : chr "mwavu"
 #   ..$ email: chr "mwavu@mail.com"
 ```
@@ -278,12 +293,12 @@ If successful, you should get back details of the updated user:
 
 ```r
 str(res)
-
-# List of 2
+# List of 3
+#  $ code: int 200
 #  $ msg : chr "Updated successfully!"
 #  $ user:List of 1
 #   ..$ :List of 3
-#   .. ..$ _id  : chr "669d4601c7af292c1608c231"
+#   .. ..$ _id  : chr "669ecec3f555b0571b09a3e1"
 #   .. ..$ name : chr "mwavukennedy"
 #   .. ..$ email: chr "mwavu@mail.com"
 ```
@@ -322,8 +337,9 @@ If successful, you get back a 200 and a message:
 
 ```r
 str(res)
-# List of 1
-#  $ msg: chr "Account deleted"
+# List of 2
+#  $ code: int 200
+#  $ msg : chr "Account deleted"
 ```
 
 :::
@@ -369,20 +385,25 @@ res <- tryCatch(
 )
 ```
 
-If successful, that should return a list containing a named list of 3:
+If successful, that should return a list of 3:
 
-- `_id`
-- `user_id`
-- `text`
+- `code`
+- `msg`
+- `goal`:
+    - `_id`: goal id
+    - `user_id`: user id
+    - `text`: the goal
 
 For example:
 
 ```r
 str(res)
-# List of 1
-#  $ :List of 3
-#   ..$ _id    : chr "669d4e89d20e4cd0080779c2"
-#   ..$ user_id: chr "669d4ccfd20e4cd0080779c1"
+# List of 3
+#  $ code: int 201
+#  $ msg : chr "Success."
+#  $ goal:List of 3
+#   ..$ _id    : chr "669ed1ce24f7bd52b80c6e92"
+#   ..$ user_id: chr "669ed19924f7bd52b80c6e91"
 #   ..$ text   : chr "Learn Rust"
 ```
 
@@ -424,9 +445,16 @@ For example:
 ```r
 str(res)
 # List of 1
-#  $ :List of 2
-#   ..$ _id : chr "669c74e6ddfa7be6a10f07e2"
-#   ..$ text: chr "Learn Rust"
+#  $ goals:List of 3
+#   ..$ :List of 2
+#   .. ..$ _id : chr "669ed1ce24f7bd52b80c6e92"
+#   .. ..$ text: chr "Learn Rust"
+#   ..$ :List of 2
+#   .. ..$ _id : chr "669ed27324f7bd52b80c6e93"
+#   .. ..$ text: chr "Call Mum"
+#   ..$ :List of 2
+#   .. ..$ _id : chr "669ed27c24f7bd52b80c6e94"
+#   .. ..$ text: chr "Visit Aunt"
 ```
 
 ### Update
@@ -442,7 +470,7 @@ token <- "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQyMDY5NDcsImlhdCI6M
 updated_goal <- "Learn Rust & Postgres"
 
 req <- request(base_url = base_url) |>
-  req_url_path("/api/goals/669c74e6ddfa7be6a10f07e2") |>
+  req_url_path("/api/goals/669ed1ce24f7bd52b80c6e92") |>
   req_auth_bearer_token(token = token) |>
   req_method(method = "PUT") |>
   req_body_multipart(text = updated_goal)
@@ -460,16 +488,22 @@ res <- tryCatch(
 )
 ```
 
-If successful, you should get back a named list of 2:
+If successful, you should get back a named list of 3:
+
+- `code`
+- `msg`
+- `goal`:
+    - `_id`
+    - `text`
 
 ```r
 str(res)
-# List of 2
+# List of 3
+#  $ code: int 200
 #  $ msg : chr "Goal updated successfully"
-#  $ goal:List of 1
-#   ..$ :List of 2
-#   .. ..$ _id : chr "669c74e6ddfa7be6a10f07e2"
-#   .. ..$ text: chr "Learn Rust & Postgres"
+#  $ goal:List of 2
+#   ..$ _id : chr "669ed1ce24f7bd52b80c6e92"
+#   ..$ text: chr "Learn Rust & Postgres"
 ```
 
 ### Delete
@@ -483,7 +517,7 @@ base_url <- "http://127.0.0.1:5000"
 token <- "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MjQyMDY5NDcsImlhdCI6MTcyMTUyODU0NywidXNlcl9pZCI6IjY2OWM2ZWU0ZGRmYTdiZTZhMTBmMDdlMSJ9.rpSOL0LynYm2BBP60Ikpz-GNIY6mR_ZKKzH9Tai2IS4"
 
 req <- request(base_url = base_url) |>
-  req_url_path("/api/goals/669c74e6ddfa7be6a10f07e2") |>
+  req_url_path("/api/goals/669ed1ce24f7bd52b80c6e92") |>
   req_auth_bearer_token(token = token) |>
   req_method(method = "DELETE")
 
@@ -500,16 +534,22 @@ res <- tryCatch(
 )
 ```
 
-If successful, you will again get back a named list of 2:
+If successful, you will again get back a named list of 3:
+
+- `code`
+- `msg`
+- `goal`:
+    - `_id`
+    - `text`
 
 ```r
 str(res)
-# List of 2
+# List of 3
+#  $ code: int 200
 #  $ msg : chr "Goal deleted successfully"
-#  $ goal:List of 1
-#   ..$ :List of 2
-#   .. ..$ _id : chr "669c74e6ddfa7be6a10f07e2"
-#   .. ..$ text: chr "Learn Rust & Postgres"
+#  $ goal:List of 2
+#   ..$ _id : chr "669ed1ce24f7bd52b80c6e92"
+#   ..$ text: chr "Learn Rust & Postgres"
 ```
 
 :::
