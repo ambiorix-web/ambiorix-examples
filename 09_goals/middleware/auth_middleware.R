@@ -63,6 +63,11 @@ protect <- \(req, res) {
         ),
         fields = mongo_query(`_id` = TRUE, name = TRUE, email = TRUE)
       )
+      # in case the account was deleted and user tries to access a protected
+      # resource:
+      if (nrow(found) != 1L) {
+        stop("Unauthorized", call. = FALSE)
+      }
       # set the user in the request object:
       req$user <- found
     },
