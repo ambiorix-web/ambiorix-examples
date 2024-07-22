@@ -16,7 +16,10 @@ get_goals <- \(req, res) {
     query = mongo_query(user_id = req$user$`_id`),
     fields = mongo_query("_id" = TRUE, text = TRUE)
   )
-  res$json(goals)
+
+  response <- list(goals = goals)
+
+  res$json(response)
 }
 
 #' Set a goal
@@ -26,16 +29,26 @@ get_goals <- \(req, res) {
 set_goal <- \(req, res) {
   body <- parse_multipart(req)
   text <- body$text
+
   if (is.null(text)) {
-    msg <- list(message = "Please add a text field")
+    response <- list(
+      code = 400L,
+      msg = "Please add a 'text' field in the body"
+    )
     return(
-      res$set_status(400L)$json(msg)
+      res$set_status(400L)$json(response)
     )
   }
 
   goal <- data.frame(user_id = req$user$`_id`, text = text)
   doc <- insert(conn = goals_conn, data = goal)
-  res$json(doc)
+  response <- list(
+    code = 201L,
+    msg = "Success.",
+    goal = as.list(doc)
+  )
+
+  res$set_status(201L)$json(response)
 }
 
 #' Update goal
@@ -44,18 +57,27 @@ set_goal <- \(req, res) {
 #' @export
 update_goal <- \(req, res) {
   id <- req$params$id
-  goal <- goals_conn$find(
-    query = mongo_query(
-      user_id = req$user$`_id`,
-      "_id" = list("$oid" = id)
+  goal <- tryCatch(
+    expr = goals_conn$find(
+      query = mongo_query(
+        user_id = req$user$`_id`,
+        "_id" = list("$oid" = id)
+      ),
+      fields = mongo_query("_id" = TRUE, text = TRUE)
     ),
-    fields = mongo_query("_id" = TRUE, text = TRUE)
+    error = \(e) {
+      print(e)
+      data.frame()
+    }
   )
 
   if (nrow(goal) == 0) {
-    msg <- list(msg = "Goal not found")
+    response <- list(
+      code = 400L,
+      msg = "Goal not found"
+    )
     return(
-      res$set_status(400L)$json(msg)
+      res$set_status(400L)$json(response)
     )
   }
 
@@ -81,8 +103,9 @@ update_goal <- \(req, res) {
   )
 
   response <- list(
+    code = 200L,
     msg = "Goal updated successfully",
-    goal = updated_goal
+    goal = as.list(updated_goal)
   )
   res$json(response)
 }
@@ -93,16 +116,25 @@ update_goal <- \(req, res) {
 #' @export
 delete_goal <- \(req, res) {
   id <- req$params$id
-  goal <- goals_conn$find(
-    query = mongo_query(
-      user_id = req$user$`_id`,
-      "_id" = list("$oid" = id)
+  goal <- tryCatch(
+    expr = goals_conn$find(
+      query = mongo_query(
+        user_id = req$user$`_id`,
+        "_id" = list("$oid" = id)
+      ),
+      fields = mongo_query("_id" = TRUE, text = TRUE)
     ),
-    fields = mongo_query("_id" = TRUE, text = TRUE)
+    error = \(e) {
+      print(e)
+      data.frame()
+    }
   )
 
   if (nrow(goal) == 0) {
-    msg <- list(msg = "Goal not found")
+    msg <- list(
+      code = 400L,
+      msg = "Goal not found"
+    )
     return(
       res$set_status(400L)$json(msg)
     )
@@ -116,8 +148,9 @@ delete_goal <- \(req, res) {
   )
 
   response <- list(
+    code = 200L,
     msg = "Goal deleted successfully",
-    goal = goal
+    goal = as.list(goal)
   )
 
   res$json(response)
