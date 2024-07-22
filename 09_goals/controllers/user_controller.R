@@ -2,7 +2,7 @@ box::use(
   ambiorix[parse_multipart],
   sodium[password_store, password_verify],
   lubridate[now],
-  .. / config / db[users_conn],
+  .. / config / db[users_conn, goals_conn],
   .. / helpers / truthiness[is_falsy, is_truthy],
   .. / helpers / mongo_query[mongo_query],
   .. / helpers / generate_token[generate_token]
@@ -261,6 +261,10 @@ delete_me <- \(req, res) {
     )
   )
   users_conn$remove(query = query)
+
+  # delete this users's goals:
+  query <- mongo_query(user_id = me$`_id`)
+  goals_conn$remove(query = query)
 
   response <- list(
     code = 200L,
