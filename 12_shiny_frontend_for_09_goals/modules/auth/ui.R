@@ -5,6 +5,7 @@ box::use(
     tabPanelBody,
   ],
   htmltools[tags],
+  . / login_ui[login_ui = ui],
   . / signup_ui[signup_ui = ui],
 )
 
@@ -21,11 +22,11 @@ ui <- \(id) {
     selected = "signup",
     tabPanelBody(
       value = "login",
-      tags$h3("Login page")
+      login_ui(id = ns("login"))
     ),
     tabPanelBody(
       value = "signup",
-      signup_ui(id = "signup")
+      signup_ui(id = ns("signup"))
     )
   )
 }

@@ -2,6 +2,7 @@ box::use(
   htmltools[tags],
   shiny[
     NS,
+    actionLink,
     actionButton
   ],
   .. / .. / store / mod[
@@ -45,6 +46,13 @@ page <- \(ns) {
             inputId = ns("signup"),
             label = "Create Account",
             type = "submit"
+          )
+        ),
+        tags$p(
+          "Already have an account?",
+          actionLink(
+            inputId = ns("login"),
+            "Log in"
           )
         )
       )

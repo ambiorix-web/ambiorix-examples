@@ -6,7 +6,7 @@ box::use(
   ],
 )
 
-#' Signup server module
+#' Login server module
 #'
 #' @param id String. Module id.
 #' @export
@@ -20,7 +20,7 @@ server <- \(id) {
 
       r_res <- reactive({
         list(
-          go_to_login = input$login
+          go_to_signup = input$signup
         )
       })
       return(r_res)
