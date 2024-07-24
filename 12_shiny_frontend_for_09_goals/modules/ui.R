@@ -2,10 +2,8 @@ box::use(
   htmltools[tags],
   bslib[page, bs_theme],
   shinytoastr[useToastr],
-  shiny[
-    tabsetPanel,
-    tabPanelBody,
-  ],
+  cookies[add_cookie_handlers],
+  shiny[tabsetPanel, tabPanelBody],
   . / auth / mod[auth_ui],
   . / goals / mod[goals_ui],
 )
@@ -34,4 +32,5 @@ ui <- page(
       goals_ui(id = "goals")
     )
   )
-)
+) |>
+  add_cookie_handlers()

@@ -7,6 +7,7 @@ box::use(
     moduleServer,
     observeEvent,
   ],
+  cookies[set_cookie],
   . / proxy[
     create_account,
     req_error_handler,
@@ -50,8 +51,13 @@ server <- \(id) {
       })
 
       observeEvent(rv_user(), {
-        # TODO: set auth cookie (jwt)
-        print(rv_user())
+        # on registration, set auth cookie:
+        set_cookie(
+          cookie_name = "auth",
+          cookie_value = rv_user()$token,
+          secure_only = TRUE,
+          expiration = 30L
+        )
       })
 
       r_res <- reactive({
