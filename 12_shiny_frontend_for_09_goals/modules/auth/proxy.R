@@ -18,6 +18,7 @@ box::use(
 #' @param name String. Name of user.
 #' @param email String. User email.
 #' @param password String. Password.
+#' @return Named list.
 #' @export
 create_account <- \(name, email, password) {
   user_details <- list(
@@ -37,6 +38,7 @@ create_account <- \(name, email, password) {
 #'
 #' @param email String. User email.
 #' @param password String. Password.
+#' @return Named list.
 #' @export
 login <- \(email, password) {
   user_details <- list(
@@ -47,6 +49,19 @@ login <- \(email, password) {
   request(base_url = get_base_url()) |>
     req_url_path("/api/users/login") |>
     req_body_multipart(!!!user_details) |>
+    req_perform() |>
+    resp_body_json()
+}
+
+#' Get user account details
+#'
+#' @param token JWT token
+#' @return Named list.
+#' @export
+get_account_details <- \(token) {
+  request(base_url = get_base_url()) |>
+    req_url_path("/api/users/me") |>
+    req_auth_bearer_token(token = token) |>
     req_perform() |>
     resp_body_json()
 }

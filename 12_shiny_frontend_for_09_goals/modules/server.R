@@ -1,12 +1,17 @@
 box::use(
   shiny[
+    reactiveVal,
     observeEvent,
     updateTabsetPanel,
     freezeReactiveValue,
   ],
   cookies[get_cookie],
-  . / auth / mod[auth_server],
+  . / auth / mod[
+    auth_server,
+    get_account_details,
+  ],
   . / goals / mod[goals_server],
+  .. / store / mod[toast_nofitication],
 )
 
 #' App server
@@ -22,16 +27,33 @@ server <- \(input, output, session) {
     )
   }
 
+  rv_user <- reactiveVal()
   r_user <- auth_server(id = "auth")
 
-  observeEvent(r_user(), switch_to_tab("goals"))
+  observeEvent(r_user(), {
+    rv_user(r_user())
+    switch_to_tab("goals")
+  })
 
   observeEvent(
     eventExpr = get_cookie(cookie_name = "auth"),
     handlerExpr = {
       token <- get_cookie(cookie_name = "auth")
-      # TODO: get user details. if success, switch to goals.
-      # switch_to_tab("goals")
+
+      tryCatch(
+        expr = {
+          details <- get_account_details(token = token)
+          rv_user(details$user)
+          switch_to_tab("goals")
+          toast_nofitication(
+            message = "Logged in!",
+            type = "success"
+          )
+        },
+        error = \(e) {
+          "Either token not found or invalid token"
+        }
+      )
     },
     once = TRUE
   )
