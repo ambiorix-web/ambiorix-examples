@@ -36,6 +36,38 @@ create_auth_form_header <- \(type = c("signup", "login")) {
   )
 }
 
+#' Create auth form footer
+#'
+#' @param ns Module namespace from where this function is called.
+#' @param type String. Type of form. Either "signup" (default) or "login".
+#' @return [htmltools::tags$p()]
+#' @export
+create_auth_form_footer <- \(
+  ns,
+  type = c("signup", "login")
+) {
+  type <- match.arg(arg = type)
+
+  text <- "Already have an account?"
+  link_label <- "Log in"
+  link_input_id <- ns("login")
+
+  is_login <- identical(type, "login")
+  if (is_login) {
+    text <- "Don't have an account?"
+    link_label <- "Create an account"
+    link_input_id <- ns("signup")
+  }
+
+  tags$p(
+    text,
+    actionLink(
+      inputId = link_input_id,
+      label = link_label
+    )
+  )
+}
+
 #' Sign up page
 #'
 #' @param ns Namespace of the module from which this function is called.
@@ -68,13 +100,7 @@ page <- \(ns) {
             type = "submit"
           )
         ),
-        tags$p(
-          "Already have an account?",
-          actionLink(
-            inputId = ns("login"),
-            "Log in"
-          )
-        )
+        create_auth_form_footer(ns = ns, type = "signup")
       )
     )
   )

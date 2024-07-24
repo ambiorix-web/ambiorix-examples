@@ -9,7 +9,10 @@ box::use(
     email_input,
     password_input,
   ],
-  . / signup_ui[create_auth_form_header],
+  . / signup_ui[
+    create_auth_form_header,
+    create_auth_form_footer,
+  ],
 )
 
 #' Sign up page
@@ -40,13 +43,7 @@ page <- \(ns) {
             type = "submit"
           )
         ),
-        tags$p(
-          "Don't have an account?",
-          actionLink(
-            inputId = ns("signup"),
-            "Create an account"
-          )
-        )
+        create_auth_form_footer(ns = ns, type = "login")
       )
     )
   )
