@@ -19,7 +19,7 @@ ui <- \(id) {
   tabsetPanel(
     id = ns("tabs"),
     type = "hidden",
-    selected = "signup",
+    selected = "login",
     tabPanelBody(
       value = "login",
       login_ui(id = ns("login"))

@@ -50,8 +50,8 @@ server <- \(id) {
         )
       })
 
+      # on registration, set auth cookie:
       observeEvent(rv_user(), {
-        # on registration, set auth cookie:
         set_cookie(
           cookie_name = "auth",
           cookie_value = rv_user()$token,

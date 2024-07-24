@@ -33,6 +33,24 @@ create_account <- \(name, email, password) {
     resp_body_json()
 }
 
+#' Login user
+#'
+#' @param email String. User email.
+#' @param password String. Password.
+#' @export
+login <- \(email, password) {
+  user_details <- list(
+    email = email,
+    password = password
+  )
+
+  request(base_url = get_base_url()) |>
+    req_url_path("/api/users/login") |>
+    req_body_multipart(!!!user_details) |>
+    req_perform() |>
+    resp_body_json()
+}
+
 #' Request error handler
 #'
 #' @param e Error object. See [stop()].
