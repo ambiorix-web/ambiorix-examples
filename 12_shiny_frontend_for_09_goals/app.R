@@ -1,8 +1,16 @@
 box::use(
-  shiny[shinyApp, addResourcePath],
   htmltools[tags],
   bslib[page, bs_theme],
+  shinytoastr[useToastr],
+  shiny[
+    shinyApp,
+    tabsetPanel,
+    tabPanelBody,
+    observeEvent,
+    addResourcePath,
+  ],
   . / modules / auth / mod[auth_ui, auth_server],
+  . / modules / goals / mod[goals_ui, goals_server],
 )
 
 addResourcePath(
@@ -17,11 +25,35 @@ ui <- page(
   tags$head(
     tags$script(src = "static/script.js")
   ),
-  auth_ui(id = "auth")
+  useToastr(),
+  tabsetPanel(
+    id = "pages",
+    type = "hidden",
+    selected = "auth",
+    tabPanelBody(
+      value = "auth",
+      auth_ui(id = "auth")
+    ),
+    tabPanelBody(
+      value = "goals",
+      goals_ui(id = "goals")
+    )
+  )
 )
 
 server <- \(input, output, session) {
-  auth_server(id = "auth")
+  switch_to_tab <- \(tab) {
+    freezeReactiveValue(x = input, name = "pages")
+    updateTabsetPanel(
+      session = session,
+      inputId = "pages",
+      selected = tab
+    )
+  }
+
+  r_user <- auth_server(id = "auth")
+
+  observeEvent(r_user(), switch_to_tab("goals"))
 }
 
 shinyApp(
