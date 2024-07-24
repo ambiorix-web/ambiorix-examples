@@ -8,7 +8,8 @@ box::use(
   .. / .. / store / mod[
     email_input,
     password_input,
-  ]
+  ],
+  . / signup_ui[create_auth_form_header],
 )
 
 #' Sign up page
@@ -21,11 +22,7 @@ page <- \(ns) {
     class = "container vh-100 d-flex justify-content-center align-items-center",
     tags$div(
       tags$form(
-        tags$div(
-          class = "text-center",
-          tags$h4("Login to your account"),
-          tags$p("Enter your email & password to login"),
-        ),
+        create_auth_form_header(type = "login"),
         email_input(
           inputId = ns("email"),
           label = "Email"

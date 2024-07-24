@@ -12,21 +12,41 @@ box::use(
   ]
 )
 
+#' Create auth form header
+#'
+#' @param type String. Type of form. Either "signup" (default) or "login".
+#' @return [htmltools::tags$div()]
+#' @export
+create_auth_form_header <- \(type = c("signup", "login")) {
+  type <- match.arg(arg = type)
+
+  title <- "Create an Account"
+  subtitle <- "Enter your details to create an account"
+
+  is_login <- identical(type, "login")
+  if (is_login) {
+    title <- "Login to your account"
+    subtitle <- "Enter your email & password to login"
+  }
+
+  tags$div(
+    class = "text-center",
+    tags$h4(title),
+    tags$p(subtitle)
+  )
+}
+
 #' Sign up page
 #'
 #' @param ns Namespace of the module from which this function is called.
-#' @return [htmltools::tags()]
+#' @return [htmltools::tags$div()]
 #' @export
 page <- \(ns) {
   tags$div(
     class = "container vh-100 d-flex justify-content-center align-items-center",
     tags$div(
       tags$form(
-        tags$div(
-          class = "text-center",
-          tags$h4("Create an Account"),
-          tags$p("Enter your details to create an account"),
-        ),
+        create_auth_form_header(type = "signup"),
         text_input(
           inputId = ns("name"),
           label = "First & Last Name"

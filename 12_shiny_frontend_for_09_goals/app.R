@@ -28,6 +28,7 @@ shinyApp(
   ui = ui,
   server = server,
   options = list(
-    port = 8000L
+    port = 8000L,
+    launch.browser = TRUE
   )
 )
