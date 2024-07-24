@@ -36,6 +36,7 @@ toast_nofitication <- \(
     message = message,
     timeOut = time_out,
     position = "bottom-center",
-    progressBar = TRUE
+    progressBar = TRUE,
+    closeButton = TRUE
   )
 }
