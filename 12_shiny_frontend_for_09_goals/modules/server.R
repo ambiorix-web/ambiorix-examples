@@ -29,6 +29,7 @@ server <- \(input, output, session) {
 
   rv_user <- reactiveVal()
   r_user <- auth_server(id = "auth")
+  r_goals <- goals_server(id = "goals", rv_user = rv_user)
 
   observeEvent(r_user(), {
     rv_user(r_user())

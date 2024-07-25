@@ -1,5 +1,8 @@
 box::use(
-  shiny[NS],
+  shiny[
+    NS,
+    uiOutput,
+  ],
   htmltools[tags],
 )
 
@@ -12,6 +15,14 @@ ui <- \(id) {
   ns <- NS(id)
 
   tags$div(
-    tags$h3("Set goals here!")
+    class = "container",
+    tags$div(
+      class = "d-flex justify-content-between",
+      tags$h4("Goals"),
+      uiOutput(outputId = ns("username"))
+    ),
+    tags$div(
+      uiOutput(outputId = ns("goals"))
+    )
   )
 }
