@@ -1,5 +1,7 @@
 box::use(
   shiny[
+    req,
+    isTruthy,
     reactiveVal,
     observeEvent,
     updateTabsetPanel,
@@ -40,6 +42,13 @@ server <- \(input, output, session) {
     eventExpr = get_cookie(cookie_name = "auth"),
     handlerExpr = {
       token <- get_cookie(cookie_name = "auth")
+      req(token)
+
+      # if it's signup or login, no need to get user details:
+      is_signup_or_login <- isTruthy(rv_user()$token)
+      if (is_signup_or_login) {
+        return()
+      }
 
       tryCatch(
         expr = {
@@ -54,10 +63,9 @@ server <- \(input, output, session) {
           )
         },
         error = \(e) {
-          "Either token not found or invalid token"
+          "Invalid token, not signing in"
         }
       )
-    },
-    once = TRUE
+    }
   )
 }
