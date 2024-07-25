@@ -7,10 +7,15 @@ box::use(
     req,
     isTruthy,
     renderUI,
+    showModal,
+    textInput,
     reactiveVal,
+    modalDialog,
     is.reactive,
+    removeModal,
     observeEvent,
     moduleServer,
+    actionButton,
   ],
   shinyjs[toggleClass],
   cli[cli_abort],
@@ -29,7 +34,10 @@ box::use(
     getReactableState,
   ],
   .. / auth / mod[req_error_handler],
-  .. / .. / store / mod[toast_nofitication],
+  .. / .. / store / mod[
+    center_modal,
+    toast_nofitication,
+  ],
 )
 
 #' Goals server module
@@ -51,6 +59,7 @@ server <- \(id, rv_user) {
   moduleServer(
     id = id,
     module = \(input, output, session) {
+      ns <- session$ns
       fetch_goals <- \(token = rv_user()$token) {
         goals <- read_goals(token = rv_user()$token)
         goals <- rbindlist(l = goals$goals, use.names = TRUE)
@@ -144,13 +153,78 @@ server <- \(id, rv_user) {
 
       observeEvent(input$delete, {
         req(rv_selected_row())
-        goal_id <- rv_goals()[rv_selected_row(), `_id`]
-        delete_goal(id = goal_id, token = rv_user()$token)
-        rv_goals(fetch_goals())
+        id <- rv_goals()[rv_selected_row(), `_id`]
 
-        toast_nofitication(
-          message = "Goal deleted!",
-          type = "success"
+        tryCatch(
+          expr = {
+            details <- delete_goal(id = id, token = rv_user()$token)
+            rv_goals(fetch_goals())
+
+            toast_nofitication(
+              message = "Goal deleted",
+              type = "success"
+            )
+          },
+          error = req_error_handler
+        )
+      })
+
+      observeEvent(input$cancel_edit, removeModal())
+
+      observeEvent(input$edit, {
+        req(rv_selected_row())
+        text <- rv_goals()[rv_selected_row(), text]
+
+        modal <- modalDialog(
+          title = "Edit goal",
+          footer = NULL,
+          size = "m",
+          easyClose = TRUE,
+          textInput(
+            inputId = ns("edited_goal"),
+            label = NULL,
+            value = text,
+            width = "100%"
+          ),
+          tags$div(
+            class = "d-flex justify-content-between",
+            actionButton(
+              inputId = ns("cancel_edit"),
+              label = "Cancel"
+            ),
+            actionButton(
+              inputId = ns("confirm_edit"),
+              label = "Save"
+            )
+          )
+        ) |>
+          center_modal()
+
+        showModal(modal)
+      })
+
+      observeEvent(input$confirm_edit, {
+        text <- input$edited_goal
+        req(rv_selected_row(), text)
+
+        id <- rv_goals()[rv_selected_row(), `_id`]
+        on.exit(removeModal())
+
+        tryCatch(
+          expr = {
+            details <- update_goal(
+              id = id,
+              text = text,
+              token = rv_user()$token
+            )
+            rv_goals(fetch_goals())
+
+            toast_nofitication(
+              message = "Goal updated",
+              type = "success"
+            )
+          },
+          error = req_error_handler
         )
       })
     }
