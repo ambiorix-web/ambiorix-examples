@@ -1,15 +1,18 @@
 box::use(
   data.table[
     rbindlist,
+    data.table,
   ],
   shiny[
     req,
+    isTruthy,
     renderUI,
     reactiveVal,
     is.reactive,
     observeEvent,
     moduleServer,
   ],
+  shinyjs[toggleClass],
   cli[cli_abort],
   htmltools[tags],
   . / proxy[
@@ -21,6 +24,7 @@ box::use(
   reactable[
     colDef,
     reactable,
+    reactableLang,
     renderReactable,
     getReactableState,
   ],
@@ -49,10 +53,16 @@ server <- \(id, rv_user) {
     module = \(input, output, session) {
       fetch_goals <- \(token = rv_user()$token) {
         goals <- read_goals(token = rv_user()$token)
-        rbindlist(l = goals$goals, use.names = TRUE)
+        goals <- rbindlist(l = goals$goals, use.names = TRUE)
+        if (nrow(goals) == 0L) {
+          data.table(`_id` = character(), text = character())
+        } else {
+          goals
+        }
       }
 
       rv_goals <- reactiveVal()
+      rv_selected_row <- reactiveVal()
 
       observeEvent(rv_user(), rv_goals(fetch_goals()))
 
@@ -85,6 +95,9 @@ server <- \(id, rv_user) {
           `_id` = colDef(show = FALSE),
           text = colDef(name = "Goals")
         )
+        language <- reactableLang(
+          noData = "No goals found. Create some above."
+        )
 
         reactable(
           data = data,
@@ -96,7 +109,8 @@ server <- \(id, rv_user) {
           onClick = "select",
           selection = "single",
           height = height,
-          columns = columns
+          columns = columns,
+          language = language
         )
       })
 
@@ -110,9 +124,35 @@ server <- \(id, rv_user) {
             outputId = "goals",
             name = "selected"
           )
-          print(selected_row)
-        }
+          rv_selected_row(selected_row)
+          show <- isTruthy(selected_row)
+
+          toggleClass(
+            id = "btn_container",
+            class = "d-none",
+            condition = !show
+          )
+
+          toggleClass(
+            id = "btn_container",
+            class = "d-flex",
+            condition = show
+          )
+        },
+        ignoreNULL = FALSE
       )
+
+      observeEvent(input$delete, {
+        req(rv_selected_row())
+        goal_id <- rv_goals()[rv_selected_row(), `_id`]
+        delete_goal(id = goal_id, token = rv_user()$token)
+        rv_goals(fetch_goals())
+
+        toast_nofitication(
+          message = "Goal deleted!",
+          type = "success"
+        )
+      })
     }
   )
 }

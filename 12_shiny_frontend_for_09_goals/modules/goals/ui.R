@@ -37,7 +37,19 @@ ui <- \(id) {
       )
     ),
     tags$div(
-      reactableOutput(outputId = ns("goals"))
+      reactableOutput(outputId = ns("goals")),
+      tags$div(
+        id = ns("btn_container"),
+        class = "d-none justify-content-between",
+        actionButton(
+          inputId = ns("edit"),
+          label = "Edit"
+        ),
+        actionButton(
+          inputId = ns("delete"),
+          label = "Delete"
+        )
+      )
     )
   )
 }

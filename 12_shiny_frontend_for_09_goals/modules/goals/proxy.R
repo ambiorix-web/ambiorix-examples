@@ -72,7 +72,7 @@ update_goal <- \(
 #' @export
 delete_goal <- \(id, token) {
   path <- paste0("/api/goals/", id)
-  request(base_url = base_url) |>
+  request(base_url = get_base_url()) |>
     req_url_path(path) |>
     req_auth_bearer_token(token = token) |>
     req_method(method = "DELETE") |>

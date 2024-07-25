@@ -4,6 +4,7 @@ box::use(
   shinytoastr[useToastr],
   cookies[add_cookie_handlers],
   shiny[tabsetPanel, tabPanelBody],
+  shinyjs[useShinyjs],
   . / auth / mod[auth_ui],
   . / goals / mod[goals_ui],
 )
@@ -18,6 +19,7 @@ ui <- page(
   tags$head(
     tags$script(src = "static/script.js")
   ),
+  useShinyjs(),
   useToastr(),
   tabsetPanel(
     id = "pages",
