@@ -1,11 +1,22 @@
 box::use(
   shiny[
+    req,
     renderUI,
+    reactiveVal,
     is.reactive,
+    observeEvent,
     moduleServer,
   ],
   cli[cli_abort],
   htmltools[tags],
+  . / proxy[
+    create_goal,
+    read_goals,
+    update_goal,
+    delete_goal,
+  ],
+  .. / auth / mod[req_error_handler],
+  .. / .. / store / mod[toast_nofitication],
 )
 
 #' Goals server module
@@ -29,6 +40,23 @@ server <- \(id, rv_user) {
     module = \(input, output, session) {
       output$username <- renderUI({
         tags$p(rv_user()$name)
+      })
+
+      observeEvent(input$create, {
+        goal <- input$new_goal
+        req(goal)
+
+        tryCatch(
+          expr = {
+            details <- create_goal(text = goal, token = rv_user()$token)
+
+            toast_nofitication(
+              message = "New goal created!",
+              type = "success"
+            )
+          },
+          error = req_error_handler
+        )
       })
 
       output$goals <- renderUI({
