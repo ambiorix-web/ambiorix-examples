@@ -6,4 +6,5 @@ box::use(
     password_input,
   ],
   . / toast[toast_nofitication],
+  . / center_modal[center_modal],
 )
