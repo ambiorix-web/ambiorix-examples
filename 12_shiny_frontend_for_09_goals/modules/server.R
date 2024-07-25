@@ -44,6 +44,8 @@ server <- \(input, output, session) {
       tryCatch(
         expr = {
           details <- get_account_details(token = token)
+          details$user$token <- token
+
           rv_user(details$user)
           switch_to_tab("goals")
           toast_nofitication(
