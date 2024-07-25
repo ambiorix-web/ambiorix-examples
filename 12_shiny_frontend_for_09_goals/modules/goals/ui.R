@@ -6,6 +6,7 @@ box::use(
     actionButton,
   ],
   htmltools[tags],
+  reactable[reactableOutput],
 )
 
 #' Goals UI module
@@ -36,7 +37,7 @@ ui <- \(id) {
       )
     ),
     tags$div(
-      uiOutput(outputId = ns("goals"))
+      reactableOutput(outputId = ns("goals"))
     )
   )
 }

@@ -1,4 +1,7 @@
 box::use(
+  data.table[
+    rbindlist,
+  ],
   shiny[
     req,
     renderUI,
@@ -14,6 +17,12 @@ box::use(
     read_goals,
     update_goal,
     delete_goal,
+  ],
+  reactable[
+    colDef,
+    reactable,
+    renderReactable,
+    getReactableState,
   ],
   .. / auth / mod[req_error_handler],
   .. / .. / store / mod[toast_nofitication],
@@ -38,6 +47,15 @@ server <- \(id, rv_user) {
   moduleServer(
     id = id,
     module = \(input, output, session) {
+      fetch_goals <- \(token = rv_user()$token) {
+        goals <- read_goals(token = rv_user()$token)
+        rbindlist(l = goals$goals, use.names = TRUE)
+      }
+
+      rv_goals <- reactiveVal()
+
+      observeEvent(rv_user(), rv_goals(fetch_goals()))
+
       output$username <- renderUI({
         tags$p(rv_user()$name)
       })
@@ -49,6 +67,7 @@ server <- \(id, rv_user) {
         tryCatch(
           expr = {
             details <- create_goal(text = goal, token = rv_user()$token)
+            rv_goals(fetch_goals())
 
             toast_nofitication(
               message = "New goal created!",
@@ -59,9 +78,41 @@ server <- \(id, rv_user) {
         )
       })
 
-      output$goals <- renderUI({
-        tags$p("Goals will appear here")
+      output$goals <- renderReactable({
+        data <- rv_goals()
+        height <- if (nrow(data) >= 15) 600 else "auto"
+        columns <- list(
+          `_id` = colDef(show = FALSE),
+          text = colDef(name = "Goals")
+        )
+
+        reactable(
+          data = data,
+          wrap = FALSE,
+          highlight = TRUE,
+          bordered = TRUE,
+          resizable = TRUE,
+          pagination = FALSE,
+          onClick = "select",
+          selection = "single",
+          height = height,
+          columns = columns
+        )
       })
+
+      observeEvent(
+        eventExpr = getReactableState(
+          outputId = "goals",
+          name = "selected"
+        ),
+        handlerExpr = {
+          selected_row <- getReactableState(
+            outputId = "goals",
+            name = "selected"
+          )
+          print(selected_row)
+        }
+      )
     }
   )
 }
