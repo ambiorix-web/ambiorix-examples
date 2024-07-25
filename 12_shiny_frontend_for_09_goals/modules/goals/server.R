@@ -1,14 +1,16 @@
 box::use(
-  data.table[
-    rbindlist,
-    data.table,
-  ],
+  cli[cli_abort],
+  htmltools[tags],
+  shinyjs[toggleClass],
+  cookies[remove_cookie],
   shiny[
     req,
+    icon,
     isTruthy,
     renderUI,
     showModal,
     textInput,
+    actionLink,
     reactiveVal,
     modalDialog,
     is.reactive,
@@ -17,14 +19,9 @@ box::use(
     moduleServer,
     actionButton,
   ],
-  shinyjs[toggleClass],
-  cli[cli_abort],
-  htmltools[tags],
-  . / proxy[
-    create_goal,
-    read_goals,
-    update_goal,
-    delete_goal,
+  data.table[
+    rbindlist,
+    data.table,
   ],
   reactable[
     colDef,
@@ -32,6 +29,12 @@ box::use(
     reactableLang,
     renderReactable,
     getReactableState,
+  ],
+  . / proxy[
+    create_goal,
+    read_goals,
+    update_goal,
+    delete_goal,
   ],
   .. / auth / mod[req_error_handler],
   .. / .. / store / mod[
@@ -76,7 +79,40 @@ server <- \(id, rv_user) {
       observeEvent(rv_user(), rv_goals(fetch_goals()))
 
       output$username <- renderUI({
-        tags$p(rv_user()$name)
+        user_btn <- tags$div(
+          class = "dropdown",
+          actionButton(
+            inputId = ns("show_account_options"),
+            class = "dropdown-toggle",
+            icon = icon(name = NULL, class = "fa fa-user-large"),
+            `data-bs-toggle` = "dropdown",
+            `aria-expanded` = "false",
+            label = rv_user()$name
+          ),
+          tags$ul(
+            class = "dropdown-menu",
+            tags$li(
+              actionLink(
+                inputId = ns("logout"),
+                label = "Logout"
+              )
+            ),
+            tags$li(
+              actionLink(
+                inputId = ns("go_to_account_settings"),
+                label = "Account"
+              )
+            )
+          )
+        )
+
+        user_btn
+      })
+
+      observeEvent(input$logout, {
+        # remove auth cookie, reload page:
+        remove_cookie(cookie_name = "auth")
+        session$reload()
       })
 
       observeEvent(input$create, {
