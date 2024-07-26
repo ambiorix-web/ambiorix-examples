@@ -6,8 +6,11 @@ box::use(
     is.reactive,
     moduleServer,
     observeEvent,
+    updateTabsetPanel,
+    freezeReactiveValue,
   ],
   . / ui[user_profile_btn],
+  . / account_server[account_server = server],
   . / dashboard_server[dashboard_server = server],
 )
 
@@ -31,6 +34,15 @@ server <- \(id, rv_user) {
     module = \(input, output, session) {
       ns <- session$ns
 
+      switch_to_tab <- \(tab) {
+        freezeReactiveValue(x = input, name = "tabs")
+        updateTabsetPanel(
+          session = session,
+          inputId = "tabs",
+          selected = tab
+        )
+      }
+
       output$user_profile_btn <- renderUI({
         user_profile_btn(
           ns = ns,
@@ -44,7 +56,10 @@ server <- \(id, rv_user) {
         session$reload()
       })
 
+      observeEvent(input$go_to_account_settings, switch_to_tab("account"))
+
       dashboard_server(id = "dashboard", rv_user = rv_user)
+      account_server(id = "account", rv_user = rv_user)
     }
   )
 }

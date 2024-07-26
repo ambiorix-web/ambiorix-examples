@@ -5,8 +5,11 @@ box::use(
     uiOutput,
     actionLink,
     actionButton,
+    tabsetPanel,
+    tabPanelBody,
   ],
   htmltools[tags],
+  . / account_ui[account_ui = ui],
   . / dashboard_ui[dashboard_ui = ui],
 )
 
@@ -62,6 +65,18 @@ ui <- \(id) {
   tags$div(
     class = "container",
     header,
-    dashboard_ui(id = ns("dashboard"))
+    tabsetPanel(
+      id = ns("tabs"),
+      type = "hidden",
+      selected = "dashboard",
+      tabPanelBody(
+        value = "dashboard",
+        dashboard_ui(id = ns("dashboard"))
+      ),
+      tabPanelBody(
+        value = "account",
+        account_ui(id = ns("account"))
+      )
+    )
   )
 }

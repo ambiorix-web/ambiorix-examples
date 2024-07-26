@@ -84,7 +84,8 @@ password_input <- \(
 
   tag_q <- passwordInput(
     inputId = input_id,
-    label = label
+    label = label,
+    width = "100%"
   ) |> tagQuery()
 
   tag_q$find("input")$addAttrs(required = required)
