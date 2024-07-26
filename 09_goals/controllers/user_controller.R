@@ -233,7 +233,7 @@ update_me <- \(req, res) {
   response <- list(
     code = 200L,
     msg = "Updated successfully!",
-    user = new_me
+    user = as.list(new_me)
   )
 
   res$json(response)
