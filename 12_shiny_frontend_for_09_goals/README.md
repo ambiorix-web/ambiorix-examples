@@ -6,7 +6,7 @@ This is a frontend for example [`09_goals`](../09_goals). Built using `{shiny}`.
 
 - Auth:
   - Custom sign up & login pages
-  - Auto-login next time you visit/reload the app
+  - Cookies: Auto-login next time you visit/reload the app
 - APIs:
   - Make API requests to the backend using `{httr2}`
   - Handle any request errors gracefully via `tryCatch()`
