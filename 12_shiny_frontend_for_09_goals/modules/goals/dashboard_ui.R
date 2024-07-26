@@ -1,7 +1,6 @@
 box::use(
   shiny[
     NS,
-    tagList,
     uiOutput,
     textInput,
     modalDialog,
@@ -9,7 +8,10 @@ box::use(
   ],
   htmltools[tags],
   reactable[reactableOutput],
-  .. / .. / store / mod[center_modal],
+  .. / .. / store / mod[
+    text_input,
+    center_modal,
+  ],
 )
 
 #' Create new goal UI
@@ -18,16 +20,20 @@ box::use(
 #' @return [htmltools::tags$div()]
 #' @export
 new_goal_ui <- \(ns) {
-  tags$div(
-    textInput(
-      inputId = ns("new_goal"),
-      label = NULL,
-      placeholder = "Enter goal here",
-      width = "100%"
-    ),
-    actionButton(
-      inputId = ns("create"),
-      label = "Create"
+  tags$form(
+    tags$div(
+      class = "d-flex",
+      text_input(
+        inputId = ns("new_goal"),
+        label = NULL,
+        placeholder = "Enter goal here"
+      ),
+      actionButton(
+        inputId = ns("create"),
+        class = "ms-1 mb-3",
+        label = "Create",
+        type = "submit"
+      )
     )
   )
 }
@@ -91,12 +97,12 @@ view_goals_ui <- \(ns) {
 #' Dashboard UI module
 #'
 #' @param id String. Module id.
-#' @return [htmltools::tagList()]
+#' @return [htmltools::tags$div()]
 #' @export
 ui <- \(id) {
   ns <- NS(id)
 
-  tagList(
+  tags$div(
     new_goal_ui(ns = ns),
     view_goals_ui(ns = ns)
   )

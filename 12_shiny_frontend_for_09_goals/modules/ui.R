@@ -14,7 +14,7 @@ box::use(
 #' @export
 ui <- page(
   title = "Goals",
-  theme = bs_theme(version = 5, preset = "bootstrap"),
+  theme = bs_theme(version = 5, preset = "zephyr"),
   lang = "en",
   tags$head(
     tags$script(src = "static/script.js")

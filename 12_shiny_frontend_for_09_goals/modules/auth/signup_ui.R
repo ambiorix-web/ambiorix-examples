@@ -6,6 +6,7 @@ box::use(
     actionButton
   ],
   .. / .. / store / mod[
+    card,
     text_input,
     email_input,
     password_input,
@@ -60,6 +61,7 @@ create_auth_form_footer <- \(
   }
 
   tags$p(
+    class = "my-2",
     text,
     actionLink(
       inputId = link_input_id,
@@ -93,6 +95,7 @@ create_auth_form_btn <- \(
     class = "d-grid",
     actionButton(
       inputId = input_id,
+      class = "btn-primary",
       label = label,
       type = "submit"
     )
@@ -144,7 +147,8 @@ create_auth_page <- \(ns, type = c("signup", "login")) {
 
   tags$div(
     class = "container vh-100 d-flex justify-content-center align-items-center",
-    tags$div(
+    card(
+      class = "py-5",
       auth_form(ns = ns, type = type)
     )
   )

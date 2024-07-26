@@ -57,8 +57,11 @@ ui <- \(id) {
   ns <- NS(id)
 
   header <- tags$div(
-    class = "d-flex justify-content-between",
-    tags$h4("Goals"),
+    class = "d-flex justify-content-between align-items-center my-4",
+    tags$h4(
+      class = "m-0",
+      "Goals"
+    ),
     uiOutput(outputId = ns("user_profile_btn"))
   )
 
