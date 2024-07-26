@@ -1,6 +1,14 @@
+---
+title: "12: frontend for 09_goals"
+subtitle: "shiny meets ambiorix"
+author: "Kennedy Mwavu"
+date: "2024-07-26"
+categories: [frontend_for_09_goals]
+---
+
 # Goals
 
-This is a frontend for example [`09_goals`](../09_goals). Built using `{shiny}`.
+This is a frontend for example [`09_goals`](../09_goals/index.qmd). Built using `{shiny}`.
 
 # Features
 
@@ -13,7 +21,7 @@ This is a frontend for example [`09_goals`](../09_goals). Built using `{shiny}`.
 
 # Run app
 
-1. First make sure that the backend is running. See how [here](../09_goals).
+1. First make sure that the backend is running. See how [here](../09_goals/index.qmd).
 1. `cd` into the dir `12_shiny_frontend_for_09_goals/`:
 
     ```bash

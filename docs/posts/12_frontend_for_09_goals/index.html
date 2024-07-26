@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Kennedy Mwavu">
+<meta name="dcterms.date" content="2024-07-26">
 
-<title>ambiorix-examples - Documentation</title>
+<title>ambiorix-examples - 12: frontend for 09_goals</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +22,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,67 +102,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-subtitle','listing-date','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -138,7 +114,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ambiorix-examples</span>
     </a>
   </div>
@@ -149,7 +125,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -172,352 +148,95 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Documentation</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">12: frontend for 09_goals</h1>
+            <p class="subtitle lead">shiny meets ambiorix</p>
+                                <div class="quarto-categories">
+                <div class="quarto-category">frontend_for_09_goals</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Kennedy Mwavu </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 26, 2024</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(13)</span></div><div class="category" data-category="00_getting_started">00_getting_started <span class="quarto-category-count">(1)</span></div><div class="category" data-category="01_hello_world">01_hello_world <span class="quarto-category-count">(1)</span></div><div class="category" data-category="02_static_files">02_static_files <span class="quarto-category-count">(1)</span></div><div class="category" data-category="03_basic_routing">03_basic_routing <span class="quarto-category-count">(1)</span></div><div class="category" data-category="04_simple_json_api">04_simple_json_api <span class="quarto-category-count">(1)</span></div><div class="category" data-category="05_router">05_router <span class="quarto-category-count">(1)</span></div><div class="category" data-category="06_multi_router">06_multi_router <span class="quarto-category-count">(1)</span></div><div class="category" data-category="07_dynamic_rendering">07_dynamic_rendering <span class="quarto-category-count">(1)</span></div><div class="category" data-category="08_datatables">08_datatables <span class="quarto-category-count">(1)</span></div><div class="category" data-category="09_goals">09_goals <span class="quarto-category-count">(1)</span></div><div class="category" data-category="10_live_reloading">10_live_reloading <span class="quarto-category-count">(1)</span></div><div class="category" data-category="11_csv_xlsx_upload">11_csv_xlsx_upload <span class="quarto-category-count">(1)</span></div><div class="category" data-category="frontend_for_09_goals">frontend_for_09_goals <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals">Goals</a></li>
+  <li><a href="#features" id="toc-features" class="nav-link" data-scroll-target="#features">Features</a></li>
+  <li><a href="#run-app" id="toc-run-app" class="nav-link" data-scroll-target="#run-app">Run app</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
-<p>Welcome to the docs for the ✨<a href="https://github.com/kennedymwavu/ambiorix-examples">ambiorix-examples</a>✨</p>
+<section id="goals" class="level1">
+<h1>Goals</h1>
+<p>This is a frontend for example <a href="../../posts/09_goals/index.html"><code>09_goals</code></a>. Built using <code>{shiny}</code>.</p>
+</section>
+<section id="features" class="level1">
+<h1>Features</h1>
+<ul>
+<li>Auth:
+<ul>
+<li>Custom sign up &amp; login pages</li>
+<li>Cookies: Auto-login next time you visit/reload the app</li>
+</ul></li>
+<li>APIs:
+<ul>
+<li>Make API requests to the backend using <code>{httr2}</code></li>
+<li>Handle any request errors gracefully via <code>tryCatch()</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="run-app" class="level1">
+<h1>Run app</h1>
+<ol type="1">
+<li><p>First make sure that the backend is running. See how <a href="../../posts/09_goals/index.html">here</a>.</p></li>
+<li><p><code>cd</code> into the dir <code>12_shiny_frontend_for_09_goals/</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> 12_shiny_frontend_for_09_goals/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Fire up R &amp; restore pkg dependencies:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Add these env vars to your <code>.Renviron</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>BASE_URL <span class="ot">=</span> http<span class="sc">:</span><span class="er">//</span><span class="dv">127</span>.<span class="dv">0</span>.<span class="fl">0.1</span><span class="sc">:</span><span class="dv">5000</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>RENV_CONFIG_SANDBOX_ENABLED <span class="ot">=</span> <span class="cn">FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>app.R</code> is the entry point. Run this on the terminal to start the app:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> app.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title" data-direction="asc">
-          Title
-        </option>
-         <option value="listing-date-sort" data-direction="asc">
-          Date - Oldest
-        </option>
-         <option value="listing-date-sort" data-direction="desc">
-          Date - Newest
-        </option>
-         <option value="listing-author" data-direction="asc">
-          Author
-        </option>
-     </select>
-  </div>
-</div>
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="00_getting_started" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588117" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="41">
-<a href="./posts/00_getting_started/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-00: getting started
-</h5>
-<div class="card-subtitle listing-subtitle">
-Installation
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Kennedy Mwavu
-</div>
-<div class="listing-date">
-Jul 10, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="01_hello_world" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588117" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="134">
-<a href="./posts/01_hello_world/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-01: hello, world!
-</h5>
-<div class="card-subtitle listing-subtitle">
-Where else to start? :)
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Kennedy Mwavu
-</div>
-<div class="listing-date">
-Jul 10, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="02_static_files" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588117" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="352">
-<a href="./posts/02_static_files/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-02: static files
-</h5>
-<div class="card-subtitle listing-subtitle">
-Serve static files
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Kennedy Mwavu
-</div>
-<div class="listing-date">
-Jul 10, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="03_basic_routing" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588118" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="410">
-<a href="./posts/03_basic_routing/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-03: basic routing
-</h5>
-<div class="card-subtitle listing-subtitle">
-An intro to routes
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Kennedy Mwavu
-</div>
-<div class="listing-date">
-Jul 10, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="04_simple_json_api" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588118" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="867">
-<a href="./posts/04_simple_json_api/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-04: simple json api
-</h5>
-<div class="card-subtitle listing-subtitle">
-Build a simple API
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Kennedy Mwavu
-</div>
-<div class="listing-date">
-Jul 10, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="05_router" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="498">
-<a href="./posts/05_router/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-05: router
-</h5>
-<div class="card-subtitle listing-subtitle">
-What’s a router?
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Kennedy Mwavu
-</div>
-<div class="listing-date">
-Jul 10, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="6" data-categories="06_multi_router" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="336">
-<a href="./posts/06_multi_router/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-06: multi-router
-</h5>
-<div class="card-subtitle listing-subtitle">
-Mount multiple routers
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Kennedy Mwavu
-</div>
-<div class="listing-date">
-Jul 10, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="7" data-categories="07_dynamic_rendering" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="265">
-<a href="./posts/07_dynamic_rendering/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-07: dynamic rendering
-</h5>
-<div class="card-subtitle listing-subtitle">
-Dynamically render templates
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Kennedy Mwavu
-</div>
-<div class="listing-date">
-Jul 10, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="8" data-categories="08_datatables" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="126">
-<a href="./posts/08_datatables/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-08: datatables
-</h5>
-<div class="card-subtitle listing-subtitle">
-R users love tables!
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Kennedy Mwavu
-</div>
-<div class="listing-date">
-Jul 10, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="9" data-categories="09_goals" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721684919801" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1927">
-<a href="./posts/09_goals/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-09: goals
-</h5>
-<div class="card-subtitle listing-subtitle">
-A CRUD application backend
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Kennedy Mwavu
-</div>
-<div class="listing-date">
-Jul 10, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="10" data-categories="10_live_reloading" data-listing-date-sort="1720558800000" data-listing-file-modified-sort="1721079588121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="727">
-<a href="./posts/10_live_reloading/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-10: live reloading
-</h5>
-<div class="card-subtitle listing-subtitle">
-Manual reloading is such a pain!
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Kennedy Mwavu
-</div>
-<div class="listing-date">
-Jul 10, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="11" data-categories="11_csv_xlsx_upload" data-listing-date-sort="1721336400000" data-listing-file-modified-sort="1721348353455" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1235">
-<a href="./posts/11_csv_xlsx_upload/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-11: csv &amp; xlsx upload
-</h5>
-<div class="card-subtitle listing-subtitle">
-file upload to an ambiorix API
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Kennedy Mwavu
-</div>
-<div class="listing-date">
-Jul 19, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="12" data-categories="frontend_for_09_goals" data-listing-date-sort="1721941200000" data-listing-file-modified-sort="1722011567827" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="154">
-<a href="./posts/12_frontend_for_09_goals/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-12: frontend for 09_goals
-</h5>
-<div class="card-subtitle listing-subtitle">
-shiny meets ambiorix
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Kennedy Mwavu
-</div>
-<div class="listing-date">
-Jul 26, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
