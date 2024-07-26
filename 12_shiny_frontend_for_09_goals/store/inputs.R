@@ -22,7 +22,7 @@ box::use(
 text_input <- \(..., required = TRUE) {
   required <- if (required) NA
 
-  tag_q <- textInput(...) |> tagQuery()
+  tag_q <- textInput(..., width = "100%") |> tagQuery()
   tag_q$
     find("input")$
     addAttrs(required = required)$
@@ -39,7 +39,7 @@ text_input <- \(..., required = TRUE) {
 email_input <- \(..., required = TRUE) {
   required <- if (required) NA
 
-  tag_q <- textInput(...) |> tagQuery()
+  tag_q <- textInput(..., width = "100%") |> tagQuery()
   tag_q$
     find("input")$
     removeAttrs("type")$
