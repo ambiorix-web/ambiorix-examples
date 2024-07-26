@@ -60,7 +60,11 @@ ui <- \(id) {
     class = "d-flex justify-content-between align-items-center my-4",
     tags$h4(
       class = "m-0",
-      "Goals"
+      tags$a(
+        class = "text-decoration-none",
+        href = "/",
+        "Goals"
+      )
     ),
     uiOutput(outputId = ns("user_profile_btn"))
   )

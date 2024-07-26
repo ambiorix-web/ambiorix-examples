@@ -31,7 +31,7 @@ box::use(
     update_goal,
     delete_goal,
   ],
-  . / dashboard_ui[edit_goal_modal],
+  . / dashboard_ui[goal_modal],
   .. / auth / mod[req_error_handler],
   .. / .. / store / mod[toast_nofitication],
 )
@@ -146,8 +146,16 @@ server <- \(id, rv_user) {
 
       observeEvent(input$delete, {
         req(rv_selected_row())
+
+        modal <- goal_modal(ns = ns, type = "delete")
+        showModal(modal)
+      })
+
+      observeEvent(input$confirm_delete, {
+        req(rv_selected_row())
         id <- rv_goals()[rv_selected_row(), `_id`]
 
+        on.exit(removeModal())
         tryCatch(
           expr = {
             details <- delete_goal(id = id, token = rv_user()$token)
@@ -162,13 +170,20 @@ server <- \(id, rv_user) {
         )
       })
 
-      observeEvent(input$cancel_edit, removeModal())
+      observeEvent(
+        eventExpr = c(input$cancel_edit, input$cancel_delete),
+        handlerExpr = removeModal()
+      )
 
       observeEvent(input$edit, {
         req(rv_selected_row())
         text <- rv_goals()[rv_selected_row(), text]
 
-        modal <- edit_goal_modal(ns = ns, text = text)
+        modal <- goal_modal(
+          ns = ns,
+          type = "edit",
+          text = text
+        )
         showModal(modal)
       })
 

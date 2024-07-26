@@ -39,33 +39,55 @@ new_goal_ui <- \(ns) {
   )
 }
 
-#' Edit goal modal UI
+#' Goal modal UI
 #'
+#' Can be used as both the edit or delete goal modal.
 #' @param ns Module namespace from which this function is called.
-#' @param text String. Current text value of goal.
+#' @param type String. Type of modal. Either "edit" (default) or "delete".
+#' @param text String. Current text value of goal. Defaults to `NULL`.
 #' @return [shiny::modalDialog()]
 #' @export
-edit_goal_modal <- \(ns, text) {
+goal_modal <- \(
+  ns,
+  type = c("edit", "delete"),
+  text = NULL
+) {
+  type <- match.arg(arg = type)
+  is_edit <- identical(type, "edit")
+  cancel_id <- paste0("cancel_", type)
+  confirm_id <- paste0("confirm_", type)
+  confirm_label <- if (is_edit) "Save" else "Confirm"
+  title <- paste(
+    if (is_edit) "Edit" else "Delete",
+    "goal"
+  )
+
   modalDialog(
-    title = "Edit goal",
+    title = NULL,
     footer = NULL,
     size = "m",
     easyClose = TRUE,
-    textInput(
-      inputId = ns("edited_goal"),
-      label = NULL,
-      value = text,
-      width = "100%"
+    tags$h5(
+      class = "mb-3",
+      title
     ),
+    if (is_edit) {
+      textInput(
+        inputId = ns("edited_goal"),
+        label = NULL,
+        value = text,
+        width = "100%"
+      )
+    },
     tags$div(
       class = "d-flex justify-content-between",
       actionButton(
-        inputId = ns("cancel_edit"),
+        inputId = ns(cancel_id),
         label = "Cancel"
       ),
       actionButton(
-        inputId = ns("confirm_edit"),
-        label = "Save"
+        inputId = ns(confirm_id),
+        label = confirm_label
       )
     )
   ) |>
@@ -82,7 +104,7 @@ view_goals_ui <- \(ns) {
     reactableOutput(outputId = ns("goals")),
     tags$div(
       id = ns("btn_container"),
-      class = "d-none justify-content-between",
+      class = "d-none justify-content-between my-2",
       actionButton(
         inputId = ns("edit"),
         label = "Edit"

@@ -12,7 +12,7 @@ card <- \(..., class = NULL) {
   class <- c("card-body", class)
 
   tags$div(
-    class = "card",
+    class = "card border-2 border-light",
     tags$div(
       class = class,
       ...

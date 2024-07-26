@@ -35,7 +35,6 @@ edit_field_modal <- \(
   prev_id <- paste0("prev_", field)
   new_id <- paste0("new_", field)
   label <- paste("New", field)
-  modal_title <- paste("Edit", field)
 
   inputs <- switch(
     EXPR = field,
@@ -54,14 +53,12 @@ edit_field_modal <- \(
     email = email_input(
       inputId = ns(new_id),
       label = label,
-      value = text,
-      width = "100%"
+      value = text
     ),
     name = text_input(
       inputId = ns(new_id),
       label = label,
-      value = text,
-      width = "100%"
+      value = text
     )
   )
 
@@ -78,7 +75,7 @@ edit_field_modal <- \(
   )
 
   modalDialog(
-    title = modal_title,
+    title = NULL,
     footer = NULL,
     size = "m",
     easyClose = TRUE,
@@ -107,10 +104,11 @@ delete_account_modal <- \(ns) {
   )
 
   modalDialog(
-    title = "Confirm account deletion",
+    title = NULL,
     footer = NULL,
     size = "m",
     easyClose = TRUE,
+    tags$h5("Delete account"),
     tags$p("Are you sure you want to delete your account?"),
     btns
   ) |>
@@ -124,17 +122,18 @@ delete_account_modal <- \(ns) {
 #' @export
 view_account_ui <- \(ns) {
   tags$div(
-    tags$h3("Edit account details"),
+    tags$h5("Edit account details"),
     reactableOutput(outputId = ns("account_details")),
     tags$div(
       id = ns("btn_container"),
-      class = "d-none justify-content-between",
+      class = "d-none justify-content-between my-2",
       actionButton(
         inputId = ns("edit"),
         label = "Edit"
       )
     ),
-    tags$h3("Delete account"),
+    tags$hr(),
+    tags$h5("Delete account"),
     actionButton(
       inputId = ns("delete"),
       label = "Delete"
