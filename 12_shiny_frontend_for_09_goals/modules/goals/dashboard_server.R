@@ -1,13 +1,11 @@
 box::use(
   cli[cli_abort],
-  htmltools[tags],
   shinyjs[toggleClass],
   shiny[
     req,
     isTruthy,
     showModal,
     reactiveVal,
-    modalDialog,
     removeModal,
     is.reactive,
     observeEvent,

@@ -1,6 +1,5 @@
 box::use(
   cli[cli_abort],
-  htmltools[tags],
   shinyjs[toggleClass],
   cookies[remove_cookie],
   shiny[
@@ -9,7 +8,6 @@ box::use(
     reactive,
     showModal,
     reactiveVal,
-    modalDialog,
     removeModal,
     is.reactive,
     observeEvent,
@@ -21,17 +19,9 @@ box::use(
     as.data.table,
   ],
   reactable[
-    colDef,
     reactable,
-    reactableLang,
     renderReactable,
     getReactableState,
-  ],
-  . / proxy[
-    create_goal,
-    read_goals,
-    update_goal,
-    delete_goal,
   ],
   . / account_ui[
     edit_field_modal,
