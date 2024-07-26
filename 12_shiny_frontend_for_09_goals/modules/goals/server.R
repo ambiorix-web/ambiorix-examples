@@ -59,7 +59,11 @@ server <- \(id, rv_user) {
       observeEvent(input$go_to_account_settings, switch_to_tab("account"))
 
       dashboard_server(id = "dashboard", rv_user = rv_user)
-      account_server(id = "account", rv_user = rv_user)
+
+      r_account <- account_server(id = "account", rv_user = rv_user)
+      observeEvent(r_account()$go_back_to_dashboard, {
+        switch_to_tab("dashboard")
+      })
     }
   )
 }

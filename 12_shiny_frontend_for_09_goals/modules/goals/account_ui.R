@@ -88,6 +88,35 @@ edit_field_modal <- \(
     center_modal()
 }
 
+#' Delete account modal UI
+#'
+#' @param ns Module namespace from which this function is called.
+#' @return [shiny::modalDialog()]
+#' @export
+delete_account_modal <- \(ns) {
+  btns <- tags$div(
+    class = "d-flex justify-content-between",
+    actionButton(
+      inputId = ns("cancel_deletion"),
+      label = "Cancel"
+    ),
+    actionButton(
+      inputId = ns("confirm_deletion"),
+      label = "Confirm"
+    )
+  )
+
+  modalDialog(
+    title = "Confirm account deletion",
+    footer = NULL,
+    size = "m",
+    easyClose = TRUE,
+    tags$p("Are you sure you want to delete your account?"),
+    btns
+  ) |>
+    center_modal()
+}
+
 #' View account details UI
 #'
 #' @param ns Module namespace from which this function is called.
@@ -95,6 +124,7 @@ edit_field_modal <- \(
 #' @export
 view_account_ui <- \(ns) {
   tags$div(
+    tags$h3("Edit account details"),
     reactableOutput(outputId = ns("account_details")),
     tags$div(
       id = ns("btn_container"),
@@ -103,6 +133,16 @@ view_account_ui <- \(ns) {
         inputId = ns("edit"),
         label = "Edit"
       )
+    ),
+    tags$h3("Delete account"),
+    actionButton(
+      inputId = ns("delete"),
+      label = "Delete"
+    ),
+    tags$hr(),
+    actionButton(
+      inputId = ns("go_back_to_dashboard"),
+      label = "Go back"
     )
   )
 }

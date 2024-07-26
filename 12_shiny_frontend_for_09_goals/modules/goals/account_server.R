@@ -2,9 +2,11 @@ box::use(
   cli[cli_abort],
   htmltools[tags],
   shinyjs[toggleClass],
+  cookies[remove_cookie],
   shiny[
     req,
     isTruthy,
+    reactive,
     showModal,
     reactiveVal,
     modalDialog,
@@ -31,7 +33,10 @@ box::use(
     update_goal,
     delete_goal,
   ],
-  . / account_ui[edit_field_modal],
+  . / account_ui[
+    edit_field_modal,
+    delete_account_modal,
+  ],
   .. / auth / mod[
     login,
     delete_account,
@@ -126,7 +131,10 @@ server <- \(id, rv_user) {
         ignoreNULL = FALSE
       )
 
-      observeEvent(input$cancel_edit, removeModal())
+      observeEvent(
+        eventExpr = c(input$cancel_edit, input$cancel_deletion),
+        handlerExpr = removeModal()
+      )
 
       observeEvent(input$edit, {
         req(rv_selected_row())
@@ -198,6 +206,33 @@ server <- \(id, rv_user) {
           error = req_error_handler
         )
       })
+
+      observeEvent(input$delete, {
+        showModal(delete_account_modal(ns = ns))
+      })
+
+      observeEvent(input$confirm_deletion, {
+        tryCatch(
+          expr = {
+            delete_account(token = rv_user()$token)
+            remove_cookie(cookie_name = "auth")
+            toast_nofitication(
+              message = "Account deleted!",
+              type = "success"
+            )
+            session$reload()
+          },
+          error = req_error_handler
+        )
+      })
+
+      res <- reactive({
+        list(
+          go_back_to_dashboard = input$go_back_to_dashboard
+        )
+      })
+
+      return(res)
     }
   )
 }
