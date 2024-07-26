@@ -21,6 +21,7 @@ box::use(
 #' @export
 new_goal_ui <- \(ns) {
   tags$form(
+    id = ns("new_goal_form"),
     tags$div(
       class = "d-flex",
       text_input(

@@ -1,6 +1,9 @@
 box::use(
   cli[cli_abort],
-  shinyjs[toggleClass],
+  shinyjs[
+    reset,
+    toggleClass,
+  ],
   shiny[
     req,
     isTruthy,
@@ -77,7 +80,7 @@ server <- \(id, rv_user) {
           expr = {
             details <- create_goal(text = goal, token = rv_user()$token)
             rv_goals(fetch_goals())
-
+            reset(id = "new_goal_form")
             toast_nofitication(
               message = "New goal created!",
               type = "success"
