@@ -1,8 +1,15 @@
+---
+title: "13: parse raw json"
+subtitle: "how to parse raw json in requests"
+author: "Kennedy Mwavu"
+date: "2024-07-29"
+categories: [parse_raw_json]
+---
+
 # Parse raw JSON
 
-Say you have an API endpoint that expects raw JSON data. How do you parse that?
-
-This example answers that and is in a way related to the example on [csv & xlsx upload](../11_csv_xlsx_upload).
+Sometimes you need to parse requests which have raw JSON in the body.
+`ambiorix::parse_multipart()` only works for 'form-data'. That's where `webutils::parse_http()` comes in.
 
 This is a simple example revolving around how you can select columns and filter
 rows in the `iris` dataset when the request body is something like this:
