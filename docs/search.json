@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Documentation",
     "section": "",
-    "text": "Welcome to the docs for the ✨ambiorix-examples✨\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n\n\n\n\n\n\n\n00: getting started\n\n\nInstallation\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n01: hello, world!\n\n\nWhere else to start? :)\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n02: static files\n\n\nServe static files\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n03: basic routing\n\n\nAn intro to routes\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n04: simple json api\n\n\nBuild a simple API\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n05: router\n\n\nWhat’s a router?\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n06: multi-router\n\n\nMount multiple routers\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n07: dynamic rendering\n\n\nDynamically render templates\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n08: datatables\n\n\nR users love tables!\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n09: goals\n\n\nA CRUD application backend\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n10: live reloading\n\n\nManual reloading is such a pain!\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n11: csv & xlsx upload\n\n\nfile upload to an ambiorix API\n\n\n\nKennedy Mwavu\n\n\nJul 19, 2024\n\n\n\n\n\n\n\n\n\n\n\n12: frontend for 09_goals\n\n\nshiny meets ambiorix\n\n\n\nKennedy Mwavu\n\n\nJul 26, 2024\n\n\n\n\n\n\n\n\n\n\n\n13: parse raw json\n\n\nhow to parse raw json in requests\n\n\n\nKennedy Mwavu\n\n\nJul 29, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Welcome to the docs for the ✨ambiorix-examples✨\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n\n\n\n\n\n\n\n00: getting started\n\n\nInstallation\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n01: hello, world!\n\n\nWhere else to start? :)\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n02: static files\n\n\nServe static files\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n03: basic routing\n\n\nAn intro to routes\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n04: simple json api\n\n\nBuild a simple API\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n05: router\n\n\nWhat’s a router?\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n06: multi-router\n\n\nMount multiple routers\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n07: dynamic rendering\n\n\nDynamically render templates\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n08: datatables\n\n\nR users love tables!\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n09: goals\n\n\nA CRUD application backend\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n10: live reloading\n\n\nManual reloading is such a pain!\n\n\n\nKennedy Mwavu\n\n\nJul 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n11: csv & xlsx upload\n\n\nfile upload to an ambiorix API\n\n\n\nKennedy Mwavu\n\n\nJul 19, 2024\n\n\n\n\n\n\n\n\n\n\n\n12: frontend for 09_goals\n\n\nshiny meets ambiorix\n\n\n\nKennedy Mwavu\n\n\nJul 26, 2024\n\n\n\n\n\n\n\n\n\n\n\n13: parse raw json\n\n\nhow to parse raw json in requests\n\n\n\nKennedy Mwavu\n\n\nJul 29, 2024\n\n\n\n\n\n\n\n\n\n\n\n14: CORS\n\n\nhow to allow CORS in ambiorix\n\n\n\nKennedy Mwavu\n\n\nAug 24, 2024\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/01_hello_world/index.html",
@@ -63,137 +63,151 @@
     "text": "Setup\n\nYou of course need to have an app. You can use any of the code in the previous examples. We will use a simple server.R file, which is also the entrypoint:\n  library(ambiorix)\n\n  app &lt;- Ambiorix$new()\n\n  app$get(\"/\", \\(req, res){\n    res$send(\"Using {ambiorix}!\")\n  })\n\n  app$get(\"/about\", \\(req, res){\n    res$text(\"About\")\n  })\n\n  app$start()\nChange to your project’s root dir.\ncd myproject\nInitialize an npm project & create the package.json file:\nnpm init -y\nThe -y flag accepts the default npm setup.\nInstall nodemon as a dev dependency:\nnpm i -D nodemon\nCreate the file nodemon.json at the root dir of your project and paste this in it:\n{\n  \"execMap\": {\n    \"R\": \"Rscript\"\n  },\n  \"ext\": \"*\"\n}\nThis specifies an executable mapping for .R files: Rscript.\nIt also tells nodemon to monitor all files (*) for changes. You can as well monitor specific file extensions. For example to only watch .R, .html, .css & .js files, change ext to:\n\"ext\": \"R,html,css,js\"\nOpen package.json and edit the “scripts” section to this:\n\"scripts\": {\n  \"dev\": \"nodemon --signal SIGTERM server.R\"\n}\nThis tells nodemon to re-run the file server.R when changes happen.\nThe --signal SIGTERM is basically telling nodemon to send a termination signal to the previously running program before spawning a new one. This is especially useful for freeing the port the app is running on, and then re-using it again.\nRun the app:\nnpm run dev\nThis runs the dev script which starts, stops & restarts your app when changes occurs.\nNow try making some changes to your source code and enjoy the experience.\nWhen working on the backend, you don’t want a browser tab to open each time the app is restarted since you will mostly be sending requests via postman, so you will set start(open = FALSE) in your server.R:\n  library(ambiorix)\n\n  app &lt;- Ambiorix$new()\n\n  app$get(\"/\", \\(req, res){\n    res$send(\"Using {ambiorix}!\")\n  })\n\n  app$get(\"/about\", \\(req, res){\n    res$text(\"About\")\n  })\n\n  app$start(open = FALSE)\nTo stop npm, press CTRL + C.\nAdd node_modules/ to your .gitignore file.\nYou can as well add nodemon.json, package-lock.json, & package.json to .gitignore since they’re just used for development purposes. I have commited them for this example just so you can see their contents."
   },
   {
-    "objectID": "posts/13_parse_raw_json/index.html",
-    "href": "posts/13_parse_raw_json/index.html",
-    "title": "13: parse raw json",
+    "objectID": "posts/05_router/index.html",
+    "href": "posts/05_router/index.html",
+    "title": "05: router",
     "section": "",
-    "text": "Parse raw JSON\nSometimes you need to parse requests which have raw JSON in the body. ambiorix::parse_multipart() only works for ‘form-data’. That’s where webutils::parse_http() comes in.\nThis is a simple example revolving around how you can select columns and filter rows in the iris dataset when the request body is something like this:\n{\n    \"cols\": [\"Sepal.Length\", \"Petal.Width\", \"Species\"],\n    \"species\": [\"virginica\", \"setosa\"]\n}\n\n\nRun API\n\ncd into the 13_parse_raw_json/ dir:\ncd 13_parse_raw_json/\nFire up R and restore package dependencies:\nrenv::restore()\nserver.R is the entry point. Run this command in the terminal to start the API:\nRscript server.R"
+    "text": "cd into the 05_router/ dir:\ncd 05_router/\n\nThere are 2 directories there: box/ & r_pkg_structure/.\ncd into any of them, say, r_pkg_structure/:\ncd r_pkg_structure/\n\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
   },
   {
-    "objectID": "posts/06_multi_router/index.html",
-    "href": "posts/06_multi_router/index.html",
-    "title": "06: multi-router",
+    "objectID": "posts/05_router/index.html#run-app",
+    "href": "posts/05_router/index.html#run-app",
+    "title": "05: router",
     "section": "",
-    "text": "cd into the 06_multi_router/ dir:\ncd 06_multi_router/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+    "text": "cd into the 05_router/ dir:\ncd 05_router/\n\nThere are 2 directories there: box/ & r_pkg_structure/.\ncd into any of them, say, r_pkg_structure/:\ncd r_pkg_structure/\n\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
   },
   {
-    "objectID": "posts/06_multi_router/index.html#run-app",
-    "href": "posts/06_multi_router/index.html#run-app",
-    "title": "06: multi-router",
-    "section": "",
-    "text": "cd into the 06_multi_router/ dir:\ncd 06_multi_router/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
-  },
-  {
-    "objectID": "posts/06_multi_router/index.html#explanation",
-    "href": "posts/06_multi_router/index.html#explanation",
-    "title": "06: multi-router",
+    "objectID": "posts/05_router/index.html#explanation",
+    "href": "posts/05_router/index.html#explanation",
+    "title": "05: router",
     "section": "Explanation",
-    "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nYou can have multiple routers mounted onto ambiorix::Ambiorix via the use() method.\nIn this example, I show how you can version your api.\nRemember, ambiorix is unopinionated. This is just my way of doing things.\nYou’ll see that using {box} is the easiest way to split up & organize your files & folders.\nThis is the directory structure that I’ve used:\n.\n├── api\n│   ├── members.R\n│   ├── v1\n│   │   ├── members\n│   │   │   ├── controllers.R\n│   │   │   ├── create_new_member.R\n│   │   │   ├── delete_member.R\n│   │   │   ├── get_all_members.R\n│   │   │   ├── get_member_by_id.R\n│   │   │   └── update_member_info.R\n│   │   └── members.R\n│   └── v2\n│       ├── members\n│       │   ├── controllers.R\n│       │   ├── create_new_member.R\n│       │   ├── delete_member.R\n│       │   ├── get_all_members.R\n│       │   ├── get_member_by_id.R\n│       │   └── update_member_info.R\n│       └── members.R\n├── index.R\n└── README.md\nThis is how server.R looks like:\nbox::use(\n  ambiorix[Ambiorix],\n  . / api / members\n)\n\nAmbiorix$\n  new()$\n  listen(port = 3000L)$\n  use(members$v1)$ # mount API v1 members' router\n  use(members$v2)$ # mount API v2 members' router\n  start(open = FALSE)\nOnce you run the app, you should be able to perform requests on http://localhost:3000/api/v*/members, eg.\n\nGET request on http://localhost:3000/api/v1/members\nPUT request on http://localhost:3000/api/v2/members/:3\n\n… and so on.\nCheckout the routers in these files:\n\n./api/v1/members.R\n./api/v2/members.R"
+    "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nIt has two endpoints:\n\n/api/members\n/api/members/:id\n\nRouting refers to how an application’s endpoints (URIs) respond to client requests.\nFor an introduction to routing, see 03_basic_routing.\nIf you look at 04_simple_json_api you’ll notice that the routes we created all belong to /api/members and we kept repeating that base/root route.\nWouldn’t it be nice to only have to use / and /:id and have ambiorix prepend the /api/members automatically?\nThat would give you a better app structure making it manageable."
   },
   {
-    "objectID": "posts/06_multi_router/index.html#dynamic-rendering",
-    "href": "posts/06_multi_router/index.html#dynamic-rendering",
-    "title": "06: multi-router",
-    "section": "Dynamic rendering",
-    "text": "Dynamic rendering\nAre you ready for some frontend fun? See ✨dynamic rendering✨."
+    "objectID": "posts/05_router/index.html#enter-ambiorixrouter.",
+    "href": "posts/05_router/index.html#enter-ambiorixrouter.",
+    "title": "05: router",
+    "section": "Enter ambiorix::Router().",
+    "text": "Enter ambiorix::Router().\nUse the ambiorix::Router class to create modular, mountable router handlers.\nA Router instance is a complete middleware and routing system; for this reason, it is often referred to as a “mini-app”.\nUsing the example 04_simple_json_api, this is how we would transform it:\n# members.R\nmembers_router &lt;- \\() {\n  router &lt;- Router$new(\"/members\")\n\n  # get all members:\n  router$get(\"/\", \\(req, res) {\n    # ...\n  })\n\n  # get a single member:\n  router$get(\"/:id\", \\(req, res) {\n    # ...\n  })\n\n  # create a new member:\n  router$post(\"/\", \\(req, res)) {\n    # ...\n  }\n\n  # update member:\n  router$put(\"/:id\", \\(req, res) {\n    # ...\n  })\n\n  # delete member:\n  router$delete(\"/:id\", \\(req, res) {\n    # ...\n  })\n\n  router\n}\nThe server.R file would now be:\nlibrary(ambiorix)\n\n# &lt;bring/import the members.R file&gt;\n\nPORT &lt;- 3000\n\napp &lt;- Ambiorix$new()\n\n# mount the router:\napp$use(members_router())\n\napp$start(port = PORT, open = FALSE)"
   },
   {
-    "objectID": "posts/04_simple_json_api/index.html",
-    "href": "posts/04_simple_json_api/index.html",
-    "title": "04: simple json api",
+    "objectID": "posts/05_router/index.html#keep-this-in-mind",
+    "href": "posts/05_router/index.html#keep-this-in-mind",
+    "title": "05: router",
+    "section": "Keep this in mind:",
+    "text": "Keep this in mind:\nAmbiorix is unopinionated. As such, it is up to you to decide how you want to bring/export the members.R file into index.R.\nSome options are:\n\nUse box (Highly recommended, ⭐⭐⭐⭐⭐) especially if you develop large apps/systems, for two reasons:\n\nAllows nested files, folders & modules (a big win)\nExplicit name imports ie. you’re almost always sure from which package a function is from.\n\nUse R package structure (Recommended, ⭐⭐⭐⭐). Will not allow nested folders but will work really well for small to medium apps.\nsource() files (NOT recommended, 1⭐). Haha. Iykyk.\n\nChoose wisely."
+  },
+  {
+    "objectID": "posts/05_router/index.html#multiple-routers",
+    "href": "posts/05_router/index.html#multiple-routers",
+    "title": "05: router",
+    "section": "Multiple routers",
+    "text": "Multiple routers\nLearn how you can mount ✨multiple routers✨."
+  },
+  {
+    "objectID": "posts/12_frontend_for_09_goals/index.html",
+    "href": "posts/12_frontend_for_09_goals/index.html",
+    "title": "12: frontend for 09_goals",
     "section": "",
-    "text": "cd into the 04_simple_json_api/ dir:\ncd 04_simple_json_api/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+    "text": "Goals\nThis is a frontend for example 09_goals. Built using {shiny}.\n\n\nFeatures\n\nAuth:\n\nCustom sign up & login pages\nCookies: Auto-login next time you visit/reload the app\n\nAPIs:\n\nMake API requests to the backend using {httr2}\nHandle any request errors gracefully via tryCatch()\n\n\n\n\nRun app\n\nFirst make sure that the backend is running. See how here.\ncd into the dir 12_shiny_frontend_for_09_goals/:\ncd 12_shiny_frontend_for_09_goals/\nFire up R & restore pkg dependencies:\nrenv::restore()\nAdd these env vars to your .Renviron:\nBASE_URL = http://127.0.0.1:5000\nRENV_CONFIG_SANDBOX_ENABLED = FALSE\napp.R is the entry point. Run this on the terminal to start the app:\nRscript app.R"
   },
   {
-    "objectID": "posts/04_simple_json_api/index.html#run-app",
-    "href": "posts/04_simple_json_api/index.html#run-app",
-    "title": "04: simple json api",
+    "objectID": "posts/02_static_files/index.html",
+    "href": "posts/02_static_files/index.html",
+    "title": "02: static files",
     "section": "",
-    "text": "cd into the 04_simple_json_api/ dir:\ncd 04_simple_json_api/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+    "text": "cd into the 02_static_files/ dir:\ncd 02_static_files/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
   },
   {
-    "objectID": "posts/04_simple_json_api/index.html#explanation",
-    "href": "posts/04_simple_json_api/index.html#explanation",
-    "title": "04: simple json api",
+    "objectID": "posts/02_static_files/index.html#run-app",
+    "href": "posts/02_static_files/index.html#run-app",
+    "title": "02: static files",
+    "section": "",
+    "text": "cd into the 02_static_files/ dir:\ncd 02_static_files/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+  },
+  {
+    "objectID": "posts/02_static_files/index.html#explanation",
+    "href": "posts/02_static_files/index.html#explanation",
+    "title": "02: static files",
     "section": "Explanation",
-    "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nIt has two endpoints:\n\n/api/members\n/api/members/:id\n\nIdeally, the backend works hand-in-hand with the database. But for the sake of simplicity, let’s hardcode a list of members:\nmembers &lt;- data.frame(\n  id = as.character(1:3),\n  name = c(\"John Doe\", \"Bob Williams\", \"Shannon Jackson\"),\n  email = c(\"john@gmail.com\", \"bob@gmail.com\", \"shannon@gmail.com\"),\n  status = c(\"active\", \"inactive\", \"active\")\n)\nYou don’t have to worry about converting members into JSON because the res$json() method does it for you.\nCreate a GET request to get all members:\napp$get(\"/api/members\", \\(req, res) {\n  res$json(members)\n})\n\n\n\nGET /api/members\n\n\nCreate a GET request to get a single member by id:\napp$get(\"/api/members/:id\", \\(req, res) {\n  # get the supplied id:\n  member_id &lt;- req$params$id\n\n  # filter member with that id:\n  found &lt;- members |&gt; dplyr::filter(id == member_id)\n\n  res$json(found)\n})\n\n\n\nGET /api/members/:id\n\n\nYou can also dictate how the response changes if no member is found:\n# get a single member:\napp$get(\"/api/members/:id\", \\(req, res) {\n  # get the supplied id:\n  member_id &lt;- req$params$id\n\n  # filter member with that id:\n  found &lt;- members |&gt; dplyr::filter(id == member_id)\n\n  # if a member with that id was found, return the member:\n  if (nrow(found) &gt; 0) {\n    return(res$json(found))\n  }\n\n  # otherwise, change response status to 400 (Bad Request)\n  # and provide a message:\n  msg &lt;- list(msg = sprintf(\"No member with the id of %s\", member_id))\n  res$set_status(400L)$json(msg)\n})\n\n\n\nGET /api/members/:id\n\n\nA POST request to create a new member:\napp$post(\"/api/members\", \\(req, res) {\n  # parse form-data:\n  body &lt;- parse_multipart(req)\n\n  # details of the new member:\n  new_member &lt;- data.frame(\n    id = uuid::UUIDgenerate(),\n    name = body$name,\n    email = body$email,\n    status = body$status\n  )\n\n  # save new member:\n  members &lt;&lt;- dplyr::bind_rows(members, new_member)\n\n  # respond with a message and details of the newly created member:\n  response &lt;- list(\n    msg = \"Member created successfully!\",\n    member = new_member\n  )\n\n  res$json(response)\n})\n\n\n\nPOST /api/members\n\n\nYou can of course ensure all the details are sent (name, email & status) before creating the new member:\napp$post(\"/api/members\", \\(req, res) {\n  # parse form-data:\n  body &lt;- parse_multipart(req)\n\n  name &lt;- body$name\n  email &lt;- body$email\n  status &lt;- body$status\n\n  # require all member details:\n  if (is.null(name) || is.null(email) || is.null(status)) {\n    msg &lt;- list(msg = \"Please include a name, email & status\")\n    return(res$set_status(400L)$json(msg))\n  }\n\n  # details of the new member:\n  new_member &lt;- data.frame(\n    id = uuid::UUIDgenerate(),\n    name = name,\n    email = email,\n    status = status\n  )\n\n  # save new member:\n  members &lt;&lt;- dplyr::bind_rows(members, new_member)\n\n  # respond with a message and details of the newly created member:\n  response &lt;- list(\n    msg = \"Member created successfully!\",\n    member = new_member\n  )\n\n  res$json(response)\n})\n\n\n\nPOST /api/members\n\n\nCreate a PUT request to update a member:\napp$put(\"/api/members/:id\", \\(req, res) {\n  # get the supplied id:\n  member_id &lt;- req$params$id\n\n  # filter member with that id:\n  found &lt;- members |&gt; dplyr::filter(id == member_id)\n\n  # if a member with that id is NOT found, change response status\n  # and provide a message:\n  if (nrow(found) == 0) {\n    msg &lt;- list(msg = sprintf(\"No member with the id of %s\", member_id))\n    return(res$set_status(400L)$json(msg))\n  }\n\n  # otherwise, proceed to update member:\n  body &lt;- parse_multipart(req)\n\n  # only update provided fields:\n  found$name &lt;- body$name %||% found$name\n  found$email &lt;- body$email %||% found$email\n  found$status &lt;- body$status %||% found$status\n\n  members[members$id == found$id, ] &lt;- found\n\n  response &lt;- list(\n    msg = \"Member updated successfully\",\n    member = found\n  )\n  res$json(response)\n})\n\n\n\nPUT /api/members/:id\n\n\nCreate a delete request to, well, delete a member:\napp$delete(\"/api/members/:id\", \\(req, res) {\n  # get the supplied id:\n  member_id &lt;- req$params$id\n\n  # filter member with that id:\n  found &lt;- members |&gt; dplyr::filter(id == member_id)\n\n  # if a member with that id is NOT found, change response status\n  # and provide a message:\n  if (nrow(found) == 0) {\n    msg &lt;- list(msg = sprintf(\"No member with the id of %s\", member_id))\n    return(res$set_status(400L)$json(msg))\n  }\n\n  # otherwise, proceed to delete member:\n  members &lt;&lt;- members |&gt; dplyr::filter(id != member_id)\n\n  response &lt;- list(\n    msg = \"Member deleted successfully\",\n    members = members\n  )\n  res$json(response)\n})\n\n\n\nDELETE /api/members/:id"
+    "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nIt has a single endpoint:\n\n/: localhost:3000/\n\nNow that the app is running, navigate to these links in your browser:\n\nlocalhost:3000/static/index.html\nlocalhost:3000/static/about.html\nlocalhost:3000/static/index2.R\n\nTo serve static files such as images, CSS files, JavaScript files etc., use the app$static() method.\nFor example, let’s say this is your directory structure:\n|- index.R\n|- public/\n    |- index.html\n    |- about.html\n    |- image.jpg\n    |- css\n        |- styles.css\n    |- index2.R\n    |- main.js\n\n/public\nTo make the files accessible at the path /public, you’d do this:\napp$static(path = \"public\", uri = \"public\")\n\npath specifies the static directory.\nuri defines the path ambiorix should serve the static files from.\n\nSo now you’ll be able to do this in your app:\napp$get(\"/\", \\(req, res) {\n  res$send(\n    \"&lt;h1&gt;Hello everyone!&lt;/h1&gt;\n    &lt;img src='public/image.jpg'/&gt;\"\n  )\n})\nBy making the public/ folder static, any resource placed there can be accessed via the browser eg. http://localhost:3000/public/image.jpg\n\n\n/your-own-path\nYou can make static content accessible via your own custom path too.\nFor example, let’s use /static this time:\napp$static(path = \"public\", uri = \"static\")\nThen in your code you’ll use this:\napp$get(\"/\", \\(req, res) {\n  res$send(\n    \"&lt;h1&gt;Hello everyone!&lt;/h1&gt;\n    &lt;img src='static/image.jpg'/&gt;\"\n  )\n})"
   },
   {
-    "objectID": "posts/04_simple_json_api/index.html#router",
-    "href": "posts/04_simple_json_api/index.html#router",
-    "title": "04: simple json api",
-    "section": "Router",
-    "text": "Router\nThings are getting out of hand in server.R. Take a look at ✨routers✨."
+    "objectID": "posts/02_static_files/index.html#keep-this-in-mind",
+    "href": "posts/02_static_files/index.html#keep-this-in-mind",
+    "title": "02: static files",
+    "section": "Keep this in mind:",
+    "text": "Keep this in mind:\n\nAll static files are exposed and can be accessed via the browser. DO NOT put sensitive files there.\nYou can also use htmltools tags instead of writing html strings."
   },
   {
-    "objectID": "posts/11_csv_xlsx_upload/index.html",
-    "href": "posts/11_csv_xlsx_upload/index.html",
-    "title": "11: csv & xlsx upload",
+    "objectID": "posts/02_static_files/index.html#basic-routing",
+    "href": "posts/02_static_files/index.html#basic-routing",
+    "title": "02: static files",
+    "section": "Basic routing",
+    "text": "Basic routing\nLearn the ✨basics of routing✨."
+  },
+  {
+    "objectID": "posts/08_datatables/index.html",
+    "href": "posts/08_datatables/index.html",
+    "title": "08: datatables",
     "section": "",
-    "text": "cd into the 11_csv_xlsx_upload/ dir:\ncd 11_csv_xlsx_upload/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the API, run this on the terminal:\nRscript server.R"
+    "text": "cd into the 08_datatables/ dir:\ncd 08_datatables/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
   },
   {
-    "objectID": "posts/11_csv_xlsx_upload/index.html#skeleton",
-    "href": "posts/11_csv_xlsx_upload/index.html#skeleton",
-    "title": "11: csv & xlsx upload",
-    "section": "Skeleton",
-    "text": "Skeleton\nNext, let’s define the API skeleton:\n1app &lt;- Ambiorix$new(port = 3000, host = \"127.0.0.1\")\n2app$limit &lt;- 35 * 1024 * 1024\n\napp$\n3  set_error(error_handler)$\n4  get(\"/\", home_get)$\n5  post(\"/csv\", csv_upload_post)$\n6  post(\"/xlsx\", xlsx_upload_post)$\n7  start()\n\n1\n\nInitialize a new ambiorix app. Set port & host to run app on.\n\n2\n\nIncrease max body size to 35 MB. Think of this as the max file upload size for now.\n\n3\n\nSet an error handler for the API.\n\n4\n\nAdd handler for requests at /.\n\n5\n\nAdd handler for requests at /csv.\n\n6\n\nAdd handler for requests at /xlsx.\n\n7\n\nStart API.\n\n\nNow, let’s create the handlers."
-  },
-  {
-    "objectID": "posts/11_csv_xlsx_upload/index.html#error-handler",
-    "href": "posts/11_csv_xlsx_upload/index.html#error-handler",
-    "title": "11: csv & xlsx upload",
-    "section": "Error handler",
-    "text": "Error handler\nI’ve made it a habit to always have an error handler for my APIs. Ideally, this is where you log any server errors that occurred, either due to failed operations or bugs.\n#' 500 error handler middleware\n#'\n#' @param req Request object.\n#' @param res Response object.\n#' @param error Error object. See [stop()].\n#' @return `res$json()`\n#' @export\nerror_handler &lt;- \\(req, res, error = NULL) {\n  if (!is.null(error)) {\n    msg &lt;- conditionMessage(error)\n    cli_alert_danger(text = msg)\n  }\n\n  response &lt;- list(\n    code = 500L,\n    msg = \"A server error occurred!\"\n  )\n\n  res$set_status(500L)$json(response)\n}"
-  },
-  {
-    "objectID": "posts/11_csv_xlsx_upload/index.html#hello-world",
-    "href": "posts/11_csv_xlsx_upload/index.html#hello-world",
-    "title": "11: csv & xlsx upload",
-    "section": "Hello, World!",
-    "text": "Hello, World!\nAre you even a real programmer if you don’t always start with a “Hello, World”?\n#' Handle GET at '/'\n#'\n#' @param req Request object.\n#' @param res Response object.\n#' @return `res$json()`\n#' @export\nhome_get &lt;- \\(req, res) {\n  response &lt;- list(\n    code = 200L,\n    msg = \"hello, world!\"\n  )\n\n  res$json(response)\n}"
-  },
-  {
-    "objectID": "posts/11_csv_xlsx_upload/index.html#csv-upload",
-    "href": "posts/11_csv_xlsx_upload/index.html#csv-upload",
-    "title": "11: csv & xlsx upload",
-    "section": "csv upload",
-    "text": "csv upload\nWe’re finally at the juicy part of this post!\n#' Handle POST at '/csv'\n#'\n#' @param req Request object.\n#' @param res Response object.\n#' @return `res$json()`\n#' @export\ncsv_upload_post &lt;- \\(req, res) {\n1  body &lt;- req$rook.input$read()\n\n2  response_400 &lt;- list(\n    code = 400L,\n    msg = \"please upload a csv file with the key 'file' in the request body\"\n  )\n\n  # if the req body is empty, return a 400:\n3  empty &lt;- length(body) == 0L\n  if (empty) {\n    return(\n      res$set_status(400L)$json(response_400)\n    )\n  }\n\n4  postdata &lt;- parse_http(\n    body = body,\n    content_type = req$CONTENT_TYPE\n  )\n\n5  file_details &lt;- postdata$file\n\n  # check 'content_type' of file:\n6  ok &lt;- identical(\n    x = file_details$content_type,\n    y = \"text/csv\"\n  )\n\n  if (!ok) {\n    return(\n      res$set_status(400L)$json(response_400)\n    )\n  }\n\n  # write file temporarily:\n7  temp &lt;- tempfile(fileext = \".csv\")\n  on.exit(unlink(x = temp))\n  writeBin(object = file_details$value, con = temp)\n\n  # read file:\n8  x &lt;- fread(file = temp)\n9  print(x)\n\n10  response &lt;- list(\n    code = 200L,\n    msg = \"file uploaded!\"\n  )\n\n  res$json(response)\n}\n\n1\n\nRead the request body.\n\n2\n\nCreate a bad request response: response_400.\n\n3\n\nIf the request body is empty, return response_400.\n\n4\n\nParse the body into a named list of key-value pairs. POST request variables are stored as key-value pairs in the request body.\n\n5\n\nGet the variable/field named file from the list.\n\n6\n\nIf the content type of the file is not text/csv, return response_400. To learn about common mime types, refer to MIME_types.\n\n7\n\nTemporarily write the file to disk.\n\n8\n\nRead the file.\n\n9\n\nPrint the data.table.\n\n10\n\nReturn a 200 success response."
-  },
-  {
-    "objectID": "posts/11_csv_xlsx_upload/index.html#xlsx-upload",
-    "href": "posts/11_csv_xlsx_upload/index.html#xlsx-upload",
-    "title": "11: csv & xlsx upload",
-    "section": "xlsx upload",
-    "text": "xlsx upload\nThis is almost identical to how we’ve handled the csv file upload, except that we are now working with xlsx files.\n#' Handle POST at '/xlsx'\n#'\n#' @param req Request object.\n#' @param res Response object.\n#' @return `res$json()`\n#' @export\nxlsx_upload_post &lt;- \\(req, res) {\n  body &lt;- req$rook.input$read()\n\n  response_400 &lt;- list(\n    code = 400L,\n    msg = \"please upload an xlsx file with the key 'file' in the request body\"\n  )\n\n  # if the req body is empty, return a 400:\n  empty &lt;- length(body) == 0L\n  if (empty) {\n    return(\n      res$set_status(400L)$json(response_400)\n    )\n  }\n\n  postdata &lt;- parse_http(\n    body = body,\n    content_type = req$CONTENT_TYPE\n  )\n\n  file_details &lt;- postdata$file\n\n  # check 'content_type' of file:\n  ok &lt;- identical(\n    x = file_details$content_type,\n    y = \"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\"\n  )\n\n  if (!ok) {\n    return(\n      res$set_status(400L)$json(response_400)\n    )\n  }\n\n  # write file temporarily:\n  temp &lt;- tempfile(fileext = \".xlsx\")\n  on.exit(unlink(x = temp))\n  writeBin(object = file_details$value, con = temp)\n\n  # read file:\n  x &lt;- read_xlsx(path = temp)\n  print(x)\n\n  response &lt;- list(\n    code = 200L,\n    msg = \"file uploaded!\"\n  )\n\n  res$json(response)\n}"
-  },
-  {
-    "objectID": "posts/11_csv_xlsx_upload/index.html#test",
-    "href": "posts/11_csv_xlsx_upload/index.html#test",
-    "title": "11: csv & xlsx upload",
-    "section": "Test",
-    "text": "Test\nThis example comes with:\n\niris.csv: A csv test file.\niris.xlsx: An xlsx test file.\nexample.R: An R script showing how you can make requests to the API using R.\n\nTo make requests to the API, you can either use postman or open another R session in the same working directory as this example and run example.R:\n\ncsvxlsx\n\n\nbox::use(\n  curl[form_file],\n  httr2[\n    request,\n    req_perform,\n    req_url_path,\n    last_response,\n    resp_body_json,\n    req_body_multipart,\n  ]\n)\n\nbase_url &lt;- \"http://127.0.0.1:3000\"\nfile &lt;- form_file(\n  path = \"iris.csv\",\n  type = \"text/csv\",\n  name = \"iris.csv\"\n)\n\nreq &lt;- request(base_url = base_url) |&gt;\n  req_url_path(\"/csv\") |&gt;\n  req_body_multipart(file = file)\n\n# use `tryCatch()` in case an error occurs while performing the request:\ntryCatch(\n  expr = req |&gt;\n    req_perform() |&gt;\n    resp_body_json(),\n  error = \\(e) {\n    print(\"An error occurred!\")\n    error &lt;- last_response() |&gt; resp_body_json()\n    print(error)\n  }\n)\n\n\nbox::use(\n  curl[form_file],\n  httr2[\n    request,\n    req_perform,\n    req_url_path,\n    last_response,\n    resp_body_json,\n    req_body_multipart,\n  ]\n)\n\nbase_url &lt;- \"http://127.0.0.1:3000\"\nfile &lt;- form_file(\n  path = \"iris.xlsx\",\n  type = \"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\",\n  name = \"iris.xlsx\"\n)\n\nreq &lt;- request(base_url = base_url) |&gt;\n  req_url_path(\"/xlsx\") |&gt;\n  req_body_multipart(file = file)\n\n# use `tryCatch()` in case an error occurs while performing the request:\ntryCatch(\n  expr = req |&gt;\n    req_perform() |&gt;\n    resp_body_json(),\n  error = \\(e) {\n    print(\"An error occurred!\")\n    error &lt;- last_response() |&gt; resp_body_json()\n    print(error)\n  }\n)"
-  },
-  {
-    "objectID": "posts/00_getting_started/index.html",
-    "href": "posts/00_getting_started/index.html",
-    "title": "00: getting started",
+    "objectID": "posts/08_datatables/index.html#run-app",
+    "href": "posts/08_datatables/index.html#run-app",
+    "title": "08: datatables",
     "section": "",
-    "text": "Clone the repo:\ngit clone git@github.com:kennedymwavu/ambiorix-examples.git\ncd into the root dir:\ncd ambiorix-examples\nAll the examples assume you’re in this directory."
+    "text": "cd into the 08_datatables/ dir:\ncd 08_datatables/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
   },
   {
-    "objectID": "posts/00_getting_started/index.html#installation",
-    "href": "posts/00_getting_started/index.html#installation",
-    "title": "00: getting started",
+    "objectID": "posts/08_datatables/index.html#explanation",
+    "href": "posts/08_datatables/index.html#explanation",
+    "title": "08: datatables",
+    "section": "Explanation",
+    "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nAt this point, I’m not sure there’s anything much to say :)"
+  },
+  {
+    "objectID": "posts/08_datatables/index.html#goals",
+    "href": "posts/08_datatables/index.html#goals",
+    "title": "08: datatables",
+    "section": "Goals",
+    "text": "Goals\nAlright, time to build a ✨CRUD application backend✨."
+  },
+  {
+    "objectID": "posts/03_basic_routing/index.html",
+    "href": "posts/03_basic_routing/index.html",
+    "title": "03: basic routing",
     "section": "",
-    "text": "Clone the repo:\ngit clone git@github.com:kennedymwavu/ambiorix-examples.git\ncd into the root dir:\ncd ambiorix-examples\nAll the examples assume you’re in this directory."
+    "text": "cd into the 03_basic_routing/ dir:\ncd 03_basic_routing/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
   },
   {
-    "objectID": "posts/00_getting_started/index.html#say-hello",
-    "href": "posts/00_getting_started/index.html#say-hello",
-    "title": "00: getting started",
-    "section": "Say hello",
-    "text": "Say hello\nYou’re now ready for a ✨Hello, World!✨"
+    "objectID": "posts/03_basic_routing/index.html#run-app",
+    "href": "posts/03_basic_routing/index.html#run-app",
+    "title": "03: basic routing",
+    "section": "",
+    "text": "cd into the 03_basic_routing/ dir:\ncd 03_basic_routing/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+  },
+  {
+    "objectID": "posts/03_basic_routing/index.html#explanation",
+    "href": "posts/03_basic_routing/index.html#explanation",
+    "title": "03: basic routing",
+    "section": "Explanation",
+    "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nIt has two endpoints:\n\n/\n/user\n\nRouting refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).\nEach route can have one or more handler functions, which are executed when the route is matched.\nRoute definition takes the following structure:\napp$METHOD(PATH, HANDLER)\n\napp is an instance of ambiorix.\nMETHOD is an HTTP request method, in lowercase.\nHANDLER is the function executed when the route is matched.\n\nThe following examples illustrate defining simple routes.\nRespond with Hello World! on the homepage:\napp$get(\"/\", \\(req, res) {\n  res$send(\"Hello World!\")\n})\nRespond to POST request on the root route (/), the application’s home page:\napp$post(\"/\", \\(req, res) {\n  res$send(\"Got a POST request\")\n})\nRespond to a PUT request to the /user route:\napp$put(\"/user\", \\(req, res) {\n  res$send(\"Got a PUT request at /user\")\n})\nRespond to a DELETE request to the /user route:\napp$delete(\"/user\", \\(req, res) {\n  res$send(\"Got a DELETE request at /user\")\n})"
+  },
+  {
+    "objectID": "posts/03_basic_routing/index.html#keep-this-in-mind",
+    "href": "posts/03_basic_routing/index.html#keep-this-in-mind",
+    "title": "03: basic routing",
+    "section": "Keep this in mind:",
+    "text": "Keep this in mind:\n\nBrowsers issue a GET request by default. This means that once you run this example and visit localhost 3000, you’ll only be able to access the homepage (/).\nThe easiest way to see the responses from the other routes would be to either:\n\nInstall Postman and make the requests from there (Recommended). The free tier is more than enough. Here is how issuing the various requests above would look like:    \nOpen another R session and use httr2 to make requests to the endpoints."
+  },
+  {
+    "objectID": "posts/03_basic_routing/index.html#a-simple-json-api",
+    "href": "posts/03_basic_routing/index.html#a-simple-json-api",
+    "title": "03: basic routing",
+    "section": "A simple JSON API",
+    "text": "A simple JSON API\nYou’re now ready to build ✨a simple JSON API✨."
   },
   {
     "objectID": "about.html",
@@ -252,151 +266,144 @@
     "text": "Note\nIn some of the examples I’ve committed the .Renviron files. I did this just to make it easier for you to run the examples.\nHowever, you should NEVER commit a file that has any type of credentials (.Renviron in this case). Such files should always be included in your .gitignore so that git doesn’t track them."
   },
   {
-    "objectID": "posts/03_basic_routing/index.html",
-    "href": "posts/03_basic_routing/index.html",
-    "title": "03: basic routing",
+    "objectID": "posts/00_getting_started/index.html",
+    "href": "posts/00_getting_started/index.html",
+    "title": "00: getting started",
     "section": "",
-    "text": "cd into the 03_basic_routing/ dir:\ncd 03_basic_routing/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+    "text": "Clone the repo:\ngit clone git@github.com:kennedymwavu/ambiorix-examples.git\ncd into the root dir:\ncd ambiorix-examples\nAll the examples assume you’re in this directory."
   },
   {
-    "objectID": "posts/03_basic_routing/index.html#run-app",
-    "href": "posts/03_basic_routing/index.html#run-app",
-    "title": "03: basic routing",
+    "objectID": "posts/00_getting_started/index.html#installation",
+    "href": "posts/00_getting_started/index.html#installation",
+    "title": "00: getting started",
     "section": "",
-    "text": "cd into the 03_basic_routing/ dir:\ncd 03_basic_routing/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+    "text": "Clone the repo:\ngit clone git@github.com:kennedymwavu/ambiorix-examples.git\ncd into the root dir:\ncd ambiorix-examples\nAll the examples assume you’re in this directory."
   },
   {
-    "objectID": "posts/03_basic_routing/index.html#explanation",
-    "href": "posts/03_basic_routing/index.html#explanation",
-    "title": "03: basic routing",
+    "objectID": "posts/00_getting_started/index.html#say-hello",
+    "href": "posts/00_getting_started/index.html#say-hello",
+    "title": "00: getting started",
+    "section": "Say hello",
+    "text": "Say hello\nYou’re now ready for a ✨Hello, World!✨"
+  },
+  {
+    "objectID": "posts/11_csv_xlsx_upload/index.html",
+    "href": "posts/11_csv_xlsx_upload/index.html",
+    "title": "11: csv & xlsx upload",
+    "section": "",
+    "text": "cd into the 11_csv_xlsx_upload/ dir:\ncd 11_csv_xlsx_upload/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the API, run this on the terminal:\nRscript server.R"
+  },
+  {
+    "objectID": "posts/11_csv_xlsx_upload/index.html#skeleton",
+    "href": "posts/11_csv_xlsx_upload/index.html#skeleton",
+    "title": "11: csv & xlsx upload",
+    "section": "Skeleton",
+    "text": "Skeleton\nNext, let’s define the API skeleton:\n1app &lt;- Ambiorix$new(port = 3000, host = \"127.0.0.1\")\n2app$limit &lt;- 35 * 1024 * 1024\n\napp$\n3  set_error(error_handler)$\n4  get(\"/\", home_get)$\n5  post(\"/csv\", csv_upload_post)$\n6  post(\"/xlsx\", xlsx_upload_post)$\n7  start()\n\n1\n\nInitialize a new ambiorix app. Set port & host to run app on.\n\n2\n\nIncrease max body size to 35 MB. Think of this as the max file upload size for now.\n\n3\n\nSet an error handler for the API.\n\n4\n\nAdd handler for requests at /.\n\n5\n\nAdd handler for requests at /csv.\n\n6\n\nAdd handler for requests at /xlsx.\n\n7\n\nStart API.\n\n\nNow, let’s create the handlers."
+  },
+  {
+    "objectID": "posts/11_csv_xlsx_upload/index.html#error-handler",
+    "href": "posts/11_csv_xlsx_upload/index.html#error-handler",
+    "title": "11: csv & xlsx upload",
+    "section": "Error handler",
+    "text": "Error handler\nI’ve made it a habit to always have an error handler for my APIs. Ideally, this is where you log any server errors that occurred, either due to failed operations or bugs.\n#' 500 error handler middleware\n#'\n#' @param req Request object.\n#' @param res Response object.\n#' @param error Error object. See [stop()].\n#' @return `res$json()`\n#' @export\nerror_handler &lt;- \\(req, res, error = NULL) {\n  if (!is.null(error)) {\n    msg &lt;- conditionMessage(error)\n    cli_alert_danger(text = msg)\n  }\n\n  response &lt;- list(\n    code = 500L,\n    msg = \"A server error occurred!\"\n  )\n\n  res$set_status(500L)$json(response)\n}"
+  },
+  {
+    "objectID": "posts/11_csv_xlsx_upload/index.html#hello-world",
+    "href": "posts/11_csv_xlsx_upload/index.html#hello-world",
+    "title": "11: csv & xlsx upload",
+    "section": "Hello, World!",
+    "text": "Hello, World!\nAre you even a real programmer if you don’t always start with a “Hello, World”?\n#' Handle GET at '/'\n#'\n#' @param req Request object.\n#' @param res Response object.\n#' @return `res$json()`\n#' @export\nhome_get &lt;- \\(req, res) {\n  response &lt;- list(\n    code = 200L,\n    msg = \"hello, world!\"\n  )\n\n  res$json(response)\n}"
+  },
+  {
+    "objectID": "posts/11_csv_xlsx_upload/index.html#csv-upload",
+    "href": "posts/11_csv_xlsx_upload/index.html#csv-upload",
+    "title": "11: csv & xlsx upload",
+    "section": "csv upload",
+    "text": "csv upload\nWe’re finally at the juicy part of this post!\n#' Handle POST at '/csv'\n#'\n#' @param req Request object.\n#' @param res Response object.\n#' @return `res$json()`\n#' @export\ncsv_upload_post &lt;- \\(req, res) {\n1  body &lt;- req$rook.input$read()\n\n2  response_400 &lt;- list(\n    code = 400L,\n    msg = \"please upload a csv file with the key 'file' in the request body\"\n  )\n\n  # if the req body is empty, return a 400:\n3  empty &lt;- length(body) == 0L\n  if (empty) {\n    return(\n      res$set_status(400L)$json(response_400)\n    )\n  }\n\n4  postdata &lt;- parse_http(\n    body = body,\n    content_type = req$CONTENT_TYPE\n  )\n\n5  file_details &lt;- postdata$file\n\n  # check 'content_type' of file:\n6  ok &lt;- identical(\n    x = file_details$content_type,\n    y = \"text/csv\"\n  )\n\n  if (!ok) {\n    return(\n      res$set_status(400L)$json(response_400)\n    )\n  }\n\n  # write file temporarily:\n7  temp &lt;- tempfile(fileext = \".csv\")\n  on.exit(unlink(x = temp))\n  writeBin(object = file_details$value, con = temp)\n\n  # read file:\n8  x &lt;- fread(file = temp)\n9  print(x)\n\n10  response &lt;- list(\n    code = 200L,\n    msg = \"file uploaded!\"\n  )\n\n  res$json(response)\n}\n\n1\n\nRead the request body.\n\n2\n\nCreate a bad request response: response_400.\n\n3\n\nIf the request body is empty, return response_400.\n\n4\n\nParse the body into a named list of key-value pairs. POST request variables are stored as key-value pairs in the request body.\n\n5\n\nGet the variable/field named file from the list.\n\n6\n\nIf the content type of the file is not text/csv, return response_400. To learn about common mime types, refer to MIME_types.\n\n7\n\nTemporarily write the file to disk.\n\n8\n\nRead the file.\n\n9\n\nPrint the data.table.\n\n10\n\nReturn a 200 success response."
+  },
+  {
+    "objectID": "posts/11_csv_xlsx_upload/index.html#xlsx-upload",
+    "href": "posts/11_csv_xlsx_upload/index.html#xlsx-upload",
+    "title": "11: csv & xlsx upload",
+    "section": "xlsx upload",
+    "text": "xlsx upload\nThis is almost identical to how we’ve handled the csv file upload, except that we are now working with xlsx files.\n#' Handle POST at '/xlsx'\n#'\n#' @param req Request object.\n#' @param res Response object.\n#' @return `res$json()`\n#' @export\nxlsx_upload_post &lt;- \\(req, res) {\n  body &lt;- req$rook.input$read()\n\n  response_400 &lt;- list(\n    code = 400L,\n    msg = \"please upload an xlsx file with the key 'file' in the request body\"\n  )\n\n  # if the req body is empty, return a 400:\n  empty &lt;- length(body) == 0L\n  if (empty) {\n    return(\n      res$set_status(400L)$json(response_400)\n    )\n  }\n\n  postdata &lt;- parse_http(\n    body = body,\n    content_type = req$CONTENT_TYPE\n  )\n\n  file_details &lt;- postdata$file\n\n  # check 'content_type' of file:\n  ok &lt;- identical(\n    x = file_details$content_type,\n    y = \"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\"\n  )\n\n  if (!ok) {\n    return(\n      res$set_status(400L)$json(response_400)\n    )\n  }\n\n  # write file temporarily:\n  temp &lt;- tempfile(fileext = \".xlsx\")\n  on.exit(unlink(x = temp))\n  writeBin(object = file_details$value, con = temp)\n\n  # read file:\n  x &lt;- read_xlsx(path = temp)\n  print(x)\n\n  response &lt;- list(\n    code = 200L,\n    msg = \"file uploaded!\"\n  )\n\n  res$json(response)\n}"
+  },
+  {
+    "objectID": "posts/11_csv_xlsx_upload/index.html#test",
+    "href": "posts/11_csv_xlsx_upload/index.html#test",
+    "title": "11: csv & xlsx upload",
+    "section": "Test",
+    "text": "Test\nThis example comes with:\n\niris.csv: A csv test file.\niris.xlsx: An xlsx test file.\nexample.R: An R script showing how you can make requests to the API using R.\n\nTo make requests to the API, you can either use postman or open another R session in the same working directory as this example and run example.R:\n\ncsvxlsx\n\n\nbox::use(\n  curl[form_file],\n  httr2[\n    request,\n    req_perform,\n    req_url_path,\n    last_response,\n    resp_body_json,\n    req_body_multipart,\n  ]\n)\n\nbase_url &lt;- \"http://127.0.0.1:3000\"\nfile &lt;- form_file(\n  path = \"iris.csv\",\n  type = \"text/csv\",\n  name = \"iris.csv\"\n)\n\nreq &lt;- request(base_url = base_url) |&gt;\n  req_url_path(\"/csv\") |&gt;\n  req_body_multipart(file = file)\n\n# use `tryCatch()` in case an error occurs while performing the request:\ntryCatch(\n  expr = req |&gt;\n    req_perform() |&gt;\n    resp_body_json(),\n  error = \\(e) {\n    print(\"An error occurred!\")\n    error &lt;- last_response() |&gt; resp_body_json()\n    print(error)\n  }\n)\n\n\nbox::use(\n  curl[form_file],\n  httr2[\n    request,\n    req_perform,\n    req_url_path,\n    last_response,\n    resp_body_json,\n    req_body_multipart,\n  ]\n)\n\nbase_url &lt;- \"http://127.0.0.1:3000\"\nfile &lt;- form_file(\n  path = \"iris.xlsx\",\n  type = \"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\",\n  name = \"iris.xlsx\"\n)\n\nreq &lt;- request(base_url = base_url) |&gt;\n  req_url_path(\"/xlsx\") |&gt;\n  req_body_multipart(file = file)\n\n# use `tryCatch()` in case an error occurs while performing the request:\ntryCatch(\n  expr = req |&gt;\n    req_perform() |&gt;\n    resp_body_json(),\n  error = \\(e) {\n    print(\"An error occurred!\")\n    error &lt;- last_response() |&gt; resp_body_json()\n    print(error)\n  }\n)"
+  },
+  {
+    "objectID": "posts/04_simple_json_api/index.html",
+    "href": "posts/04_simple_json_api/index.html",
+    "title": "04: simple json api",
+    "section": "",
+    "text": "cd into the 04_simple_json_api/ dir:\ncd 04_simple_json_api/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+  },
+  {
+    "objectID": "posts/04_simple_json_api/index.html#run-app",
+    "href": "posts/04_simple_json_api/index.html#run-app",
+    "title": "04: simple json api",
+    "section": "",
+    "text": "cd into the 04_simple_json_api/ dir:\ncd 04_simple_json_api/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+  },
+  {
+    "objectID": "posts/04_simple_json_api/index.html#explanation",
+    "href": "posts/04_simple_json_api/index.html#explanation",
+    "title": "04: simple json api",
     "section": "Explanation",
-    "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nIt has two endpoints:\n\n/\n/user\n\nRouting refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).\nEach route can have one or more handler functions, which are executed when the route is matched.\nRoute definition takes the following structure:\napp$METHOD(PATH, HANDLER)\n\napp is an instance of ambiorix.\nMETHOD is an HTTP request method, in lowercase.\nHANDLER is the function executed when the route is matched.\n\nThe following examples illustrate defining simple routes.\nRespond with Hello World! on the homepage:\napp$get(\"/\", \\(req, res) {\n  res$send(\"Hello World!\")\n})\nRespond to POST request on the root route (/), the application’s home page:\napp$post(\"/\", \\(req, res) {\n  res$send(\"Got a POST request\")\n})\nRespond to a PUT request to the /user route:\napp$put(\"/user\", \\(req, res) {\n  res$send(\"Got a PUT request at /user\")\n})\nRespond to a DELETE request to the /user route:\napp$delete(\"/user\", \\(req, res) {\n  res$send(\"Got a DELETE request at /user\")\n})"
+    "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nIt has two endpoints:\n\n/api/members\n/api/members/:id\n\nIdeally, the backend works hand-in-hand with the database. But for the sake of simplicity, let’s hardcode a list of members:\nmembers &lt;- data.frame(\n  id = as.character(1:3),\n  name = c(\"John Doe\", \"Bob Williams\", \"Shannon Jackson\"),\n  email = c(\"john@gmail.com\", \"bob@gmail.com\", \"shannon@gmail.com\"),\n  status = c(\"active\", \"inactive\", \"active\")\n)\nYou don’t have to worry about converting members into JSON because the res$json() method does it for you.\nCreate a GET request to get all members:\napp$get(\"/api/members\", \\(req, res) {\n  res$json(members)\n})\n\n\n\nGET /api/members\n\n\nCreate a GET request to get a single member by id:\napp$get(\"/api/members/:id\", \\(req, res) {\n  # get the supplied id:\n  member_id &lt;- req$params$id\n\n  # filter member with that id:\n  found &lt;- members |&gt; dplyr::filter(id == member_id)\n\n  res$json(found)\n})\n\n\n\nGET /api/members/:id\n\n\nYou can also dictate how the response changes if no member is found:\n# get a single member:\napp$get(\"/api/members/:id\", \\(req, res) {\n  # get the supplied id:\n  member_id &lt;- req$params$id\n\n  # filter member with that id:\n  found &lt;- members |&gt; dplyr::filter(id == member_id)\n\n  # if a member with that id was found, return the member:\n  if (nrow(found) &gt; 0) {\n    return(res$json(found))\n  }\n\n  # otherwise, change response status to 400 (Bad Request)\n  # and provide a message:\n  msg &lt;- list(msg = sprintf(\"No member with the id of %s\", member_id))\n  res$set_status(400L)$json(msg)\n})\n\n\n\nGET /api/members/:id\n\n\nA POST request to create a new member:\napp$post(\"/api/members\", \\(req, res) {\n  # parse form-data:\n  body &lt;- parse_multipart(req)\n\n  # details of the new member:\n  new_member &lt;- data.frame(\n    id = uuid::UUIDgenerate(),\n    name = body$name,\n    email = body$email,\n    status = body$status\n  )\n\n  # save new member:\n  members &lt;&lt;- dplyr::bind_rows(members, new_member)\n\n  # respond with a message and details of the newly created member:\n  response &lt;- list(\n    msg = \"Member created successfully!\",\n    member = new_member\n  )\n\n  res$json(response)\n})\n\n\n\nPOST /api/members\n\n\nYou can of course ensure all the details are sent (name, email & status) before creating the new member:\napp$post(\"/api/members\", \\(req, res) {\n  # parse form-data:\n  body &lt;- parse_multipart(req)\n\n  name &lt;- body$name\n  email &lt;- body$email\n  status &lt;- body$status\n\n  # require all member details:\n  if (is.null(name) || is.null(email) || is.null(status)) {\n    msg &lt;- list(msg = \"Please include a name, email & status\")\n    return(res$set_status(400L)$json(msg))\n  }\n\n  # details of the new member:\n  new_member &lt;- data.frame(\n    id = uuid::UUIDgenerate(),\n    name = name,\n    email = email,\n    status = status\n  )\n\n  # save new member:\n  members &lt;&lt;- dplyr::bind_rows(members, new_member)\n\n  # respond with a message and details of the newly created member:\n  response &lt;- list(\n    msg = \"Member created successfully!\",\n    member = new_member\n  )\n\n  res$json(response)\n})\n\n\n\nPOST /api/members\n\n\nCreate a PUT request to update a member:\napp$put(\"/api/members/:id\", \\(req, res) {\n  # get the supplied id:\n  member_id &lt;- req$params$id\n\n  # filter member with that id:\n  found &lt;- members |&gt; dplyr::filter(id == member_id)\n\n  # if a member with that id is NOT found, change response status\n  # and provide a message:\n  if (nrow(found) == 0) {\n    msg &lt;- list(msg = sprintf(\"No member with the id of %s\", member_id))\n    return(res$set_status(400L)$json(msg))\n  }\n\n  # otherwise, proceed to update member:\n  body &lt;- parse_multipart(req)\n\n  # only update provided fields:\n  found$name &lt;- body$name %||% found$name\n  found$email &lt;- body$email %||% found$email\n  found$status &lt;- body$status %||% found$status\n\n  members[members$id == found$id, ] &lt;- found\n\n  response &lt;- list(\n    msg = \"Member updated successfully\",\n    member = found\n  )\n  res$json(response)\n})\n\n\n\nPUT /api/members/:id\n\n\nCreate a delete request to, well, delete a member:\napp$delete(\"/api/members/:id\", \\(req, res) {\n  # get the supplied id:\n  member_id &lt;- req$params$id\n\n  # filter member with that id:\n  found &lt;- members |&gt; dplyr::filter(id == member_id)\n\n  # if a member with that id is NOT found, change response status\n  # and provide a message:\n  if (nrow(found) == 0) {\n    msg &lt;- list(msg = sprintf(\"No member with the id of %s\", member_id))\n    return(res$set_status(400L)$json(msg))\n  }\n\n  # otherwise, proceed to delete member:\n  members &lt;&lt;- members |&gt; dplyr::filter(id != member_id)\n\n  response &lt;- list(\n    msg = \"Member deleted successfully\",\n    members = members\n  )\n  res$json(response)\n})\n\n\n\nDELETE /api/members/:id"
   },
   {
-    "objectID": "posts/03_basic_routing/index.html#keep-this-in-mind",
-    "href": "posts/03_basic_routing/index.html#keep-this-in-mind",
-    "title": "03: basic routing",
-    "section": "Keep this in mind:",
-    "text": "Keep this in mind:\n\nBrowsers issue a GET request by default. This means that once you run this example and visit localhost 3000, you’ll only be able to access the homepage (/).\nThe easiest way to see the responses from the other routes would be to either:\n\nInstall Postman and make the requests from there (Recommended). The free tier is more than enough. Here is how issuing the various requests above would look like:    \nOpen another R session and use httr2 to make requests to the endpoints."
+    "objectID": "posts/04_simple_json_api/index.html#router",
+    "href": "posts/04_simple_json_api/index.html#router",
+    "title": "04: simple json api",
+    "section": "Router",
+    "text": "Router\nThings are getting out of hand in server.R. Take a look at ✨routers✨."
   },
   {
-    "objectID": "posts/03_basic_routing/index.html#a-simple-json-api",
-    "href": "posts/03_basic_routing/index.html#a-simple-json-api",
-    "title": "03: basic routing",
-    "section": "A simple JSON API",
-    "text": "A simple JSON API\nYou’re now ready to build ✨a simple JSON API✨."
-  },
-  {
-    "objectID": "posts/08_datatables/index.html",
-    "href": "posts/08_datatables/index.html",
-    "title": "08: datatables",
+    "objectID": "posts/06_multi_router/index.html",
+    "href": "posts/06_multi_router/index.html",
+    "title": "06: multi-router",
     "section": "",
-    "text": "cd into the 08_datatables/ dir:\ncd 08_datatables/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+    "text": "cd into the 06_multi_router/ dir:\ncd 06_multi_router/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
   },
   {
-    "objectID": "posts/08_datatables/index.html#run-app",
-    "href": "posts/08_datatables/index.html#run-app",
-    "title": "08: datatables",
+    "objectID": "posts/06_multi_router/index.html#run-app",
+    "href": "posts/06_multi_router/index.html#run-app",
+    "title": "06: multi-router",
     "section": "",
-    "text": "cd into the 08_datatables/ dir:\ncd 08_datatables/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+    "text": "cd into the 06_multi_router/ dir:\ncd 06_multi_router/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
   },
   {
-    "objectID": "posts/08_datatables/index.html#explanation",
-    "href": "posts/08_datatables/index.html#explanation",
-    "title": "08: datatables",
+    "objectID": "posts/06_multi_router/index.html#explanation",
+    "href": "posts/06_multi_router/index.html#explanation",
+    "title": "06: multi-router",
     "section": "Explanation",
-    "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nAt this point, I’m not sure there’s anything much to say :)"
+    "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nYou can have multiple routers mounted onto ambiorix::Ambiorix via the use() method.\nIn this example, I show how you can version your api.\nRemember, ambiorix is unopinionated. This is just my way of doing things.\nYou’ll see that using {box} is the easiest way to split up & organize your files & folders.\nThis is the directory structure that I’ve used:\n.\n├── api\n│   ├── members.R\n│   ├── v1\n│   │   ├── members\n│   │   │   ├── controllers.R\n│   │   │   ├── create_new_member.R\n│   │   │   ├── delete_member.R\n│   │   │   ├── get_all_members.R\n│   │   │   ├── get_member_by_id.R\n│   │   │   └── update_member_info.R\n│   │   └── members.R\n│   └── v2\n│       ├── members\n│       │   ├── controllers.R\n│       │   ├── create_new_member.R\n│       │   ├── delete_member.R\n│       │   ├── get_all_members.R\n│       │   ├── get_member_by_id.R\n│       │   └── update_member_info.R\n│       └── members.R\n├── index.R\n└── README.md\nThis is how server.R looks like:\nbox::use(\n  ambiorix[Ambiorix],\n  . / api / members\n)\n\nAmbiorix$\n  new()$\n  listen(port = 3000L)$\n  use(members$v1)$ # mount API v1 members' router\n  use(members$v2)$ # mount API v2 members' router\n  start(open = FALSE)\nOnce you run the app, you should be able to perform requests on http://localhost:3000/api/v*/members, eg.\n\nGET request on http://localhost:3000/api/v1/members\nPUT request on http://localhost:3000/api/v2/members/:3\n\n… and so on.\nCheckout the routers in these files:\n\n./api/v1/members.R\n./api/v2/members.R"
   },
   {
-    "objectID": "posts/08_datatables/index.html#goals",
-    "href": "posts/08_datatables/index.html#goals",
-    "title": "08: datatables",
-    "section": "Goals",
-    "text": "Goals\nAlright, time to build a ✨CRUD application backend✨."
+    "objectID": "posts/06_multi_router/index.html#dynamic-rendering",
+    "href": "posts/06_multi_router/index.html#dynamic-rendering",
+    "title": "06: multi-router",
+    "section": "Dynamic rendering",
+    "text": "Dynamic rendering\nAre you ready for some frontend fun? See ✨dynamic rendering✨."
   },
   {
-    "objectID": "posts/02_static_files/index.html",
-    "href": "posts/02_static_files/index.html",
-    "title": "02: static files",
+    "objectID": "posts/13_parse_raw_json/index.html",
+    "href": "posts/13_parse_raw_json/index.html",
+    "title": "13: parse raw json",
     "section": "",
-    "text": "cd into the 02_static_files/ dir:\ncd 02_static_files/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
+    "text": "Parse raw JSON\nSometimes you need to parse requests which have raw JSON in the body. ambiorix::parse_multipart() only works for ‘form-data’. That’s where webutils::parse_http() comes in.\nThis is a simple example revolving around how you can select columns and filter rows in the iris dataset when the request body is something like this:\n{\n    \"cols\": [\"Sepal.Length\", \"Petal.Width\", \"Species\"],\n    \"species\": [\"virginica\", \"setosa\"]\n}\n\n\nRun API\n\ncd into the 13_parse_raw_json/ dir:\ncd 13_parse_raw_json/\nFire up R and restore package dependencies:\nrenv::restore()\nserver.R is the entry point. Run this command in the terminal to start the API:\nRscript server.R"
   },
   {
-    "objectID": "posts/02_static_files/index.html#run-app",
-    "href": "posts/02_static_files/index.html#run-app",
-    "title": "02: static files",
+    "objectID": "posts/14_cors/index.html",
+    "href": "posts/14_cors/index.html",
+    "title": "14: CORS",
     "section": "",
-    "text": "cd into the 02_static_files/ dir:\ncd 02_static_files/\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nindex.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
-  },
-  {
-    "objectID": "posts/02_static_files/index.html#explanation",
-    "href": "posts/02_static_files/index.html#explanation",
-    "title": "02: static files",
-    "section": "Explanation",
-    "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nIt has a single endpoint:\n\n/: localhost:3000/\n\nNow that the app is running, navigate to these links in your browser:\n\nlocalhost:3000/static/index.html\nlocalhost:3000/static/about.html\nlocalhost:3000/static/index2.R\n\nTo serve static files such as images, CSS files, JavaScript files etc., use the app$static() method.\nFor example, let’s say this is your directory structure:\n|- index.R\n|- public/\n    |- index.html\n    |- about.html\n    |- image.jpg\n    |- css\n        |- styles.css\n    |- index2.R\n    |- main.js\n\n/public\nTo make the files accessible at the path /public, you’d do this:\napp$static(path = \"public\", uri = \"public\")\n\npath specifies the static directory.\nuri defines the path ambiorix should serve the static files from.\n\nSo now you’ll be able to do this in your app:\napp$get(\"/\", \\(req, res) {\n  res$send(\n    \"&lt;h1&gt;Hello everyone!&lt;/h1&gt;\n    &lt;img src='public/image.jpg'/&gt;\"\n  )\n})\nBy making the public/ folder static, any resource placed there can be accessed via the browser eg. http://localhost:3000/public/image.jpg\n\n\n/your-own-path\nYou can make static content accessible via your own custom path too.\nFor example, let’s use /static this time:\napp$static(path = \"public\", uri = \"static\")\nThen in your code you’ll use this:\napp$get(\"/\", \\(req, res) {\n  res$send(\n    \"&lt;h1&gt;Hello everyone!&lt;/h1&gt;\n    &lt;img src='static/image.jpg'/&gt;\"\n  )\n})"
-  },
-  {
-    "objectID": "posts/02_static_files/index.html#keep-this-in-mind",
-    "href": "posts/02_static_files/index.html#keep-this-in-mind",
-    "title": "02: static files",
-    "section": "Keep this in mind:",
-    "text": "Keep this in mind:\n\nAll static files are exposed and can be accessed via the browser. DO NOT put sensitive files there.\nYou can also use htmltools tags instead of writing html strings."
-  },
-  {
-    "objectID": "posts/02_static_files/index.html#basic-routing",
-    "href": "posts/02_static_files/index.html#basic-routing",
-    "title": "02: static files",
-    "section": "Basic routing",
-    "text": "Basic routing\nLearn the ✨basics of routing✨."
-  },
-  {
-    "objectID": "posts/12_frontend_for_09_goals/index.html",
-    "href": "posts/12_frontend_for_09_goals/index.html",
-    "title": "12: frontend for 09_goals",
-    "section": "",
-    "text": "Goals\nThis is a frontend for example 09_goals. Built using {shiny}.\n\n\nFeatures\n\nAuth:\n\nCustom sign up & login pages\nCookies: Auto-login next time you visit/reload the app\n\nAPIs:\n\nMake API requests to the backend using {httr2}\nHandle any request errors gracefully via tryCatch()\n\n\n\n\nRun app\n\nFirst make sure that the backend is running. See how here.\ncd into the dir 12_shiny_frontend_for_09_goals/:\ncd 12_shiny_frontend_for_09_goals/\nFire up R & restore pkg dependencies:\nrenv::restore()\nAdd these env vars to your .Renviron:\nBASE_URL = http://127.0.0.1:5000\nRENV_CONFIG_SANDBOX_ENABLED = FALSE\napp.R is the entry point. Run this on the terminal to start the app:\nRscript app.R"
-  },
-  {
-    "objectID": "posts/05_router/index.html",
-    "href": "posts/05_router/index.html",
-    "title": "05: router",
-    "section": "",
-    "text": "cd into the 05_router/ dir:\ncd 05_router/\n\nThere are 2 directories there: box/ & r_pkg_structure/.\ncd into any of them, say, r_pkg_structure/:\ncd r_pkg_structure/\n\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
-  },
-  {
-    "objectID": "posts/05_router/index.html#run-app",
-    "href": "posts/05_router/index.html#run-app",
-    "title": "05: router",
-    "section": "",
-    "text": "cd into the 05_router/ dir:\ncd 05_router/\n\nThere are 2 directories there: box/ & r_pkg_structure/.\ncd into any of them, say, r_pkg_structure/:\ncd r_pkg_structure/\n\nFire up R:\nR\nRestore package dependencies:\nrenv::restore()\nOnce done, exit R.\nserver.R is the entry point. To start the app, run this on the terminal:\nRscript index.R"
-  },
-  {
-    "objectID": "posts/05_router/index.html#explanation",
-    "href": "posts/05_router/index.html#explanation",
-    "title": "05: router",
-    "section": "Explanation",
-    "text": "Explanation\nThis app starts a server and listens on port 3000 for connections.\nIt has two endpoints:\n\n/api/members\n/api/members/:id\n\nRouting refers to how an application’s endpoints (URIs) respond to client requests.\nFor an introduction to routing, see 03_basic_routing.\nIf you look at 04_simple_json_api you’ll notice that the routes we created all belong to /api/members and we kept repeating that base/root route.\nWouldn’t it be nice to only have to use / and /:id and have ambiorix prepend the /api/members automatically?\nThat would give you a better app structure making it manageable."
-  },
-  {
-    "objectID": "posts/05_router/index.html#enter-ambiorixrouter.",
-    "href": "posts/05_router/index.html#enter-ambiorixrouter.",
-    "title": "05: router",
-    "section": "Enter ambiorix::Router().",
-    "text": "Enter ambiorix::Router().\nUse the ambiorix::Router class to create modular, mountable router handlers.\nA Router instance is a complete middleware and routing system; for this reason, it is often referred to as a “mini-app”.\nUsing the example 04_simple_json_api, this is how we would transform it:\n# members.R\nmembers_router &lt;- \\() {\n  router &lt;- Router$new(\"/members\")\n\n  # get all members:\n  router$get(\"/\", \\(req, res) {\n    # ...\n  })\n\n  # get a single member:\n  router$get(\"/:id\", \\(req, res) {\n    # ...\n  })\n\n  # create a new member:\n  router$post(\"/\", \\(req, res)) {\n    # ...\n  }\n\n  # update member:\n  router$put(\"/:id\", \\(req, res) {\n    # ...\n  })\n\n  # delete member:\n  router$delete(\"/:id\", \\(req, res) {\n    # ...\n  })\n\n  router\n}\nThe server.R file would now be:\nlibrary(ambiorix)\n\n# &lt;bring/import the members.R file&gt;\n\nPORT &lt;- 3000\n\napp &lt;- Ambiorix$new()\n\n# mount the router:\napp$use(members_router())\n\napp$start(port = PORT, open = FALSE)"
-  },
-  {
-    "objectID": "posts/05_router/index.html#keep-this-in-mind",
-    "href": "posts/05_router/index.html#keep-this-in-mind",
-    "title": "05: router",
-    "section": "Keep this in mind:",
-    "text": "Keep this in mind:\nAmbiorix is unopinionated. As such, it is up to you to decide how you want to bring/export the members.R file into index.R.\nSome options are:\n\nUse box (Highly recommended, ⭐⭐⭐⭐⭐) especially if you develop large apps/systems, for two reasons:\n\nAllows nested files, folders & modules (a big win)\nExplicit name imports ie. you’re almost always sure from which package a function is from.\n\nUse R package structure (Recommended, ⭐⭐⭐⭐). Will not allow nested folders but will work really well for small to medium apps.\nsource() files (NOT recommended, 1⭐). Haha. Iykyk.\n\nChoose wisely."
-  },
-  {
-    "objectID": "posts/05_router/index.html#multiple-routers",
-    "href": "posts/05_router/index.html#multiple-routers",
-    "title": "05: router",
-    "section": "Multiple routers",
-    "text": "Multiple routers\nLearn how you can mount ✨multiple routers✨."
+    "text": "You’re probably reading this because you’ve hit that CORS error in your browser :)\nTL;DR: See the middleware.\n\nQuoting mdn web docs:\nCross-Origin Resource Sharing (CORS) is an HTTP-header based mechanism that allows a server to indicate any origins (domain, scheme, or port) than its own from which a browser should permit loading resources.\nCORS also relies on a mechanism by which browsers make a “preflight” request to the server hosting the cross-origin resource, in order to check that the server will permit the actual request. In that preflight, the browser sends the headers that indicate the HTTP method and headers that will be used in the actual request.\nAn example of cross-origin request: the front-end JavaScript code served from https://domain-a.com uses fetch() to make a request for https://domain-b.com/data.json.\nFor security reasons, browsers restrict cross-origin HTTP requests initiated from scripts.\nFor example, fetch() and XMLHtttpRequest follow the ‘same-origin policy’. This means that a web application using those APIs can only request resources from the same origin the application was loaded from unless the response from the other origins includes the right CORS headers.\n\n\nHow to allow CORS\nIt’s really simple. This image from html5rocks.com is all you need:\n\n\n\nMiddleware\nAs Rihanna and Calvin Harris would tell you, This Is What You Came For:\n#' Allow CORS\n#'\n#' @details\n#' Sets these headers in the response:\n#' - `Access-Control-Allow-Methods`\n#' - `Access-Control-Allow-Headers`\n#' - `Access-Control-Allow-Origin`\n#' @export\ncors &lt;- \\(req, res) {\n  res$header(\"Access-Control-Allow-Origin\", \"http://127.0.0.1:8000\")\n\n  if (req$REQUEST_METHOD == \"OPTIONS\") {\n    res$header(\"Access-Control-Allow-Methods\", \"GET, POST, PUT, DELETE\")\n    res$header(\n      \"Access-Control-Allow-Headers\",\n      req$HEADERS$`access-control-request-headers`\n    )\n\n    return(\n      res$set_status(200L)$send(\"\")\n    )\n  }\n}\nChange the values set for the headers to suit your specific use-case.\n\n\nNote\n\nDO NOT include a trailing slash in the allowed origins.\n\nhttp://127.0.0.1:8000/❌\nhttp://127.0.0.1:8000✅\n\nIn Ambiorix, middleware is executed in the order it is registered with use(). Make sure this middleware is the first one in the sequence."
   },
   {
     "objectID": "posts/09_goals/index.html",
