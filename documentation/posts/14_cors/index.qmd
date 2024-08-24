@@ -71,6 +71,14 @@ cors <- \(req, res) {
 
 Change the values set for the headers to suit your specific use-case.
 
+If your API requires the use of cookies or authentication tokens across
+domains, you will also need to set the "Access-Control-Allow-Credentials"
+header inside the `if () {}` block:
+
+```r
+res$header("Access-Control-Allow-Credentials", "true")
+```
+
 # Note
 
 - DO NOT include a trailing slash in the allowed origins.

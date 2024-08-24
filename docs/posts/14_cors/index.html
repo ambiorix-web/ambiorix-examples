@@ -242,6 +242,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Change the values set for the headers to suit your specific use-case.</p>
+<p>If your API requires the use of cookies or authentication tokens across domains, you will also need to set the “Access-Control-Allow-Credentials” header inside the <code>if () {}</code> block:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span><span class="fu">header</span>(<span class="st">"Access-Control-Allow-Credentials"</span>, <span class="st">"true"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="note" class="level1">
 <h1>Note</h1>
