@@ -1,4 +1,6 @@
-## Dynamic rendering
+# Dynamic rendering
+
+View [live app here](https://ambiorix-examples-07.mwavu.com/).
 
 When building software, these are the available options:
 
