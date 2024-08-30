@@ -1,0 +1,7 @@
+services:
+  ambiorix-examples-07:
+    image: ambiorix-examples-07
+    ports:
+      - "8000:3000"
+    restart: unless-stopped
+
