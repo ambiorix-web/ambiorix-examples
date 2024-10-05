@@ -36,6 +36,7 @@ large systems & applications:
 ## What should I know first?
 
 The main prerequisites are:
+
 - having a good understanding of **R fundamentals**, and,
 - basic knowledge of HTTP status codes.
 
@@ -48,23 +49,29 @@ Each example has been bootstrapped using [`{renv}`](https://rstudio.github.io/re
 To install the dependencies for a specific example eg. `05_router`:
 
 1. Switch to its directory
+
     ```bash
     cd 05_router
     ```
+
 1. Add this to the `.Renviron` file:
+
     ```r
     RENV_CONFIG_SANDBOX_ENABLED = FALSE
     ```
+
 1. Fire up R and restore the dependencies:
+
     ```r
     renv::restore()
     ```
 
 ## Documentation
 
-You can find documentation on each of the examples at [mwavu.com/ambiorix-examples](https://mwavu.com/ambiorix-examples/).
+You can find documentation on each of the examples at [ambiorix-web/ambiorix-examples](https://ambiorix-web.github.io/ambiorix-examples/).
 
 The documentation includes:
+
 - how to run each example
 - code and concept explanations where necessary
 

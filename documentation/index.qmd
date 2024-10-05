@@ -12,4 +12,4 @@ page-layout: full
 title-block-banner: true
 ---
 
-Welcome to the docs for the ✨[ambiorix-examples](https://github.com/kennedymwavu/ambiorix-examples)✨
+Welcome to the docs for the ✨[ambiorix-examples](https://github.com/ambiorix-web/ambiorix-examples)✨

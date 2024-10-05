@@ -270,14 +270,14 @@
     "href": "posts/00_getting_started/index.html",
     "title": "00: getting started",
     "section": "",
-    "text": "Clone the repo:\ngit clone git@github.com:kennedymwavu/ambiorix-examples.git\ncd into the root dir:\ncd ambiorix-examples\nAll the examples assume you’re in this directory."
+    "text": "Clone the repo:\ngit clone git@github.com:ambiorix-web/ambiorix-examples.git\ncd into the root dir:\ncd ambiorix-examples\nAll the examples assume you’re in this directory."
   },
   {
     "objectID": "posts/00_getting_started/index.html#installation",
     "href": "posts/00_getting_started/index.html#installation",
     "title": "00: getting started",
     "section": "",
-    "text": "Clone the repo:\ngit clone git@github.com:kennedymwavu/ambiorix-examples.git\ncd into the root dir:\ncd ambiorix-examples\nAll the examples assume you’re in this directory."
+    "text": "Clone the repo:\ngit clone git@github.com:ambiorix-web/ambiorix-examples.git\ncd into the root dir:\ncd ambiorix-examples\nAll the examples assume you’re in this directory."
   },
   {
     "objectID": "posts/00_getting_started/index.html#say-hello",

@@ -5,7 +5,7 @@ about:
   links:
     - icon: github
       text: Github
-      href: https://github.com/devOpifex/ambiorix
+      href: https://github.com/ambiorix-web/ambiorix
     - icon: book
       text: docs
       href: https://ambiorix.dev/

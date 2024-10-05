@@ -8,7 +8,7 @@ categories: [CORS]
 
 You're probably reading this because you've hit that CORS error in your browser :)
 
-TL;DR: See the [middleware](https://github.com/kennedymwavu/ambiorix-examples/tree/main/14_cors).
+TL;DR: See the [middleware](https://github.com/ambiorix-web/ambiorix-examples/tree/main/14_cors).
 
 # Quoting [mdn web docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS):
 

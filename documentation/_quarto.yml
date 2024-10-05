@@ -8,9 +8,9 @@ website:
     right:
       - about.qmd
       - icon: github
-        href: https://github.com/kennedymwavu/ambiorix-examples
+        href: https://github.com/ambiorix-web/ambiorix-examples
       - icon: twitter
-        href: https://x.com/kennedymwavu
+        href: https://x.com/ambiorixweb
 format:
   html:
     theme: lux
