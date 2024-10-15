@@ -1,0 +1,7 @@
+default:
+  postgres:
+    user: "postgres"
+    host: "localhost"
+    password: "sa"
+    port: "5432"
+    dbname: "ambiorix_test1"
