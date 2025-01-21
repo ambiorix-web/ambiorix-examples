@@ -1,0 +1,28 @@
+body {
+  min-height: 100vh;
+  margin: 0 2rem;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.d-shrink {
+  flex-shrink: 1;
+}
+
+.d-grow {
+  flex-grow: 1;
+}
+
+.mb-1 {
+  margin-bottom: 0.5rem;
+}
+
+.mr-1 {
+  margin-right: 0.5rem;
+}
+
+.nes-balloon {
+  min-width: 80%;
+}
