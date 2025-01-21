@@ -9,7 +9,7 @@ chat_get <- function(req, res) {
 
 #' @export
 chat_ws <- function(msg, ws) {
-  ambiorix:::get_websocket_clients() |>
+  ambiorix::get_websocket_clients() |>
     lapply(\(c) {
       c$send("chat", msg)
     })

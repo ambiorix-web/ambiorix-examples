@@ -27,15 +27,24 @@ const createId = () => {
 
 const handleChat = (id) => {
   const btn = document.querySelector("#send");
-
   btn.addEventListener("click", (_event) => {
-    const text = document.querySelector("#message").value;
+    const tgt = document.querySelector("#message")
+    const text = tgt.value;
+    tgt.value = "";
 
     if (!text || text == "") return;
 
     insertRight(text);
     Ambiorix.send("chat", { text: text, id: id });
   });
+
+  const query = document.querySelector("#message");
+  query.addEventListener("keydown", (event) => {
+    if (event.key != "Enter") return;
+
+    const btn = document.querySelector("#send");
+    btn.click();
+  })
 }
 
 const insertLeft = (message) => {
