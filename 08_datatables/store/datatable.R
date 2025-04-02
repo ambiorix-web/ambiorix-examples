@@ -58,7 +58,7 @@ datatable <- \(
 #'   col_names = names(iris),
 #'   processing = TRUE,
 #'   serverSide = TRUE,
-#'   ajax = "/api/data"
+#'   ajax = create_href("/api/data")
 #' )
 #'
 #' cat(script, "\n")
