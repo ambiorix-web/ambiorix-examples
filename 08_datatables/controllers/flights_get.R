@@ -1,8 +1,9 @@
 box::use(
-  nycflights13[flights],
   dplyr,
+  nycflights13[flights],
   .. / store / datatable[make_user_friendly_names]
 )
+
 #' Get flights data
 #'
 #' Handler for GET requests at "/data/flights".
@@ -17,7 +18,7 @@ flights_get <- \(req, res) {
 
   # perform search:
   search_value <- req$query$`search[value]`
-  if (!is.null(search_value)) {
+  if (!is.na(search_value)) {
     found <- lapply(flights, \(cl) {
       grepl(pattern = search_value, x = cl, ignore.case = TRUE)
     }) |>

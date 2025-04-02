@@ -1,5 +1,4 @@
 box::use(
-  . / template_path[template_path],
   .. / store / home[home]
 )
 
@@ -9,11 +8,5 @@ box::use(
 #'
 #' @export
 home_get <- \(req, res) {
-  res$render(
-    template_path("page.html"),
-    list(
-      title = "Home | Datatables",
-      content = home()
-    )
-  )
+  res$send(home())
 }
