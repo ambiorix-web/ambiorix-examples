@@ -4,9 +4,8 @@ box::use(
   . / controllers / flights_get[flights_get]
 )
 
-Ambiorix$
-  new(port = 3000L)$
-  static("public", "static")$
-  get("/", home_get)$
-  get("/data/flights", flights_get)$
-  start(open = TRUE)
+app <- Ambiorix$new(port = 3000L)
+app$static("public", "static")
+app$get("/", home_get)
+app$get("/data/flights", flights_get)
+app$start()
