@@ -1,0 +1,6 @@
+{
+    "path": "./",
+    "port": "8080",
+    "backends": "2",
+    "attempts": 3
+}
